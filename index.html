@@ -307,51 +307,61 @@ input,select,textarea{
     <div class="eyebrow">Sua presença é especial</div>
     <h2>Você vem celebrar?</h2>
     <p>Informe seu nome completo e telefone com DDD para confirmar sua presença.</p>
-    <form id="rsvp-form">
     
-<label for="telefone">Telefone com DDD</label>
-<input
-  id="telefone"
-  name="telefone"
-  type="tel"
-  required
-  autocomplete="tel"
-  placeholder="(75) 99999-9999"
->
+<form id="rsvp-form">
 
-<label for="nome">Nome completo</label>
-<input
-  name="nome"
-  required
-  autocomplete="name"
-  placeholder="Nome completo como consta na lista de convidados"
->
+  <label for="nome">Nome completo</label>
+  <input
+    id="nome"
+    name="nome"
+    type="text"
+    required
+    autocomplete="name"
+    placeholder="Digite seu nome completo"
+  >
 
+  <label for="telefone">Telefone com DDD</label>
+  <input
+    id="telefone"
+    name="telefone"
+    type="tel"
+    required
+    autocomplete="tel"
+    placeholder="(75) 99999-9999"
+  >
 
-      <label for="nome">Nome completo</label>
-      <input id="nome" name="nome" required autocomplete="name" placeholder="Nome como consta no convite">
+  <label for="acompanhantes">Acompanhantes</label>
+  <select id="acompanhantes" name="acompanhantes">
+    <option value="0">Somente eu</option>
+    <option value="1">Eu + 1 acompanhante</option>
+    <option value="2">Eu + 2 acompanhantes</option>
+  </select>
 
-      <label for="acompanhantes">Acompanhantes</label>
-      <select id="acompanhantes" name="acompanhantes">
-        <option value="0">Somente eu</option>
-        <option value="1">Eu + 1 acompanhante</option>
-        <option value="2">Eu + 2 acompanhantes</option>
-      </select>
+  <label for="presenca">Confirmação</label>
+  <select id="presenca" name="presenca" required>
+    <option value="">Selecione uma opção</option>
+    <option value="sim">Sim, estarei presente!</option>
+    <option value="nao">Infelizmente, não poderei ir</option>
+  </select>
 
-      <label for="presenca">Confirmação</label>
-      <select id="presenca" name="presenca" required>
-        <option value="">Selecione uma opção</option>
-        <option value="sim">Sim, estarei presente!</option>
-        <option value="nao">Infelizmente, não poderei ir</option>
-      </select>
+  <label for="mensagem">Observação (opcional)</label>
+  <textarea
+    id="mensagem"
+    name="mensagem"
+    rows="3"
+    maxlength="500"
+    placeholder="Se precisar, deixe uma mensagem"
+  ></textarea>
 
-      <label for="mensagem">Observação (opcional)</label>
-      <textarea id="mensagem" name="mensagem" rows="3" maxlength="500" placeholder="Se precisar, deixe uma mensagem"></textarea>
+  <button class="btn" id="rsvp-submit" type="submit">
+    Enviar confirmação
+  </button>
 
-      <button class="btn" id="rsvp-submit" type="submit">Enviar confirmação</button>
-      <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-      <p class="note">Sua resposta será registrada para que possamos organizar a recepção com carinho.</p>
-    </form>
+  <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+  <p class="note">Sua resposta será registrada para que possamos organizar a recepção com carinho.</p>
+
+</form>
+
   </div>
 </section>
 
