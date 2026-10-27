@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Beatriz & Gustavo — Nosso casamento</title>
-<meta name="description" content="Celebre conosco o casamento de Beatriz e Gustavo em 22 de julho de 2027.">
+<meta name="description" content="Celebre o casamento de Gustavo e Beatriz em 22 de julho de 2027, às 18h30.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,7 +58,7 @@ a{color:inherit}
   min-height:92vh;
   background:
     linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.18)),
-    url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2000&q=85') center/cover;
+    url('imagens/capa-praia.jpg') center/cover;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -72,7 +72,19 @@ a{color:inherit}
   inset:0;
   background:rgba(255,255,255,.37)
 }
-.hero-inner{position:relative;max-width:720px}
+.hero-inner{position:relative;max-width:720px;width:100%}
+.hero h1{display:flex;flex-direction:column;gap:2px}
+.hero .hero-date{display:block;background:#fff;color:#292622;padding:12px 18px;margin:28px auto 0;max-width:420px;font-size:12px;letter-spacing:.12em;text-transform:none}
+.hero .eyebrow{letter-spacing:.12em}
+.hero .hero-photo-frame{position:relative;width:min(680px,100%);margin:30px auto 0;padding-bottom:5px}
+.hero .hero-photo-frame:after{content:'';position:absolute;left:0;right:0;bottom:0;height:3px;background:#fff;transform-origin:left;animation:bottom-line 4s linear infinite}
+.hero .hero-photo{width:100%;height:clamp(170px,28vw,280px);object-fit:cover;display:block;filter:grayscale(100%)}
+@keyframes bottom-line{0%{transform:scaleX(0);transform-origin:left}49%{transform:scaleX(1);transform-origin:left}50%{transform:scaleX(1);transform-origin:right}100%{transform:scaleX(0);transform-origin:right}}
+.countdown{display:flex;justify-content:center;gap:clamp(10px,3vw,28px);margin:24px auto 0}
+.countdown-item{min-width:52px;display:flex;flex-direction:column;line-height:1.2}
+.countdown-item strong{font:400 28px var(--serif)}
+.countdown-item span{font-size:9px;letter-spacing:.12em;text-transform:uppercase;margin-top:6px}
+@media(prefers-reduced-motion:reduce){.hero .hero-photo-frame:after{animation:none;transform:scaleX(1)}}
 .eyebrow{
   font-size:10px;
   letter-spacing:.28em;
@@ -135,7 +147,7 @@ a{color:inherit}
   text-align:left
 }
 .story-photo{
-  background:url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1200&q=85') center/cover;
+  background:url('imagens/nossa-historia.jpg') center/cover;
   min-height:350px
 }
 .story-copy{
@@ -247,9 +259,9 @@ input,select,textarea{
 <nav class="nav">
   <a class="mark" href="#top">B <span style="font-style:italic">&</span> G</a>
   <div class="links">
-    <a href="#detalhes">O dia</a>
+    <a href="#nova-etapa">Nova etapa</a>
+    <a href="#historia">Nossa história</a>
     <a href="#rsvp">Presença</a>
-    <a href="#presentes">Presentes</a>
   </div>
 </nav>
 
@@ -257,18 +269,37 @@ input,select,textarea{
   <div class="hero-inner">
     <div class="eyebrow">Com a bênção de Deus e o amor de nossas famílias</div>
     <div class="ornament"></div>
-    <h1>Beatriz<br><span class="amp">&</span> Gustavo</h1>
-    <p>22 · Julho · 2027</p>
-    <div class="ornament"></div>
-    <a class="btn" href="#detalhes">Celebrar conosco</a>
+    <h1><span>Gustavo</span><span class="amp">&</span><span>Beatriz</span></h1>
+    <div class="hero-date">22 de Julho de 2027 - 18:30</div>
+    <div class="hero-photo-frame">
+      <img class="hero-photo" src="imagens/capa-praia.jpg" alt="Fotografia de casamento em tons preto e branco">
+    </div>
+    <div class="countdown" id="countdown" aria-label="Contagem regressiva para o casamento">
+      <div class="countdown-item"><strong id="days">—</strong><span>Dias</span></div>
+      <div class="countdown-item"><strong id="hours">—</strong><span>Horas</span></div>
+      <div class="countdown-item"><strong id="minutes">—</strong><span>Minutos</span></div>
+      <div class="countdown-item"><strong id="seconds">—</strong><span>Segundos</span></div>
+    </div>
   </div>
 </header>
 
-<section class="section intro">
+<section class="section intro" id="nova-etapa">
   <div class="section-inner">
     <div class="eyebrow">Uma nova etapa</div>
-    <h2>O amor nos trouxe até aqui.</h2>
-    <p>Estamos felizes em compartilhar esse momento tão especial com pessoas que fazem parte da nossa história. Será uma alegria celebrar esse novo capítulo ao lado de vocês.</p>
+    <h2>O Senhor nos trouxe até aqui.</h2>
+    <p>E guiados por Deus, seguiremos juntos para uma nova etapa, com a fé renovada e o coração cheio de amor, confiantes de que os planos d’Ele são sempre maiores e melhores que os nossos.</p>
+  </div>
+</section>
+
+
+
+<section class="story" id="historia">
+  <div class="story-photo" role="img" aria-label="Fotografia em preto e branco de Beatriz e Gustavo abraçados"></div>
+  <div class="story-copy">
+    <div class="eyebrow">Nossa história</div>
+    <h2>Deus, em Seu infinito amor, cruzou nossos caminhos</h2>
+    <p>Cremos que foi Deus quem escreveu cada detalhe da nossa história, unindo nossas vidas segundo a Sua perfeita vontade.</p>
+    <p>O que começou como um encontro de caminhos floresceu em amor, fé e no desejo de construir uma vida que glorifique o nome d’Ele. Diante de Deus, diremos o nosso sim, com o coração cheio de gratidão por tudo o que Ele fez e fé em tudo o que ainda fará.</p>
   </div>
 </section>
 
@@ -276,29 +307,14 @@ input,select,textarea{
   <div class="section-inner">
     <div class="eyebrow">Reserve a data</div>
     <h2>Nosso grande dia</h2>
-    <p>Quinta-feira, 22 de julho de 2027</p>
+    <p>22 de julho de 2027, às 18h30</p>
     <div class="details">
       <div class="detail">
         <div class="eyebrow">Recepção</div>
         <h3>Residencial Mangata</h3>
-        <p>Endereço completo e horário serão informados em breve.</p>
-      </div>
-      <div class="detail">
-        <div class="eyebrow">Traje</div>
-        <h3>A definir</h3>
-        <p>Compartilharemos as orientações assim que estiverem confirmadas.</p>
+        <p>Esperamos você para celebrar esse dia tão especial conosco.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="story">
-  <div class="story-photo" role="img" aria-label="Fotografia romântica ilustrativa"></div>
-  <div class="story-copy">
-    <div class="eyebrow">Nossa história</div>
-    <h2>Do nosso jeito,<br>para sempre.</h2>
-    <p>Cada história de amor tem detalhes que a tornam única. Em breve, vamos contar um pouco da nossa trajetória e dos momentos que nos trouxeram até este dia.</p>
-    <p style="font-size:12px">Este texto e as fotos são provisórios e poderão ser personalizados por vocês.</p>
   </div>
 </section>
 
@@ -561,6 +577,22 @@ async function loadGifts() {
 }
 
 loadGifts();
+
+// Contagem regressiva para 22 de julho de 2027, às 18h30 (horário de Brasília)
+function updateCountdown() {
+  const target = new Date('2027-07-22T18:30:00-03:00').getTime();
+  const remaining = Math.max(0, target - Date.now());
+  const days = Math.floor(remaining / 86400000);
+  const hours = Math.floor((remaining % 86400000) / 3600000);
+  const minutes = Math.floor((remaining % 3600000) / 60000);
+  const seconds = Math.floor((remaining % 60000) / 1000);
+  document.getElementById('days').textContent = String(days).padStart(3, '0');
+  document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+  document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+  document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
 </script>
 
 
