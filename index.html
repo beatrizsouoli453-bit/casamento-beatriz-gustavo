@@ -309,7 +309,15 @@ input,select,textarea{
     <p>Informe o código que está no seu convite para confirmar sua presença.</p>
 
     <form id="rsvp-form">
-      <label for="codigo">Código do convite</label>
+      <label for="codigo"><label for="telefone">Telefone com DDD</label>
+<input
+  id="telefone"
+  name="telefone"
+  type="tel"
+  required
+  autocomplete="tel"
+  placeholder="(75) 99999-9999"
+></label>
       <input id="codigo" name="codigo" required autocomplete="off" placeholder="Cole aqui o código do convite">
 
       <label for="nome">Nome completo</label>
@@ -382,7 +390,8 @@ form.addEventListener('submit', async (event) => {
   event.preventDefault();
   statusEl.textContent = '';
 
-  const invitationCode = document.getElementById('codigo').value.trim();
+  const fullName = document.getElementById('nome').value.trim();
+const phone = document.getElementById('telefone').value.trim();
   const attending = document.getElementById('presenca').value === 'sim';
   const companions = Number(document.getElementById('acompanhantes').value);
   const partyCount = attending ? companions + 1 : 1;
@@ -403,12 +412,13 @@ form.addEventListener('submit', async (event) => {
         'Content-Type': 'application/json',
         'apikey': SUPABASE_PUBLISHABLE_KEY
       },
-      body: JSON.stringify({
-        invitation_code: invitationCode,
-        attending,
-        party_count: partyCount,
-        message: message || null
-      })
+    body: JSON.stringify({
+  full_name: fullName,
+  phone: phone,
+  attending,
+  party_count: partyCount,
+  message: message || null
+})
     });
 
     const result = await response.json().catch(() => ({}));
