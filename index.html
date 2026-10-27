@@ -306,10 +306,10 @@ input,select,textarea{
   <div class="section-inner">
     <div class="eyebrow">Sua presença é especial</div>
     <h2>Você vem celebrar?</h2>
-    <p>Informe o código que está no seu convite para confirmar sua presença.</p>
-
+    <p>Informe seu nome completo e telefone com DDD para confirmar sua presença.</p>
     <form id="rsvp-form">
-      <label for="codigo"><label for="telefone">Telefone com DDD</label>
+    
+<label for="telefone">Telefone com DDD</label>
 <input
   id="telefone"
   name="telefone"
@@ -317,8 +317,17 @@ input,select,textarea{
   required
   autocomplete="tel"
   placeholder="(75) 99999-9999"
-></label>
-      <input id="codigo" name="codigo" required autocomplete="off" placeholder="Cole aqui o código do convite">
+>
+
+<label for="nome">Nome completo</label>
+<input
+  id="nome"
+  name="nome"
+  required
+  autocomplete="name"
+  placeholder="Nome completo como consta na lista de convidados"
+>
+
 
       <label for="nome">Nome completo</label>
       <input id="nome" name="nome" required autocomplete="name" placeholder="Nome como consta no convite">
