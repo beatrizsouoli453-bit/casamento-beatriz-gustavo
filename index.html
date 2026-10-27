@@ -397,10 +397,6 @@ const phone = document.getElementById('telefone').value.trim();
   const partyCount = attending ? companions + 1 : 1;
   const message = document.getElementById('mensagem').value.trim();
 
-  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(invitationCode)) {
-    statusEl.textContent = 'Confira o código do convite. Ele deve estar completo.';
-    return;
-  }
 
   submitButton.disabled = true;
   submitButton.textContent = 'Enviando…';
