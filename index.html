@@ -562,5 +562,72 @@ async function loadGifts() {
 
 loadGifts();
 </script>
+
+
+<!-- Música de fundo: Beatriz & Gustavo -->
+<div id="music-player" style="position:fixed;right:16px;bottom:16px;z-index:9999;display:flex;align-items:center;gap:10px;padding:10px 14px;background:#fff;color:#292622;border:1px solid #ded8d0;border-radius:30px;box-shadow:0 3px 15px #00000015;font:12px Arial,sans-serif">
+  <button id="music-toggle" type="button" style="border:0;background:transparent;color:inherit;cursor:pointer;font-size:18px">♫</button>
+  <span id="music-label">Ouvir nossa música</span>
+</div>
+
+<div id="youtube-player" style="position:fixed;width:1px;height:1px;left:-10px;bottom:-10px;overflow:hidden"></div>
+
+<script>
+(function () {
+  const videoId = "a7FW1sFl-e8";
+  const button = document.getElementById("music-toggle");
+  const label = document.getElementById("music-label");
+  let player;
+  let playing = false;
+
+  window.onYouTubeIframeAPIReady = function () {
+    player = new YT.Player("youtube-player", {
+      width: "1",
+      height: "1",
+      videoId: videoId,
+      playerVars: {
+        autoplay: 0,
+        controls: 0,
+        loop: 1,
+        playlist: videoId,
+        playsinline: 1
+      },
+      events: {
+        onStateChange: function (event) {
+          if (event.data === YT.PlayerState.ENDED) {
+            player.playVideo();
+          }
+          if (event.data === YT.PlayerState.PLAYING) {
+            playing = true;
+            button.textContent = "Ⅱ";
+            label.textContent = "Pausar música";
+          }
+          if (event.data === YT.PlayerState.PAUSED) {
+            playing = false;
+            button.textContent = "♫";
+            label.textContent = "Ouvir nossa música";
+          }
+        }
+      }
+    });
+  };
+
+  button.addEventListener("click", function () {
+    if (!player || typeof player.playVideo !== "function") {
+      label.textContent = "Carregando música…";
+      return;
+    }
+    if (playing) {
+      player.pauseVideo();
+    } else {
+      player.playVideo();
+    }
+  });
+
+  const api = document.createElement("script");
+  api.src = "https://www.youtube.com/iframe_api";
+  document.head.appendChild(api);
+})();
+</script>
 </body>
 </html>
