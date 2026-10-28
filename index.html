@@ -1,5 +1,4 @@
 
-
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -499,64 +498,3 @@ const SUPABASE_FUNCTION_URL =
 const form = document.getElementById('rsvp-form');
 const statusEl = document.getElementById('form-status');
 const submitButton = document.getEleme
-  
-<!-- Botão da música do casamento -->
-<style>
-  #botao-musica-casamento {
-    position: fixed;
-    right: 18px;
-    bottom: 22px;
-    z-index: 99999;
-    border: 1px solid #d8cbbd;
-    border-radius: 30px;
-    padding: 12px 18px;
-    background: #fff;
-    color: #39312c;
-    font-family: Georgia, serif;
-    font-size: 14px;
-    cursor: pointer;
-    box-shadow: 0 3px 14px #0002;
-  }
-  #player-musica-casamento {
-    position: fixed;
-    width: 200px;
-    height: 113px;
-    right: 10px;
-    bottom: 75px;
-    z-index: 99998;
-    border: 0;
-    background: #fff;
-  }
-</style>
-
-<button id="botao-musica-casamento" type="button">
-  ♫ Ouvir nossa música
-</button>
-
-<div id="player-musica-casamento" style="display:none"></div>
-
-<script>
-(function () {
-  const botao = document.getElementById('botao-musica-casamento');
-  const area = document.getElementById('player-musica-casamento');
-  let tocando = false;
-
-  botao.addEventListener('click', function () {
-    if (!tocando) {
-      area.style.display = 'block';
-      area.innerHTML =
-        '<iframe width="200" height="113" ' +
-        'src="https://www.youtube.com/embed/a7FW1sFl-e8?autoplay=1&loop=1&playlist=a7FW1sFl-e8" ' +
-        'title="Nossa música" allow="autoplay; encrypted-media" ' +
-        'allowfullscreen></iframe>';
-      botao.textContent = '♫ Fechar música';
-      tocando = true;
-    } else {
-      area.innerHTML = '';
-      area.style.display = 'none';
-      botao.textContent = '♫ Ouvir nossa música';
-      tocando = false;
-    }
-  });
-})();
-</script>
