@@ -1,4 +1,5 @@
 
+
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -342,10 +343,18 @@ input,select,textarea{
   </div>
   <div class="date-marquee" aria-label="Data e horário do casamento">
     <div class="date-marquee-track">
-      <span>GUSTAVO & BEATRIZ · 22.07.2027 · 18H30 ·</span>
-      <span aria-hidden="true">GUSTAVO & BEATRIZ · 22.07.2027 · 18H30 ·</span>
-      <span aria-hidden="true">GUSTAVO & BEATRIZ · 22.07.2027 · 18H30 ·</span>
-      <span aria-hidden="true">GUSTAVO & BEATRIZ · 22.07.2027 · 18H30 ·</span>
+      <div class="date-marquee-group">
+        <span>GUSTAVO & BEATRIZ · 22.07.2027 · 18H30 ·</span>
+        <span aria-hidden="true">GUSTAVO & BEATRIZ · 22.07.2027 · 18H30 ·</span>
+        <span aria-hidden="true">GUSTAVO & BEATRIZ · 22.07.2027 · 18H30 ·</span>
+        <span aria-hidden="true">GUSTAVO & BEATRIZ · 22.07.2027 · 18H30 ·</span>
+      </div>
+      <div class="date-marquee-group" aria-hidden="true">
+        <span>GUSTAVO & BEATRIZ · 22.07.2027 · 18H30 ·</span>
+        <span>GUSTAVO & BEATRIZ · 22.07.2027 · 18H30 ·</span>
+        <span>GUSTAVO & BEATRIZ · 22.07.2027 · 18H30 ·</span>
+        <span>GUSTAVO & BEATRIZ · 22.07.2027 · 18H30 ·</span>
+      </div>
     </div>
   </div>
 </header>
@@ -391,9 +400,9 @@ input,select,textarea{
     <div class="details">
       <div class="detail">
         <div class="eyebrow">Recepção</div>
-        <h3>Residencial Mangata</h3>
+        <h3>Village Damha II</h3>
         <p>Esperamos você para celebrar esse dia tão especial conosco.</p>
-        <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=Residencial+Mangata" target="_blank" rel="noopener noreferrer">Ver localização no mapa ↗</a>
+        <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=Village+Damha+II" target="_blank" rel="noopener noreferrer">Ver localização no mapa ↗</a>
       </div>
     </div>
   </div>
@@ -489,20 +498,4 @@ const SUPABASE_FUNCTION_URL =
 
 const form = document.getElementById('rsvp-form');
 const statusEl = document.getElementById('form-status');
-const submitButton = document.getElementById('rsvp-submit');
-
-function isValidHttpUrl(value) {
-  try {
-    const url = new URL(value);
-    return url.protocol === 'https:' || url.protocol === 'http:';
-  } catch {
-    return false;
-  }
-}
-
-// Confirmação de presença
-form.addEventListener('submit', async (event) => {
-  event.preventDefault();
-  statusEl.textContent = '';
-
-  const fullName = document.getElementB
+const submitButton = document.getEleme
