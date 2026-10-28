@@ -202,7 +202,15 @@ th{font-weight:600;background:var(--ivory)}
           <input id="gift-description" maxlength="500">
         </div>
         <div>
-          <label for="gift-image">Link da imagem (opcional)</label>
+          
+<div>
+  <label for="gift-image-file">Foto do presente</label>
+  <input id="gift-image-file" type="file" accept="image/png,image/jpeg,image/webp">
+  <img id="gift-image-preview" class="hidden" alt="Prévia do presente"
+       style="width:140px;max-height:140px;object-fit:cover;margin:5px 0 13px">
+  <p class="status">Escolha uma foto PNG, JPG ou WebP na galeria.</p>
+</div>
+
           <input id="gift-image" type="url" placeholder="https://...">
         </div>
         <div>
@@ -230,6 +238,40 @@ const $ = id => document.getElementById(id);
 
 let editingGuestId = null;
 let editingGiftId = null;
+  let currentGiftImageUrl = null;
+let giftPreviewObjectUrl = null;
+
+$('gift-image-file').addEventListener('change', () => {
+  const file = $('gift-image-file').files[0];
+  const preview = $('gift-image-preview');
+
+  if (giftPreviewObjectUrl) {
+    URL.revokeObjectURL(giftPreviewObjectUrl);
+    giftPreviewObjectUrl = null;
+  }
+
+  if (!file) {
+    preview.classList.toggle('hidden', !currentGiftImageUrl);
+    preview.src = currentGiftImageUrl || '';
+    return;
+  }
+
+  if (!['image/png', 'image/jpeg', 'image/webp'].includes(file.type)) {
+    $('gift-image-file').value = '';
+    showStatus('gift-status', 'Escolha uma imagem PNG, JPG ou WebP.');
+    return;
+  }
+
+  if (file.size > 5 * 1024 * 1024) {
+    $('gift-image-file').value = '';
+    showStatus('gift-status', 'A foto deve ter no máximo 5 MB.');
+    return;
+  }
+
+  giftPreviewObjectUrl = URL.createObjectURL(file);
+  preview.src = giftPreviewObjectUrl;
+  preview.classList.remove('hidden');
+});
 let loadingDashboard = false;
 
 function showStatus(id, message) {
@@ -628,13 +670,53 @@ async function loadGifts() {
   showStatus('gift-status', 'Lista de presentes atualizada.');
 }
 
+async function uploadGiftImage(file) {
+  if (!file) return currentGiftImageUrl;
+
+  if (!['image/png', 'image/jpeg', 'image/webp'].includes(file.type)) {
+    throw new Error('Formato de imagem não permitido.');
+  }
+
+  if (file.size > 5 * 1024 * 1024) {
+    throw new Error('A foto deve ter no máximo 5 MB.');
+  }
+
+  const extension = {
+    'image/png': 'png',
+    'image/jpeg': 'jpg',
+    'image/webp': 'webp'
+  }[file.type];
+
+  const path = `${crypto.randomUUID()}.${extension}`;
+
+  const { error } = await supabase.storage
+    .from('presentes')
+    .upload(path, file, {
+      contentType: file.type,
+      upsert: false
+    });
+
+  if (error) throw error;
+
+  const { data } = supabase.storage
+    .from('presentes')
+    .getPublicUrl(path);
+
+  return data.publicUrl;
+}
+
 /* Cadastrar ou editar presente */
 function startEditGift(gift) {
   editingGiftId = gift.id;
 
   $('gift-name').value = gift.name || '';
   $('gift-description').value = gift.description || '';
-  $('gift-image').value = gift.image_url || '';
+currentGiftImageUrl = gift.image_url || null;
+$('gift-image-file').value = '';
+
+const preview = $('gift-image-preview');
+preview.src = currentGiftImageUrl || '';
+preview.classList.toggle('hidden', !currentGiftImageUrl);
   $('gift-url').value = gift.product_url || '';
 
   $('gift-form-title').textContent = 'Editar presente';
@@ -657,6 +739,15 @@ $('gift-cancel').addEventListener('click', () => {
   resetGiftForm();
   showStatus('gift-status', 'Edição cancelada.');
 });
+  currentGiftImageUrl = null;
+$('gift-image-file').value = '';
+$('gift-image-preview').src = '';
+$('gift-image-preview').classList.add('hidden');
+
+if (giftPreviewObjectUrl) {
+  URL.revokeObjectURL(giftPreviewObjectUrl);
+  giftPreviewObjectUrl = null;
+}
 
 $('gift-form').addEventListener('submit', async event => {
   event.preventDefault();
