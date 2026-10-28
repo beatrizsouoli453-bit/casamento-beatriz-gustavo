@@ -743,21 +743,94 @@ updateCountdown();
 setInterval(updateCountdown, 1000);
 </script>
 
-<!-- Música: botão para abrir o vídeo no YouTube -->
-<div id="music-player"
-     style="position:fixed;right:16px;bottom:16px;z-index:9999;
-     display:flex;align-items:center;gap:10px;padding:10px 14px;
-     background:#fff;color:#292622;border:1px solid #ded8d0;
-     border-radius:30px;box-shadow:0 3px 15px #00000015;
-     font:12px Arial,sans-serif">
-  <span aria-hidden="true">♫</span>
-  <a href="https://www.youtube.com/watch?v=a7FW1sFl-e8"
-     target="_blank"
-     rel="noopener noreferrer"
-     style="color:inherit;text-decoration:none">
-    Ouvir nossa música ♡
-  </a>
+<!-- Player de música do casamento -->
+<div id="music-player" style="
+  position:fixed;
+  right:16px;
+  bottom:20px;
+  z-index:99999;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 18px;
+  background:#fff;
+  color:#292622;
+  border:1px solid #ded8d0;
+  border-radius:30px;
+  box-shadow:0 3px 15px #0002;
+  font:13px Arial,sans-serif;
+">
+  <button id="music-button" type="button" style="
+    border:0;
+    background:transparent;
+    color:inherit;
+    font:inherit;
+    cursor:pointer;
+  ">♫ Ouvir nossa música ♡</button>
+
+  <div id="youtube-player" style="
+    position:absolute;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+    opacity:0;
+    pointer-events:none;
+  "></div>
 </div>
 
+<script>
+(function () {
+  const button = document.getElementById('music-button');
+  let player;
+  let ready = false;
+  let pendingPlay = false;
+
+  window.onYouTubeIframeAPIReady = function () {
+    player = new YT.Player('youtube-player', {
+      width: 1,
+      height: 1,
+      videoId: 'a7FW1sFl-e8',
+      playerVars: {
+        playsinline: 1,
+        controls: 0
+      },
+      events: {
+        onReady: function () {
+          ready = true;
+          if (pendingPlay) {
+            player.playVideo();
+            pendingPlay = false;
+          }
+        },
+        onStateChange: function (event) {
+          if (event.data === YT.PlayerState.PLAYING) {
+            button.textContent = 'Ⅱ Pausar música';
+          } else {
+            button.textContent = '♫ Ouvir nossa música ♡';
+          }
+        }
+      }
+    });
+  };
+
+  button.addEventListener('click', function () {
+    if (!ready || !player) {
+      pendingPlay = true;
+      button.textContent = 'Carregando música…';
+      return;
+    }
+
+    if (player.getPlayerState() === YT.PlayerState.PLAYING) {
+      player.pauseVideo();
+    } else {
+      player.playVideo();
+    }
+  });
+
+  const api = document.createElement('script');
+  api.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(api);
+})();
+</script>
 </body>
 </html>
