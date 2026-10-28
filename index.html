@@ -74,13 +74,55 @@ a{color:inherit}
 }
 .hero-inner{position:relative;max-width:720px;width:100%}
 .hero h1{display:flex;flex-direction:column;gap:2px}
-.hero .hero-date{display:block;background:#fff;color:#292622;padding:12px 18px;margin:28px auto 0;max-width:420px;font-size:12px;letter-spacing:.12em;text-transform:none}
-.hero .eyebrow{letter-spacing:.12em}
-.hero .hero-photo-frame{position:relative;width:min(680px,100%);margin:30px auto 0;padding-bottom:5px}
-.hero .hero-photo-frame:after{content:'';position:absolute;left:0;right:0;bottom:0;height:3px;background:#fff;transform-origin:left;animation:bottom-line 4s linear infinite}
+.hero .hero-photo-frame{
+  position:relative;
+  width:min(680px,100%);
+  margin:30px auto 0;
+  overflow:hidden;
+  border-bottom:4px solid #fff;
+}
+.date-marquee{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:4px;
+  z-index:1;
+  overflow:hidden;
+  background:rgba(255,255,255,.96);
+  color:#292622;
+  padding:9px 0;
+  white-space:nowrap;
+}
+.date-marquee-track{
+  display:flex;
+  width:max-content;
+  animation:date-scroll 22s linear infinite;
+}
+.date-marquee-track span{
+  flex-shrink:0;
+  padding-right:36px;
+  font-size:10px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+@keyframes date-scroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+@media(prefers-reduced-motion:reduce){
+  .date-marquee-track{animation:none}
+}
 .hero .hero-photo{width:100%;height:clamp(170px,28vw,280px);object-fit:cover;display:block;filter:grayscale(100%)}
 @keyframes bottom-line{0%{transform:scaleX(0);transform-origin:left}49%{transform:scaleX(1);transform-origin:left}50%{transform:scaleX(1);transform-origin:right}100%{transform:scaleX(0);transform-origin:right}}
 .countdown{display:flex;justify-content:center;gap:clamp(10px,3vw,28px);margin:24px auto 0}
+.countdown-section{
+  background:#fff;
+  padding:70px 20px;
+  text-align:center;
+}
+.countdown-section .countdown{
+  margin-top:30px;
+}
 .countdown-item{min-width:52px;display:flex;flex-direction:column;line-height:1.2}
 .countdown-item strong{font:400 28px var(--serif)}
 .countdown-item span{font-size:9px;letter-spacing:.12em;text-transform:uppercase;margin-top:6px}
@@ -270,10 +312,28 @@ input,select,textarea{
     <div class="eyebrow">Com a bênção de Deus e o amor de nossas famílias</div>
     <div class="ornament"></div>
     <h1><span>Gustavo</span><span class="amp">&</span><span>Beatriz</span></h1>
-    <div class="hero-date">22 de Julho de 2027 - 18:30</div>
-    <div class="hero-photo-frame">
-      <img class="hero-photo" src="imagens/capa-praia.jpg" alt="Fotografia de casamento em tons preto e branco">
+   <div class="hero-photo-frame">
+  <img class="hero-photo" src="imagens/capa-praia.jpg" alt="Fotografia de Beatriz e Gustavo">
+
+  <div class="date-marquee" aria-label="Data e horário do casamento">
+    <div class="date-marquee-track">
+      <span>BEATRIZ & GUSTAVO · 22.07.2027 · 18H30 ·</span>
+      <span aria-hidden="true">BEATRIZ & GUSTAVO · 22.07.2027 · 18H30 ·</span>
+      <span aria-hidden="true">BEATRIZ & GUSTAVO · 22.07.2027 · 18H30 ·</span>
+      <span aria-hidden="true">BEATRIZ & GUSTAVO · 22.07.2027 · 18H30 ·</span>
     </div>
+  </div>
+</div>
+  </div>
+</header>
+<section class="countdown-section" id="contagem">
+  <div class="section-inner">
+    <div class="eyebrow">A contagem regressiva começou</div>
+    <h2 style="font:400 clamp(38px,6vw,60px)/1.05 var(--serif);margin:12px 0 0">
+      Nosso grande dia
+    </h2>
+    <p>22 de julho de 2027, às 18h30</p>
+
     <div class="countdown" id="countdown" aria-label="Contagem regressiva para o casamento">
       <div class="countdown-item"><strong id="days">—</strong><span>Dias</span></div>
       <div class="countdown-item"><strong id="hours">—</strong><span>Horas</span></div>
@@ -281,8 +341,7 @@ input,select,textarea{
       <div class="countdown-item"><strong id="seconds">—</strong><span>Segundos</span></div>
     </div>
   </div>
-</header>
-
+</section>
 <section class="section intro" id="nova-etapa">
   <div class="section-inner">
     <div class="eyebrow">Uma nova etapa</div>
