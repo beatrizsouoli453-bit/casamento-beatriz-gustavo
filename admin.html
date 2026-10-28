@@ -749,22 +749,78 @@ if (giftPreviewObjectUrl) {
   giftPreviewObjectUrl = null;
 }
 
+
 $('gift-form').addEventListener('submit', async event => {
   event.preventDefault();
 
   const isEditing = Boolean(editingGiftId);
-  showStatus('gift-status', isEditing ? 'Salvando alterações...' : 'Adicionando presente...');
+  const submitButton = $('gift-submit');
+  submitButton.disabled = true;
 
-  const imageUrl = $('gift-image').value.trim();
-  const productUrl = $('gift-url').value.trim();
+  try {
+    showStatus(
+      'gift-status',
+      isEditing ? 'Salvando alterações...' : 'Adicionando presente...'
+    );
 
-  if (
-    (imageUrl && !safeUrl(imageUrl)) ||
-    (productUrl && !safeUrl(productUrl))
-  ) {
-    showStatus('gift-status', 'Use links válidos começando com https:// ou http://.');
-    return;
+    const name = $('gift-name').value.trim();
+    const productUrl = $('gift-url').value.trim();
+    const file = $('gift-image-file').files[0] || null;
+
+    if (!name) {
+      showStatus('gift-status', 'Informe o nome do presente.');
+      return;
+    }
+
+    if (productUrl && !safeUrl(productUrl)) {
+      showStatus('gift-status', 'Informe um link de compra válido.');
+      return;
+    }
+
+    const imageUrl = await uploadGiftImage(file);
+
+    const payload = {
+      name,
+      description: $('gift-description').value.trim() || null,
+      image_url: imageUrl || null,
+      product_url: productUrl || null
+    };
+
+    let error;
+
+    if (isEditing) {
+      ({ error } = await supabase
+        .from('gifts')
+        .update(payload)
+        .eq('id', editingGiftId));
+    } else {
+      ({ error } = await supabase
+        .from('gifts')
+        .insert(payload));
+    }
+
+    if (error) throw error;
+
+    resetGiftForm();
+
+    showStatus(
+      'gift-status',
+      isEditing
+        ? 'Presente atualizado com sucesso.'
+        : 'Presente adicionado com sucesso.'
+    );
+
+    await loadGifts();
+  } catch (error) {
+    console.error(error);
+    showStatus(
+      'gift-status',
+      'Não foi possível salvar. Verifique as permissões do Storage e da tabela gifts.'
+    );
+  } finally {
+    submitButton.disabled = false;
   }
+});
 
   const payload = {
     name: $('gift-name').value.trim(),
