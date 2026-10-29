@@ -1,1549 +1,810 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Painel Administrativo | Beatriz & Gustavo</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel Administrativo | Beatriz & Gustavo</title>
 
-  <style>
-    :root {
-      --background: #faf8f5;
-      --surface: #ffffff;
-      --text: #38332f;
-      --muted: #817870;
-      --border: #e8e1da;
-      --accent: #8d7568;
-      --danger: #a23e3e;
-      --success: #426c52;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      background: var(--background);
-      color: var(--text);
-      font-family: Arial, sans-serif;
-      line-height: 1.5;
-    }
-
-    button,
-    input,
-    select,
-    textarea {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    .container {
-      width: min(1200px, 94%);
-      margin: 0 auto;
-      padding: 28px 0 60px;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 28px;
-    }
-
-    h1,
-    h2,
-    h3 {
-      margin-top: 0;
-    }
-
-    h1,
-    h2 {
-      font-family: Georgia, serif;
-      font-weight: normal;
-    }
-
-    h1 {
-      margin-bottom: 4px;
-      font-size: clamp(28px, 5vw, 42px);
-    }
-
-    h2 {
-      font-size: 27px;
-    }
-
-    .subtitle,
-    .muted {
-      color: var(--muted);
-    }
-
-    .panel {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 22px;
-      margin-bottom: 24px;
-      box-shadow: 0 4px 18px rgba(50, 35, 25, 0.035);
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-      margin-bottom: 24px;
-    }
-
-    .metric {
-      padding: 20px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: var(--surface);
-    }
-
-    .metric-label {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .metric-value {
-      margin-top: 6px;
-      font-family: Georgia, serif;
-      font-size: 32px;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .field.full {
-      grid-column: 1 / -1;
-    }
-
-    label {
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    input,
-    select,
-    textarea {
-      width: 100%;
-      padding: 11px 12px;
-      border: 1px solid var(--border);
-      border-radius: 7px;
-      background: white;
-      color: var(--text);
-    }
-
-    textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-      outline: 2px solid #c9b7a9;
-      outline-offset: 1px;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-      margin-top: 16px;
-    }
-
-    .btn {
-      padding: 10px 15px;
-      border: 1px solid var(--accent);
-      border-radius: 7px;
-      background: var(--accent);
-      color: white;
-    }
-
-    .btn.secondary {
-      background: white;
-      color: var(--accent);
-    }
-
-    .btn.danger {
-      border-color: var(--danger);
-      background: white;
-      color: var(--danger);
-    }
-
-    .btn:disabled {
-      opacity: 0.55;
-      cursor: not-allowed;
-    }
-
-    .status {
-      min-height: 22px;
-      margin: 12px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-      overflow-wrap: anywhere;
-    }
-
-    .status.error {
-      color: var(--danger);
-    }
-
-    .status.success {
-      color: var(--success);
-    }
-
-    .table-wrap {
-      overflow-x: auto;
-      width: 100%;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 14px;
-    }
-
-    th,
-    td {
-      padding: 12px 10px;
-      border-bottom: 1px solid var(--border);
-      text-align: left;
-      vertical-align: top;
-    }
-
-    th {
-      color: var(--muted);
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    td {
-      overflow-wrap: anywhere;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 4px 8px;
-      border-radius: 20px;
-      background: #f0ece7;
-      font-size: 12px;
-    }
-
-    .badge.yes {
-      background: #e5efe7;
-      color: #315e3f;
-    }
-
-    .badge.no {
-      background: #f5e7e5;
-      color: #8c3737;
-    }
-
-    .section-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .section-heading h2 {
-      margin-bottom: 8px;
-    }
-
-    .message-cell {
-      min-width: 220px;
-      max-width: 460px;
-      white-space: pre-wrap;
-      overflow-wrap: anywhere;
-    }
-
-    .message-empty {
-      color: var(--muted);
-      padding: 18px 0;
-    }
-
-    .login-card {
-      width: min(440px, 100%);
-      margin: 8vh auto;
-    }
-
-    .login-card h1 {
-      font-size: 34px;
-    }
-
-    .login-card .field {
-      margin-bottom: 14px;
-    }
-
-    .top-actions {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 850px) {
-      .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 560px) {
-      .container {
-        width: 92%;
-        padding-top: 18px;
-      }
-
-      .panel {
-        padding: 16px;
-      }
-
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .field.full {
-        grid-column: auto;
-      }
-
-      .grid {
-        gap: 10px;
-      }
-
-      .metric {
-        padding: 14px;
-      }
-
-      .metric-value {
-        font-size: 26px;
-      }
-
-      .btn {
-        padding: 9px 12px;
-      }
-    }
-  </style>
+<style>
+:root {
+  --background:#faf8f5;
+  --surface:#fff;
+  --text:#38332f;
+  --muted:#817870;
+  --border:#e8e1da;
+  --accent:#8d7568;
+  --danger:#a23e3e;
+  --success:#426c52;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--background);color:var(--text);font-family:Arial,sans-serif;line-height:1.5}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.container{width:min(1200px,94%);margin:auto;padding:28px 0 60px}
+header,.section-heading{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+header{margin-bottom:28px}
+h1,h2,h3{margin-top:0}
+h1,h2{font-family:Georgia,serif;font-weight:normal}
+h1{margin-bottom:4px;font-size:clamp(28px,5vw,42px)}
+h2{font-size:27px}
+.subtitle,.muted{color:var(--muted)}
+.panel,.metric{background:var(--surface);border:1px solid var(--border);border-radius:12px}
+.panel{padding:22px;margin-bottom:24px;box-shadow:0 4px 18px rgba(50,35,25,.035)}
+.hidden{display:none!important}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:24px}
+.metric{padding:20px}
+.metric-label{color:var(--muted);font-size:13px}
+.metric-value{margin-top:6px;font-family:Georgia,serif;font-size:32px}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+label{font-size:14px;font-weight:600}
+input,select,textarea{width:100%;padding:11px 12px;border:1px solid var(--border);border-radius:7px;background:white;color:var(--text)}
+textarea{min-height:100px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid #c9b7a9;outline-offset:1px}
+.actions,.top-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.actions{margin-top:16px}
+.btn{padding:10px 15px;border:1px solid var(--accent);border-radius:7px;background:var(--accent);color:white}
+.btn.secondary{background:white;color:var(--accent)}
+.btn.danger{border-color:var(--danger);background:white;color:var(--danger)}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.status{min-height:22px;margin:12px 0 0;color:var(--muted);font-size:14px;overflow-wrap:anywhere}
+.status.error{color:var(--danger)}
+.status.success{color:var(--success)}
+.table-wrap{overflow-x:auto;width:100%}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:12px 10px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:600;white-space:nowrap}
+td{overflow-wrap:anywhere}
+.badge{display:inline-block;padding:4px 8px;border-radius:20px;background:#f0ece7;font-size:12px}
+.badge.yes{background:#e5efe7;color:#315e3f}
+.badge.no{background:#f5e7e5;color:#8c3737}
+.section-heading h2{margin-bottom:8px}
+.message-cell{min-width:220px;max-width:460px;white-space:pre-wrap;overflow-wrap:anywhere}
+.message-empty{color:var(--muted);padding:18px 0}
+.login-card{width:min(440px,100%);margin:8vh auto}
+.login-card h1{font-size:34px}
+.login-card .field{margin-bottom:14px}
+@media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){
+  .container{width:92%;padding-top:18px}
+  .panel{padding:16px}
+  .form-grid{grid-template-columns:1fr}
+  .field.full{grid-column:auto}
+  .grid{gap:10px}
+  .metric{padding:14px}
+  .metric-value{font-size:26px}
+  .btn{padding:9px 12px}
+}
+</style>
 </head>
 
 <body>
-  <main class="container">
+<main class="container">
 
-    <!-- LOGIN -->
-    <section id="login-section" class="panel login-card">
-      <h1>Beatriz & Gustavo</h1>
-      <p class="subtitle">Painel administrativo do casamento</p>
+<section id="login-section" class="panel login-card">
+  <h1>Beatriz & Gustavo</h1>
+  <p class="subtitle">Painel administrativo do casamento</p>
+  <form id="login-form">
+    <div class="field">
+      <label for="login-email">E-mail</label>
+      <input id="login-email" type="email" autocomplete="username" required>
+    </div>
+    <div class="field">
+      <label for="login-password">Senha</label>
+      <input id="login-password" type="password" autocomplete="current-password" required>
+    </div>
+    <button class="btn" id="login-button" type="submit">Entrar no painel</button>
+    <p id="login-status" class="status" aria-live="polite"></p>
+  </form>
+</section>
 
-      <form id="login-form">
-        <div class="field">
-          <label for="login-email">E-mail</label>
-          <input
-            id="login-email"
-            type="email"
-            autocomplete="username"
-            required
-          >
-        </div>
+<section id="dashboard" class="hidden">
+  <header>
+    <div>
+      <h1>Painel do casamento</h1>
+      <p class="subtitle">Beatriz & Gustavo · 22 de julho de 2027</p>
+    </div>
+    <div class="top-actions">
+      <button class="btn secondary" id="refresh-button" type="button">Atualizar dados</button>
+      <button class="btn secondary" id="logout-button" type="button">Sair</button>
+    </div>
+  </header>
 
-        <div class="field">
-          <label for="login-password">Senha</label>
-          <input
-            id="login-password"
-            type="password"
-            autocomplete="current-password"
-            required
-          >
-        </div>
+  <div class="grid">
+    <article class="metric"><div class="metric-label">Convidados cadastrados</div><div class="metric-value" id="metric-guests">—</div></article>
+    <article class="metric"><div class="metric-label">Confirmações de presença</div><div class="metric-value" id="metric-confirmed">—</div></article>
+    <article class="metric"><div class="metric-label">Não poderão comparecer</div><div class="metric-value" id="metric-declined">—</div></article>
+    <article class="metric"><div class="metric-label">Respostas recebidas</div><div class="metric-value" id="metric-responded">—</div></article>
+  </div>
 
-        <button class="btn" id="login-button" type="submit">
-          Entrar no painel
-        </button>
+  <p id="dashboard-status" class="status" aria-live="polite"></p>
 
-        <p id="login-status" class="status" aria-live="polite"></p>
-      </form>
-    </section>
-
-    <!-- PAINEL -->
-    <section id="dashboard" class="hidden">
-      <header>
-        <div>
-          <h1>Painel do casamento</h1>
-          <p class="subtitle">Beatriz & Gustavo · 22 de julho de 2027</p>
-        </div>
-
-        <div class="top-actions">
-          <button class="btn secondary" id="refresh-button" type="button">
-            Atualizar dados
-          </button>
-
-          <button class="btn secondary" id="logout-button" type="button">
-            Sair
-          </button>
-        </div>
-      </header>
-
-      <!-- INDICADORES -->
-      <div class="grid">
-        <article class="metric">
-          <div class="metric-label">Convidados cadastrados</div>
-          <div class="metric-value" id="metric-guests">—</div>
-        </article>
-
-        <article class="metric">
-          <div class="metric-label">Confirmações de presença</div>
-          <div class="metric-value" id="metric-confirmed">—</div>
-        </article>
-
-        <article class="metric">
-          <div class="metric-label">Não poderão comparecer</div>
-          <div class="metric-value" id="metric-declined">—</div>
-        </article>
-
-        <article class="metric">
-          <div class="metric-label">Respostas recebidas</div>
-          <div class="metric-value" id="metric-responded">—</div>
-        </article>
+  <!-- CONVIDADOS: SEM CÓDIGO DE CONVITE -->
+  <section class="panel">
+    <div class="section-heading">
+      <div>
+        <h2>Convidados</h2>
+        <p class="muted">Cadastre, edite e acompanhe as confirmações.</p>
       </div>
+    </div>
 
-      <p id="dashboard-status" class="status" aria-live="polite"></p>
-
-      <!-- CONVIDADOS -->
-      <section class="panel">
-        <div class="section-heading">
-          <div>
-            <h2>Convidados</h2>
-            <p class="muted">Cadastre, edite e acompanhe as confirmações.</p>
-          </div>
+    <form id="guest-form">
+      <input id="guest-id" type="hidden">
+      <div class="form-grid">
+        <div class="field">
+          <label for="guest-name">Nome completo</label>
+          <input id="guest-name" maxlength="150" required>
         </div>
-
-        <form id="guest-form">
-          <input id="guest-id" type="hidden">
-
-          <div class="form-grid">
-            <div class="field">
-              <label for="guest-name">Nome completo</label>
-              <input id="guest-name" required>
-            </div>
-
-            <div class="field">
-              <label for="guest-code">Código do convite</label>
-              <input id="guest-code" required>
-            </div>
-
-            <div class="field">
-              <label for="guest-phone">Telefone</label>
-              <input id="guest-phone" type="tel">
-            </div>
-
-            <div class="field">
-              <label for="guest-max-companions">Acompanhantes permitidos</label>
-              <select id="guest-max-companions">
-                <option value="0">Somente o convidado</option>
-                <option value="1">Mais 1 acompanhante</option>
-                <option value="2">Mais 2 acompanhantes</option>
-                <option value="3">Mais 3 acompanhantes</option>
-                <option value="4">Mais 4 acompanhantes</option>
-                <option value="5">Mais 5 acompanhantes</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="actions">
-            <button class="btn" id="guest-save-button" type="submit">
-              Salvar convidado
-            </button>
-
-            <button class="btn secondary" id="guest-cancel-edit" type="button">
-              Limpar formulário
-            </button>
-          </div>
-
-          <p id="guest-form-status" class="status" aria-live="polite"></p>
-        </form>
-
-        <hr style="border:0;border-top:1px solid var(--border);margin:24px 0;">
-
-        <div class="field" style="margin-bottom:14px;">
-          <label for="guest-search">Buscar convidado</label>
-          <input
-            id="guest-search"
-            type="search"
-            placeholder="Digite o nome ou código do convite"
-          >
+        <div class="field">
+          <label for="guest-phone">Telefone</label>
+          <input id="guest-phone" type="tel">
         </div>
-
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Convidado</th>
-                <th>Código</th>
-                <th>Telefone</th>
-                <th>Acompanhantes</th>
-                <th>Resposta</th>
-                <th>Total confirmado</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-
-            <tbody id="guest-rows">
-              <tr>
-                <td colspan="7">Carregando convidados...</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="field">
+          <label for="guest-max-companions">Acompanhantes permitidos</label>
+          <select id="guest-max-companions">
+            <option value="0">Somente o convidado</option>
+            <option value="1">Mais 1 acompanhante</option>
+            <option value="2">Mais 2 acompanhantes</option>
+            <option value="3">Mais 3 acompanhantes</option>
+            <option value="4">Mais 4 acompanhantes</option>
+            <option value="5">Mais 5 acompanhantes</option>
+            <option value="6">Mais 6 acompanhantes</option>
+            <option value="7">Mais 7 acompanhantes</option>
+            <option value="8">Mais 8 acompanhantes</option>
+            <option value="9">Mais 9 acompanhantes</option>
+          </select>
         </div>
-      </section>
+      </div>
+      <div class="actions">
+        <button class="btn" id="guest-save-button" type="submit">Salvar convidado</button>
+        <button class="btn secondary" id="guest-cancel-edit" type="button">Limpar formulário</button>
+      </div>
+      <p id="guest-form-status" class="status" aria-live="polite"></p>
+    </form>
 
-      <!-- RECADOS -->
-      <section class="panel" id="messages-section">
-        <div class="section-heading">
-          <div>
-            <h2>Recadinhos dos convidados</h2>
-            <p class="muted">
-              Mensagens enviadas pelo formulário de confirmação de presença.
-              Os recados aparecem automaticamente quando são enviados.
-            </p>
-          </div>
+    <hr style="border:0;border-top:1px solid var(--border);margin:24px 0">
 
-          <button
-            class="btn secondary"
-            id="refresh-messages-button"
-            type="button"
-          >
-            Atualizar recados
-          </button>
-        </div>
+    <div class="field" style="margin-bottom:14px">
+      <label for="guest-search">Buscar convidado</label>
+      <input id="guest-search" type="search" placeholder="Digite o nome do convidado">
+    </div>
 
-        <p id="messages-status" class="status" aria-live="polite"></p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>Convidado</th><th>Telefone</th><th>Acompanhantes permitidos</th>
+          <th>Resposta</th><th>Total confirmado</th><th>Ações</th>
+        </tr></thead>
+        <tbody id="guest-rows"><tr><td colspan="6">Carregando convidados...</td></tr></tbody>
+      </table>
+    </div>
+  </section>
 
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Convidado</th>
-                <th>Recado</th>
-                <th>Data da resposta</th>
-                <th>Ação</th>
-              </tr>
-            </thead>
+  <!-- RECADINHOS -->
+  <section class="panel" id="messages-section">
+    <div class="section-heading">
+      <div>
+        <h2>Recadinhos dos convidados</h2>
+        <p class="muted">Os recados enviados no formulário aparecem aqui automaticamente.</p>
+      </div>
+      <button class="btn secondary" id="refresh-messages-button" type="button">Atualizar recados</button>
+    </div>
+    <p id="messages-status" class="status" aria-live="polite"></p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Convidado</th><th>Recado</th><th>Data da resposta</th><th>Ação</th></tr></thead>
+        <tbody id="message-rows"><tr><td colspan="4">Carregando recadinhos...</td></tr></tbody>
+      </table>
+    </div>
+  </section>
 
-            <tbody id="message-rows">
-              <tr>
-                <td colspan="4">Carregando recadinhos...</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+  <!-- PRESENTES -->
+  <section class="panel">
+    <div class="section-heading">
+      <div><h2>Lista de presentes</h2><p class="muted">Cadastre presentes e seus links de compra.</p></div>
+    </div>
+    <form id="gift-form">
+      <input id="gift-id" type="hidden">
+      <div class="form-grid">
+        <div class="field"><label for="gift-name">Nome do presente</label><input id="gift-name" required></div>
+        <div class="field"><label for="gift-url">Link de compra</label><input id="gift-url" type="url" placeholder="https://..."></div>
+        <div class="field full"><label for="gift-description">Descrição</label><textarea id="gift-description" rows="3"></textarea></div>
+        <div class="field"><label for="gift-image-url">URL da imagem (opcional)</label><input id="gift-image-url" type="url" placeholder="https://..."></div>
+      </div>
+      <div class="actions">
+        <button class="btn" id="gift-save-button" type="submit">Salvar presente</button>
+        <button class="btn secondary" id="gift-cancel-edit" type="button">Limpar formulário</button>
+      </div>
+      <p id="gift-form-status" class="status" aria-live="polite"></p>
+    </form>
+    <hr style="border:0;border-top:1px solid var(--border);margin:24px 0">
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Presente</th><th>Descrição</th><th>Link</th><th>Ações</th></tr></thead>
+        <tbody id="gift-rows"><tr><td colspan="4">Carregando presentes...</td></tr></tbody>
+      </table>
+    </div>
+  </section>
 
-      <!-- PRESENTES -->
-      <section class="panel">
-        <div class="section-heading">
-          <div>
-            <h2>Lista de presentes</h2>
-            <p class="muted">
-              Cadastre presentes e seus links de compra.
-            </p>
-          </div>
-        </div>
+  <!-- RESERVAS -->
+  <section class="panel">
+    <div class="section-heading">
+      <div><h2>Reservas de presentes</h2><p class="muted">Acompanhe os presentes reservados.</p></div>
+      <button class="btn secondary" id="refresh-reservations-button" type="button">Atualizar reservas</button>
+    </div>
+    <p id="reservations-status" class="status" aria-live="polite"></p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Presente</th><th>Convidado</th><th>Data da reserva</th><th>Ação</th></tr></thead>
+        <tbody id="reservation-rows"><tr><td colspan="4">Carregando reservas...</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+</section>
+</main>
 
-        <form id="gift-form">
-          <input id="gift-id" type="hidden">
+<script type="module">
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
-          <div class="form-grid">
-            <div class="field">
-              <label for="gift-name">Nome do presente</label>
-              <input id="gift-name" required>
-            </div>
+const SUPABASE_URL = 'https://otzxfppshwsqlxlmkbat.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_dEppruYDF1VaD73bXZcNmg_MszVkpYG';
 
-            <div class="field">
-              <label for="gift-url">Link de compra</label>
-              <input id="gift-url" type="url" placeholder="https://..." >
-            </div>
+const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+const $ = id => document.getElementById(id);
 
-            <div class="field full">
-              <label for="gift-description">Descrição</label>
-              <textarea id="gift-description" rows="3"></textarea>
-            </div>
+let guestsCache = [];
+let giftsCache = [];
+let dashboardLoading = false;
 
-            <div class="field">
-              <label for="gift-image-url">URL da imagem (opcional)</label>
-              <input id="gift-image-url" type="url" placeholder="https://...">
-            </div>
-          </div>
+function setStatus(id, message, type = '') {
+  const el = $(id);
+  if (!el) return;
+  el.textContent = message || '';
+  el.classList.remove('error', 'success');
+  if (type) el.classList.add(type);
+}
 
-          <div class="actions">
-            <button class="btn" id="gift-save-button" type="submit">
-              Salvar presente
-            </button>
+function cell(value) {
+  const td = document.createElement('td');
+  td.textContent = value == null || value === '' ? '—' : String(value);
+  return td;
+}
 
-            <button class="btn secondary" id="gift-cancel-edit" type="button">
-              Limpar formulário
-            </button>
-          </div>
+function button(text, className, action) {
+  const el = document.createElement('button');
+  el.type = 'button';
+  el.className = className;
+  el.textContent = text;
+  el.addEventListener('click', action);
+  return el;
+}
 
-          <p id="gift-form-status" class="status" aria-live="polite"></p>
-        </form>
+function formatDate(value) {
+  if (!value) return '—';
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? '—' : date.toLocaleString('pt-BR');
+}
 
-        <hr style="border:0;border-top:1px solid var(--border);margin:24px 0;">
+function validHttpUrl(value) {
+  if (!value) return false;
+  try {
+    const url = new URL(value);
+    return url.protocol === 'https:' || url.protocol === 'http:';
+  } catch {
+    return false;
+  }
+}
 
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Presente</th>
-                <th>Descrição</th>
-                <th>Link</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
+function showDashboard(show) {
+  $('login-section').classList.toggle('hidden', show);
+  $('dashboard').classList.toggle('hidden', !show);
+}
 
-            <tbody id="gift-rows">
-              <tr>
-                <td colspan="4">Carregando presentes...</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+async function checkAdmin() {
+  const { data: { user }, error: userError } = await supabase.auth.getUser();
 
-      <!-- RESERVAS DE PRESENTES -->
-      <section class="panel">
-        <div class="section-heading">
-          <div>
-            <h2>Reservas de presentes</h2>
-            <p class="muted">
-              Acompanhe os presentes reservados pelos convidados.
-            </p>
-          </div>
+  if (userError || !user) {
+    showDashboard(false);
+    return false;
+  }
 
-          <button
-            class="btn secondary"
-            id="refresh-reservations-button"
-            type="button"
-          >
-            Atualizar reservas
-          </button>
-        </div>
+  const { data: isAdmin, error } = await supabase.rpc('is_wedding_admin');
 
-        <p id="reservations-status" class="status" aria-live="polite"></p>
+  if (error || isAdmin !== true) {
+    await supabase.auth.signOut();
+    showDashboard(false);
+    setStatus('login-status', 'Este usuário não tem autorização para acessar o painel.', 'error');
+    return false;
+  }
 
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Presente</th>
-                <th>Convidado</th>
-                <th>Data da reserva</th>
-                <th>Ação</th>
-              </tr>
-            </thead>
+  showDashboard(true);
+  await loadDashboard();
+  return true;
+}
 
-            <tbody id="reservation-rows">
-              <tr>
-                <td colspan="4">Carregando reservas...</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-    </section>
-  </main>
+$('login-form').addEventListener('submit', async event => {
+  event.preventDefault();
+  const btn = $('login-button');
+  btn.disabled = true;
+  btn.textContent = 'Entrando...';
+  setStatus('login-status', '');
 
-  <script type="module">
-    import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
-
-    const SUPABASE_URL = 'https://otzxfppshwsqlxlmkbat.supabase.co';
-    const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_dEppruYDF1VaD73bXZcNmg_MszVkpYG';
-
-    const supabase = createClient(
-      SUPABASE_URL,
-      SUPABASE_PUBLISHABLE_KEY
-    );
-
-    const $ = (id) => document.getElementById(id);
-
-    let guestsCache = [];
-    let giftsCache = [];
-    let reservationsCache = [];
-    let dashboardLoading = false;
-
-    function setStatus(id, message, type = '') {
-      const element = $(id);
-      if (!element) return;
-
-      element.textContent = message || '';
-      element.classList.remove('error', 'success');
-
-      if (type) {
-        element.classList.add(type);
-      }
-    }
-
-    function createCell(text) {
-      const td = document.createElement('td');
-      td.textContent = text == null || text === '' ? '—' : String(text);
-      return td;
-    }
-
-    function createButton(text, className, onClick) {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = className;
-      button.textContent = text;
-      button.addEventListener('click', onClick);
-      return button;
-    }
-
-    function formatDate(value) {
-      if (!value) return '—';
-
-      const date = new Date(value);
-      if (Number.isNaN(date.getTime())) return '—';
-
-      return date.toLocaleString('pt-BR');
-    }
-
-    function validHttpUrl(value) {
-      if (!value) return false;
-
-      try {
-        const url = new URL(value);
-        return url.protocol === 'https:' || url.protocol === 'http:';
-      } catch {
-        return false;
-      }
-    }
-
-    function showDashboard(show) {
-      $('login-section').classList.toggle('hidden', show);
-      $('dashboard').classList.toggle('hidden', !show);
-    }
-
-    async function checkAdmin() {
-      const { data: { user }, error: userError } =
-        await supabase.auth.getUser();
-
-      if (userError || !user) {
-        showDashboard(false);
-        return false;
-      }
-
-      const { data: isAdmin, error: adminError } =
-        await supabase.rpc('is_wedding_admin');
-
-      if (adminError || isAdmin !== true) {
-        await supabase.auth.signOut();
-        showDashboard(false);
-
-        setStatus(
-          'login-status',
-          'Este usuário não tem autorização para acessar o painel.',
-          'error'
-        );
-
-        return false;
-      }
-
-      showDashboard(true);
-      await loadDashboard();
-      return true;
-    }
-
-    $('login-form').addEventListener('submit', async (event) => {
-      event.preventDefault();
-
-      const button = $('login-button');
-      button.disabled = true;
-      button.textContent = 'Entrando...';
-
-      setStatus('login-status', '');
-
-      try {
-        const email = $('login-email').value.trim();
-        const password = $('login-password').value;
-
-        const { error } = await supabase.auth.signInWithPassword({
-          email,
-          password
-        });
-
-        if (error) throw error;
-
-        const authorized = await checkAdmin();
-
-        if (!authorized) {
-          setStatus(
-            'login-status',
-            'Não foi possível validar o acesso administrativo.',
-            'error'
-          );
-        }
-      } catch (error) {
-        setStatus(
-          'login-status',
-          error.message || 'Não foi possível entrar no painel.',
-          'error'
-        );
-      } finally {
-        button.disabled = false;
-        button.textContent = 'Entrar no painel';
-      }
+  try {
+    const { error } = await supabase.auth.signInWithPassword({
+      email: $('login-email').value.trim(),
+      password: $('login-password').value
     });
+    if (error) throw error;
 
-    $('logout-button').addEventListener('click', async () => {
-      await supabase.auth.signOut();
-      showDashboard(false);
-    });
-
-    supabase.auth.onAuthStateChange((event) => {
-      if (event === 'SIGNED_OUT') {
-        showDashboard(false);
-      }
-    });
-
-    async function loadDashboard() {
-      if (dashboardLoading) return;
-      dashboardLoading = true;
-
-      setStatus('dashboard-status', 'Atualizando informações...');
-
-      try {
-        const [
-          guestsResult,
-          rsvpsResult
-        ] = await Promise.all([
-          supabase
-            .from('guests')
-            .select('*')
-            .order('full_name', { ascending: true }),
-
-          supabase
-            .from('rsvps')
-            .select('guest_id,attending,party_count,responded_at,message')
-        ]);
-
-        if (guestsResult.error) throw guestsResult.error;
-        if (rsvpsResult.error) throw rsvpsResult.error;
-
-        guestsCache = guestsResult.data || [];
-        const rsvps = rsvpsResult.data || [];
-
-        const rsvpMap = new Map();
-
-        rsvps.forEach((rsvp) => {
-          rsvpMap.set(rsvp.guest_id, rsvp);
-        });
-
-        const confirmed = rsvps.filter(
-          (rsvp) => rsvp.attending === true
-        );
-
-        const declined = rsvps.filter(
-          (rsvp) => rsvp.attending === false
-        );
-
-        $('metric-guests').textContent = guestsCache.length;
-        $('metric-confirmed').textContent = confirmed.length;
-        $('metric-declined').textContent = declined.length;
-        $('metric-responded').textContent = rsvps.length;
-
-        renderGuests(rsvpMap);
-
-        const results = await Promise.allSettled([
-          loadGifts(),
-          loadGiftReservations(),
-          loadAdminMessages()
-        ]);
-
-        const failed = results.find(
-          (result) => result.status === 'rejected'
-        );
-
-        if (failed) {
-          console.error('Erro ao carregar uma seção:', failed.reason);
-        }
-
-        setStatus('dashboard-status', 'Dados atualizados.', 'success');
-      } catch (error) {
-        console.error(error);
-
-        setStatus(
-          'dashboard-status',
-          error.message || 'Não foi possível carregar os dados.',
-          'error'
-        );
-      } finally {
-        dashboardLoading = false;
-      }
+    if (!await checkAdmin()) {
+      setStatus('login-status', 'Não foi possível validar o acesso administrativo.', 'error');
     }
-
-    function renderGuests(rsvpMap = new Map()) {
-      const tbody = $('guest-rows');
-      const search = $('guest-search').value.trim().toLowerCase();
-
-      tbody.replaceChildren();
-
-      const filtered = guestsCache.filter((guest) => {
-        const name = String(guest.full_name || '').toLowerCase();
-        const code = String(
-          guest.invite_code || guest.code || ''
-        ).toLowerCase();
-
-        return name.includes(search) || code.includes(search);
-      });
-
-      if (filtered.length === 0) {
-        const tr = document.createElement('tr');
-        const td = createCell('Nenhum convidado encontrado.');
-        td.colSpan = 7;
-        tr.appendChild(td);
-        tbody.appendChild(tr);
-        return;
-      }
-
-      filtered.forEach((guest) => {
-        const tr = document.createElement('tr');
-        const rsvp = rsvpMap.get(guest.id);
-
-        tr.appendChild(createCell(guest.full_name));
-        tr.appendChild(createCell(guest.invite_code || guest.code));
-        tr.appendChild(createCell(guest.phone));
-        tr.appendChild(createCell(
-          guest.max_companions ?? guest.allowed_companions ?? 0
-        ));
-
-        const statusTd = document.createElement('td');
-        const badge = document.createElement('span');
-        badge.className = 'badge';
-
-        if (!rsvp) {
-          badge.textContent = 'Pendente';
-        } else if (rsvp.attending === true) {
-          badge.textContent = 'Confirmado';
-          badge.classList.add('yes');
-        } else {
-          badge.textContent = 'Não comparecerá';
-          badge.classList.add('no');
-        }
-
-        statusTd.appendChild(badge);
-        tr.appendChild(statusTd);
-
-        tr.appendChild(createCell(
-          rsvp && rsvp.attending
-            ? rsvp.party_count ?? 1
-            : '—'
-        ));
-
-        const actionsTd = document.createElement('td');
-        const actions = document.createElement('div');
-        actions.className = 'actions';
-        actions.style.marginTop = '0';
-
-        actions.appendChild(createButton(
-          'Editar',
-          'btn secondary',
-          () => editGuest(guest)
-        ));
-
-        actions.appendChild(createButton(
-          'Excluir',
-          'btn danger',
-          () => deleteGuest(guest)
-        ));
-
-        actionsTd.appendChild(actions);
-        tr.appendChild(actionsTd);
-
-        tbody.appendChild(tr);
-      });
-    }
-
-    $('guest-search').addEventListener('input', async () => {
-      const { data: rsvps } = await supabase
-        .from('rsvps')
-        .select('guest_id,attending,party_count');
-
-      const map = new Map(
-        (rsvps || []).map((rsvp) => [rsvp.guest_id, rsvp])
-      );
-
-      renderGuests(map);
-    });
-
-    function resetGuestForm() {
-      $('guest-form').reset();
-      $('guest-id').value = '';
-      $('guest-save-button').textContent = 'Salvar convidado';
-      setStatus('guest-form-status', '');
-    }
-
-    $('guest-cancel-edit').addEventListener('click', resetGuestForm);
-
-    function editGuest(guest) {
-      $('guest-id').value = guest.id;
-      $('guest-name').value = guest.full_name || '';
-      $('guest-code').value = guest.invite_code || guest.code || '';
-      $('guest-phone').value = guest.phone || '';
-      $('guest-max-companions').value =
-        String(guest.max_companions ?? guest.allowed_companions ?? 0);
-
-      $('guest-save-button').textContent = 'Atualizar convidado';
-
-      $('guest-form').scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-
-    $('guest-form').addEventListener('submit', async (event) => {
-      event.preventDefault();
-
-      const button = $('guest-save-button');
-      button.disabled = true;
-
-      const guestId = $('guest-id').value;
-
-      const payload = {
-        full_name: $('guest-name').value.trim(),
-        invite_code: $('guest-code').value.trim(),
-        phone: $('guest-phone').value.trim() || null,
-        max_companions: Number($('guest-max-companions').value)
-      };
-
-      try {
-        let result;
-
-        if (guestId) {
-          result = await supabase
-            .from('guests')
-            .update(payload)
-            .eq('id', guestId);
-        } else {
-          result = await supabase
-            .from('guests')
-            .insert(payload);
-        }
-
-        if (result.error) throw result.error;
-
-        setStatus(
-          'guest-form-status',
-          guestId
-            ? 'Convidado atualizado com sucesso.'
-            : 'Convidado cadastrado com sucesso.',
-          'success'
-        );
-
-        resetGuestForm();
-        await loadDashboard();
-      } catch (error) {
-        setStatus(
-          'guest-form-status',
-          error.message || 'Não foi possível salvar o convidado.',
-          'error'
-        );
-      } finally {
-        button.disabled = false;
-      }
-    });
-
-    async function deleteGuest(guest) {
-      const confirmed = window.confirm(
-        `Deseja realmente excluir o convite de ${guest.full_name}?`
-      );
-
-      if (!confirmed) return;
-
-      try {
-        const { error } = await supabase
-          .from('guests')
-          .delete()
-          .eq('id', guest.id);
-
-        if (error) throw error;
-
-        await loadDashboard();
-      } catch (error) {
-        window.alert(
-          error.message || 'Não foi possível excluir o convidado.'
-        );
-      }
-    }
-
-    // RECADINHOS DOS CONVIDADOS
-    async function loadAdminMessages() {
-      const tbody = $('message-rows');
-
-      tbody.replaceChildren();
-      setStatus('messages-status', 'Carregando recadinhos...');
-
-      const [
-        guestsResult,
-        messagesResult
-      ] = await Promise.all([
-        supabase
-          .from('guests')
-          .select('id,full_name'),
-
-        supabase
-          .from('rsvps')
-          .select('guest_id,message,responded_at')
-          .not('message', 'is', null)
-          .order('responded_at', { ascending: false })
-      ]);
-
-      if (guestsResult.error) throw guestsResult.error;
-      if (messagesResult.error) throw messagesResult.error;
-
-      const guestNames = new Map(
-        (guestsResult.data || []).map((guest) => [
-          guest.id,
-          guest.full_name
-        ])
-      );
-
-      const messages = (messagesResult.data || []).filter(
-        (item) => typeof item.message === 'string' &&
-          item.message.trim() !== ''
-      );
-
-      if (messages.length === 0) {
-        const tr = document.createElement('tr');
-        const td = createCell('Ainda não há recadinhos.');
-        td.colSpan = 4;
-        td.className = 'message-empty';
-        tr.appendChild(td);
-        tbody.appendChild(tr);
-
-        setStatus('messages-status', 'Nenhum recado recebido até agora.');
-        return;
-      }
-
-      messages.forEach((item) => {
-        const tr = document.createElement('tr');
-
-        tr.appendChild(createCell(
-          guestNames.get(item.guest_id) || 'Convidado'
-        ));
-
-        const messageTd = createCell(item.message);
-        messageTd.className = 'message-cell';
-        tr.appendChild(messageTd);
-
-        tr.appendChild(createCell(formatDate(item.responded_at)));
-
-        const actionTd = document.createElement('td');
-
-        actionTd.appendChild(createButton(
-          'Excluir recado',
-          'btn danger',
-          () => deleteGuestMessage(item)
-        ));
-
-        tr.appendChild(actionTd);
-        tbody.appendChild(tr);
-      });
-
-      setStatus(
-        'messages-status',
-        `${messages.length} recado(s) encontrado(s).`,
-        'success'
-      );
-    }
-
-    async function deleteGuestMessage(item) {
-      const guestName = guestsCache.find(
-        (guest) => guest.id === item.guest_id
-      )?.full_name || 'este convidado';
-
-      const confirmed = window.confirm(
-        `Deseja excluir o recado de ${guestName}? Esta ação não pode ser desfeita.`
-      );
-
-      if (!confirmed) return;
-
-      setStatus('messages-status', 'Excluindo recado...');
-
-      try {
-        const { data, error } = await supabase.rpc(
-          'admin_delete_guest_message',
-          { p_guest_id: item.guest_id }
-        );
-
-        if (error) throw error;
-
-        if (data === false) {
-          throw new Error('Nenhum recado foi excluído.');
-        }
-
-        setStatus(
-          'messages-status',
-          'Recado excluído com sucesso.',
-          'success'
-        );
-
-        await loadAdminMessages();
-      } catch (error) {
-        console.error(error);
-
-        setStatus(
-          'messages-status',
-          error.message ||
-            'Não foi possível excluir o recado. Verifique a função admin_delete_guest_message no Supabase.',
-          'error'
-        );
-      }
-    }
-
-    $('refresh-messages-button').addEventListener('click', async () => {
-      try {
-        await loadAdminMessages();
-      } catch (error) {
-        setStatus(
-          'messages-status',
-          error.message || 'Não foi possível atualizar os recadinhos.',
-          'error'
-        );
-      }
-    });
-
-    // PRESENTES
-    function resetGiftForm() {
-      $('gift-form').reset();
-      $('gift-id').value = '';
-      $('gift-save-button').textContent = 'Salvar presente';
-      setStatus('gift-form-status', '');
-    }
-
-    $('gift-cancel-edit').addEventListener('click', resetGiftForm);
-
-    async function loadGifts() {
-      const tbody = $('gift-rows');
-
-      const { data, error } = await supabase
-        .from('gifts')
-        .select('id,name,description,image_url,product_url')
-        .order('name', { ascending: true });
-
-      if (error) throw error;
-
-      giftsCache = data || [];
-      tbody.replaceChildren();
-
-      if (giftsCache.length === 0) {
-        const tr = document.createElement('tr');
-        const td = createCell('Nenhum presente cadastrado.');
-        td.colSpan = 4;
-        tr.appendChild(td);
-        tbody.appendChild(tr);
-        return;
-      }
-
-      giftsCache.forEach((gift) => {
-        const tr = document.createElement('tr');
-
-        tr.appendChild(createCell(gift.name));
-        tr.appendChild(createCell(gift.description));
-
-        const linkTd = document.createElement('td');
-
-        if (validHttpUrl(gift.product_url)) {
-          const link = document.createElement('a');
-          link.href = gift.product_url;
-          link.target = '_blank';
-          link.rel = 'noopener noreferrer';
-          link.textContent = 'Abrir link';
-          linkTd.appendChild(link);
-        } else {
-          linkTd.textContent = '—';
-        }
-
-        tr.appendChild(linkTd);
-
-        const actionsTd = document.createElement('td');
-        const actions = document.createElement('div');
-        actions.className = 'actions';
-        actions.style.marginTop = '0';
-
-        actions.appendChild(createButton(
-          'Editar',
-          'btn secondary',
-          () => editGift(gift)
-        ));
-
-        actions.appendChild(createButton(
-          'Excluir',
-          'btn danger',
-          () => deleteGift(gift)
-        ));
-
-        actionsTd.appendChild(actions);
-        tr.appendChild(actionsTd);
-        tbody.appendChild(tr);
-      });
-    }
-
-    function editGift(gift) {
-      $('gift-id').value = gift.id;
-      $('gift-name').value = gift.name || '';
-      $('gift-description').value = gift.description || '';
-      $('gift-url').value = gift.product_url || '';
-      $('gift-image-url').value = gift.image_url || '';
-      $('gift-save-button').textContent = 'Atualizar presente';
-
-      $('gift-form').scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-
-    $('gift-form').addEventListener('submit', async (event) => {
-      event.preventDefault();
-
-      const button = $('gift-save-button');
-      button.disabled = true;
-
-      const giftId = $('gift-id').value;
-      const productUrl = $('gift-url').value.trim();
-      const imageUrl = $('gift-image-url').value.trim();
-
-      if (productUrl && !validHttpUrl(productUrl)) {
-        setStatus(
-          'gift-form-status',
-          'Informe um link de compra válido começando com https:// ou http://.',
-          'error'
-        );
-        button.disabled = false;
-        return;
-      }
-
-      if (imageUrl && !validHttpUrl(imageUrl)) {
-        setStatus(
-          'gift-form-status',
-          'Informe uma URL de imagem válida começando com https:// ou http://.',
-          'error'
-        );
-        button.disabled = false;
-        return;
-      }
-
-      const payload = {
-        name: $('gift-name').value.trim(),
-        description: $('gift-description').value.trim() || null,
-        product_url: productUrl || null,
-        image_url: imageUrl || null
-      };
-
-      try {
-        let result;
-
-        if (giftId) {
-          result = await supabase
-            .from('gifts')
-            .update(payload)
-            .eq('id', giftId);
-        } else {
-          result = await supabase
-            .from('gifts')
-            .insert(payload);
-        }
-
-        if (result.error) throw result.error;
-
-        setStatus(
-          'gift-form-status',
-          giftId
-            ? 'Presente atualizado com sucesso.'
-            : 'Presente cadastrado com sucesso.',
-          'success'
-        );
-
-        resetGiftForm();
-        await loadGifts();
-      } catch (error) {
-        setStatus(
-          'gift-form-status',
-          error.message || 'Não foi possível salvar o presente.',
-          'error'
-        );
-      } finally {
-        button.disabled = false;
-      }
-    });
-
-    async function deleteGift(gift) {
-      const confirmed = window.confirm(
-        `Deseja realmente excluir o presente "${gift.name}"?`
-      );
-
-      if (!confirmed) return;
-
-      try {
-        const { error } = await supabase
-          .from('gifts')
-          .delete()
-          .eq('id', gift.id);
-
-        if (error) throw error;
-
-        await loadGifts();
-        await loadGiftReservations();
-      } catch (error) {
-        window.alert(
-          error.message || 'Não foi possível excluir o presente.'
-        );
-      }
-    }
-
-    // RESERVAS DE PRESENTES
-    async function loadGiftReservations() {
-      const tbody = $('reservation-rows');
-
-      tbody.replaceChildren();
-      setStatus('reservations-status', 'Carregando reservas...');
-
-      const { data, error } = await supabase.rpc(
-        'admin_list_gift_reservations'
-      );
-
-      if (error) throw error;
-
-      reservationsCache = data || [];
-
-      if (reservationsCache.length === 0) {
-        const tr = document.createElement('tr');
-        const td = createCell('Nenhuma reserva encontrada.');
-        td.colSpan = 4;
-        tr.appendChild(td);
-        tbody.appendChild(tr);
-
-        setStatus('reservations-status', 'Nenhuma reserva registrada.');
-        return;
-      }
-
-      reservationsCache.forEach((reservation) => {
-        const tr = document.createElement('tr');
-
-        tr.appendChild(createCell(
-          reservation.gift_name || reservation.name || 'Presente'
-        ));
-
-        tr.appendChild(createCell(
-          reservation.guest_name || reservation.full_name || 'Convidado'
-        ));
-
-        tr.appendChild(createCell(
-          formatDate(
-            reservation.reserved_at ||
-            reservation.created_at ||
-            reservation.created
-          )
-        ));
-
-        const actionTd = document.createElement('td');
-
-        const reservationId =
-          reservation.reservation_id ||
-          reservation.id;
-
-        actionTd.appendChild(createButton(
-          'Cancelar reserva',
-          'btn danger',
-          () => cancelGiftReservation(reservationId)
-        ));
-
-        tr.appendChild(actionTd);
-        tbody.appendChild(tr);
-      });
-
-      setStatus(
-        'reservations-status',
-        `${reservationsCache.length} reserva(s) encontrada(s).`,
-        'success'
-      );
-    }
-
-    async function cancelGiftReservation(reservationId) {
-      if (!reservationId) {
-        window.alert(
-          'Não foi possível identificar esta reserva. Verifique o retorno da função admin_list_gift_reservations no Supabase.'
-        );
-        return;
-      }
-
-      const confirmed = window.confirm(
-        'Deseja realmente cancelar esta reserva de presente?'
-      );
-
-      if (!confirmed) return;
-
-      try {
-        const { error } = await supabase.rpc(
-          'admin_cancel_gift_reservation',
-          { p_reservation_id: reservationId }
-        );
-
-        if (error) throw error;
-
-        await loadGiftReservations();
-      } catch (error) {
-        window.alert(
-          error.message || 'Não foi possível cancelar a reserva.'
-        );
-      }
-    }
-
-    // BOTÕES DE ATUALIZAÇÃO
-    $('refresh-button').addEventListener('click', async () => {
-      await loadDashboard();
-    });
-
-    $('refresh-reservations-button').addEventListener(
-      'click',
-      async () => {
-        try {
-          await loadGiftReservations();
-        } catch (error) {
-          setStatus(
-            'reservations-status',
-            error.message || 'Não foi possível carregar as reservas.',
-            'error'
-          );
-        }
-      }
-    );
-
-    // VERIFICA SE JÁ EXISTE UMA SESSÃO
-    const {
-      data: { session }
-    } = await supabase.auth.getSession();
-
-    if (session) {
-      await checkAdmin();
+  } catch (error) {
+    setStatus('login-status', error.message || 'Não foi possível entrar.', 'error');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Entrar no painel';
+  }
+});
+
+$('logout-button').addEventListener('click', async () => {
+  await supabase.auth.signOut();
+  showDashboard(false);
+});
+
+supabase.auth.onAuthStateChange(event => {
+  if (event === 'SIGNED_OUT') showDashboard(false);
+});
+
+async function loadDashboard() {
+  if (dashboardLoading) return;
+  dashboardLoading = true;
+  setStatus('dashboard-status', 'Atualizando informações...');
+
+  try {
+    const [guestsResult, rsvpsResult] = await Promise.all([
+      supabase.from('guests').select('*').order('full_name', { ascending: true }),
+      supabase.from('rsvps').select('guest_id,attending,party_count,responded_at,message')
+    ]);
+
+    if (guestsResult.error) throw guestsResult.error;
+    if (rsvpsResult.error) throw rsvpsResult.error;
+
+    guestsCache = guestsResult.data || [];
+    const rsvps = rsvpsResult.data || [];
+    const rsvpMap = new Map(rsvps.map(r => [r.guest_id, r]));
+
+    $('metric-guests').textContent = guestsCache.length;
+    $('metric-confirmed').textContent = rsvps.filter(r => r.attending === true).length;
+    $('metric-declined').textContent = rsvps.filter(r => r.attending === false).length;
+    $('metric-responded').textContent = rsvps.length;
+
+    renderGuests(rsvpMap);
+
+    const results = await Promise.allSettled([
+      loadGifts(),
+      loadGiftReservations(),
+      loadAdminMessages()
+    ]);
+
+    results.filter(r => r.status === 'rejected').forEach(r => console.error(r.reason));
+    setStatus('dashboard-status', 'Dados atualizados.', 'success');
+  } catch (error) {
+    console.error(error);
+    setStatus('dashboard-status', error.message || 'Não foi possível carregar os dados.', 'error');
+  } finally {
+    dashboardLoading = false;
+  }
+}
+
+function renderGuests(rsvpMap = new Map()) {
+  const tbody = $('guest-rows');
+  const search = $('guest-search').value.trim().toLocaleLowerCase('pt-BR');
+  tbody.replaceChildren();
+
+  const filtered = guestsCache.filter(guest =>
+    String(guest.full_name || '').toLocaleLowerCase('pt-BR').includes(search)
+  );
+
+  if (!filtered.length) {
+    const tr = document.createElement('tr');
+    const td = cell('Nenhum convidado encontrado.');
+    td.colSpan = 6;
+    tr.appendChild(td);
+    tbody.appendChild(tr);
+    return;
+  }
+
+  filtered.forEach(guest => {
+    const tr = document.createElement('tr');
+    const rsvp = rsvpMap.get(guest.id);
+    tr.appendChild(cell(guest.full_name));
+    tr.appendChild(cell(guest.phone));
+
+    tr.appendChild(cell(guest.max_companions ?? 0));
+
+    const statusTd = document.createElement('td');
+    const badge = document.createElement('span');
+    badge.className = 'badge';
+
+    if (!rsvp) {
+      badge.textContent = 'Pendente';
+    } else if (rsvp.attending) {
+      badge.textContent = 'Confirmado';
+      badge.classList.add('yes');
     } else {
-      showDashboard(false);
+      badge.textContent = 'Não comparecerá';
+      badge.classList.add('no');
     }
-  </script>
+
+    statusTd.appendChild(badge);
+    tr.appendChild(statusTd);
+    tr.appendChild(cell(rsvp?.attending ? rsvp.party_count ?? 1 : '—'));
+
+    const actionsTd = document.createElement('td');
+    const actions = document.createElement('div');
+    actions.className = 'actions';
+    actions.style.marginTop = '0';
+    actions.appendChild(button('Editar', 'btn secondary', () => editGuest(guest)));
+    actions.appendChild(button('Excluir', 'btn danger', () => deleteGuest(guest)));
+    actionsTd.appendChild(actions);
+    tr.appendChild(actionsTd);
+    tbody.appendChild(tr);
+  });
+}
+
+$('guest-search').addEventListener('input', () => {
+  supabase.from('rsvps').select('guest_id,attending,party_count')
+    .then(({ data, error }) => {
+      if (error) {
+        setStatus('dashboard-status', error.message, 'error');
+        return;
+      }
+      renderGuests(new Map((data || []).map(r => [r.guest_id, r])));
+    });
+});
+
+function resetGuestForm() {
+  $('guest-form').reset();
+  $('guest-id').value = '';
+  $('guest-save-button').textContent = 'Salvar convidado';
+  setStatus('guest-form-status', '');
+}
+
+$('guest-cancel-edit').addEventListener('click', resetGuestForm);
+
+function editGuest(guest) {
+  $('guest-id').value = guest.id;
+  $('guest-name').value = guest.full_name || '';
+  $('guest-phone').value = guest.phone || '';
+  $('guest-max-companions').value = String(guest.max_companions ?? 0);
+  $('guest-save-button').textContent = 'Atualizar convidado';
+  $('guest-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+$('guest-form').addEventListener('submit', async event => {
+  event.preventDefault();
+  const btn = $('guest-save-button');
+  btn.disabled = true;
+  const id = $('guest-id').value;
+
+  const payload = {
+    full_name: $('guest-name').value.trim(),
+    phone: $('guest-phone').value.trim() || null,
+    max_companions: Number($('guest-max-companions').value)
+  };
+
+  try {
+    const result = id
+      ? await supabase.from('guests').update(payload).eq('id', id)
+      : await supabase.from('guests').insert(payload);
+
+    if (result.error) throw result.error;
+
+    setStatus('guest-form-status', id ? 'Convidado atualizado com sucesso.' : 'Convidado cadastrado com sucesso.', 'success');
+    resetGuestForm();
+    await loadDashboard();
+  } catch (error) {
+    setStatus('guest-form-status', error.message || 'Não foi possível salvar o convidado.', 'error');
+  } finally {
+    btn.disabled = false;
+  }
+});
+
+async function deleteGuest(guest) {
+  if (!confirm(`Deseja realmente excluir ${guest.full_name}?`)) return;
+
+  try {
+    const { error } = await supabase.from('guests').delete().eq('id', guest.id);
+    if (error) throw error;
+    await loadDashboard();
+  } catch (error) {
+    alert(error.message || 'Não foi possível excluir o convidado.');
+  }
+}
+
+// RECADINHOS
+async function loadAdminMessages() {
+  const tbody = $('message-rows');
+  tbody.replaceChildren();
+  setStatus('messages-status', 'Carregando recadinhos...');
+
+  const [guestsResult, messagesResult] = await Promise.all([
+    supabase.from('guests').select('id,full_name'),
+    supabase.from('rsvps')
+      .select('guest_id,message,responded_at')
+      .not('message', 'is', null)
+      .order('responded_at', { ascending: false })
+  ]);
+
+  if (guestsResult.error) throw guestsResult.error;
+  if (messagesResult.error) throw messagesResult.error;
+
+  const names = new Map((guestsResult.data || []).map(g => [g.id, g.full_name]));
+  const messages = (messagesResult.data || []).filter(
+    item => typeof item.message === 'string' && item.message.trim()
+  );
+
+  if (!messages.length) {
+    const tr = document.createElement('tr');
+    const td = cell('Ainda não há recadinhos.');
+    td.colSpan = 4;
+    td.className = 'message-empty';
+    tr.appendChild(td);
+    tbody.appendChild(tr);
+    setStatus('messages-status', 'Nenhum recado recebido até agora.');
+    return;
+  }
+
+  messages.forEach(item => {
+    const tr = document.createElement('tr');
+    tr.appendChild(cell(names.get(item.guest_id) || 'Convidado'));
+
+    const messageTd = cell(item.message);
+    messageTd.className = 'message-cell';
+    tr.appendChild(messageTd);
+    tr.appendChild(cell(formatDate(item.responded_at)));
+
+    const actionTd = document.createElement('td');
+    actionTd.appendChild(button('Excluir recado', 'btn danger', () => deleteGuestMessage(item)));
+    tr.appendChild(actionTd);
+    tbody.appendChild(tr);
+  });
+
+  setStatus('messages-status', `${messages.length} recado(s) encontrado(s).`, 'success');
+}
+
+async function deleteGuestMessage(item) {
+  const guestName = guestsCache.find(g => g.id === item.guest_id)?.full_name || 'este convidado';
+  if (!confirm(`Deseja excluir o recado de ${guestName}?`)) return;
+
+  try {
+    const { data, error } = await supabase.rpc(
+      'admin_delete_guest_message',
+      { p_guest_id: item.guest_id }
+    );
+    if (error) throw error;
+    if (data === false) throw new Error('Nenhum recado foi excluído.');
+
+    setStatus('messages-status', 'Recado excluído com sucesso.', 'success');
+    await loadAdminMessages();
+  } catch (error) {
+    setStatus('messages-status', error.message || 'Não foi possível excluir o recado.', 'error');
+  }
+}
+
+$('refresh-messages-button').addEventListener('click', async () => {
+  try {
+    await loadAdminMessages();
+  } catch (error) {
+    setStatus('messages-status', error.message || 'Não foi possível atualizar os recados.', 'error');
+  }
+});
+
+// PRESENTES
+function resetGiftForm() {
+  $('gift-form').reset();
+  $('gift-id').value = '';
+  $('gift-save-button').textContent = 'Salvar presente';
+  setStatus('gift-form-status', '');
+}
+
+$('gift-cancel-edit').addEventListener('click', resetGiftForm);
+
+async function loadGifts() {
+  const tbody = $('gift-rows');
+  const { data, error } = await supabase.from('gifts')
+    .select('id,name,description,image_url,product_url')
+    .order('name', { ascending: true });
+
+  if (error) throw error;
+  giftsCache = data || [];
+  tbody.replaceChildren();
+
+  if (!giftsCache.length) {
+    const tr = document.createElement('tr');
+    const td = cell('Nenhum presente cadastrado.');
+    td.colSpan = 4;
+    tr.appendChild(td);
+    tbody.appendChild(tr);
+    return;
+  }
+
+  giftsCache.forEach(gift => {
+    const tr = document.createElement('tr');
+    tr.appendChild(cell(gift.name));
+    tr.appendChild(cell(gift.description));
+
+    const linkTd = document.createElement('td');
+    if (validHttpUrl(gift.product_url)) {
+      const link = document.createElement('a');
+      link.href = gift.product_url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir link';
+      linkTd.appendChild(link);
+    } else {
+      linkTd.textContent = '—';
+    }
+    tr.appendChild(linkTd);
+
+    const actionsTd = document.createElement('td');
+    const actions = document.createElement('div');
+    actions.className = 'actions';
+    actions.style.marginTop = '0';
+    actions.appendChild(button('Editar', 'btn secondary', () => editGift(gift)));
+    actions.appendChild(button('Excluir', 'btn danger', () => deleteGift(gift)));
+    actionsTd.appendChild(actions);
+    tr.appendChild(actionsTd);
+    tbody.appendChild(tr);
+  });
+}
+
+function editGift(gift) {
+  $('gift-id').value = gift.id;
+  $('gift-name').value = gift.name || '';
+  $('gift-description').value = gift.description || '';
+  $('gift-url').value = gift.product_url || '';
+  $('gift-image-url').value = gift.image_url || '';
+  $('gift-save-button').textContent = 'Atualizar presente';
+  $('gift-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+$('gift-form').addEventListener('submit', async event => {
+  event.preventDefault();
+  const btn = $('gift-save-button');
+  btn.disabled = true;
+
+  const id = $('gift-id').value;
+  const productUrl = $('gift-url').value.trim();
+  const imageUrl = $('gift-image-url').value.trim();
+
+  if (productUrl && !validHttpUrl(productUrl)) {
+    setStatus('gift-form-status', 'Informe um link de compra válido.', 'error');
+    btn.disabled = false;
+    return;
+  }
+  if (imageUrl && !validHttpUrl(imageUrl)) {
+    setStatus('gift-form-status', 'Informe uma URL de imagem válida.', 'error');
+    btn.disabled = false;
+    return;
+  }
+
+  const payload = {
+    name: $('gift-name').value.trim(),
+    description: $('gift-description').value.trim() || null,
+    product_url: productUrl || null,
+    image_url: imageUrl || null
+  };
+
+  try {
+    const result = id
+      ? await supabase.from('gifts').update(payload).eq('id', id)
+      : await supabase.from('gifts').insert(payload);
+
+    if (result.error) throw result.error;
+
+    setStatus('gift-form-status', id ? 'Presente atualizado com sucesso.' : 'Presente cadastrado com sucesso.', 'success');
+    resetGiftForm();
+    await loadGifts();
+  } catch (error) {
+    setStatus('gift-form-status', error.message || 'Não foi possível salvar o presente.', 'error');
+  } finally {
+    btn.disabled = false;
+  }
+});
+
+async function deleteGift(gift) {
+  if (!confirm(`Deseja excluir o presente "${gift.name}"?`)) return;
+
+  try {
+    const { error } = await supabase.from('gifts').delete().eq('id', gift.id);
+    if (error) throw error;
+    await loadGifts();
+    await loadGiftReservations();
+  } catch (error) {
+    alert(error.message || 'Não foi possível excluir o presente.');
+  }
+}
+
+// RESERVAS DE PRESENTES
+async function loadGiftReservations() {
+  const tbody = $('reservation-rows');
+  tbody.replaceChildren();
+  setStatus('reservations-status', 'Carregando reservas...');
+
+  const { data, error } = await supabase.rpc('admin_list_gift_reservations');
+  if (error) throw error;
+
+  const reservations = data || [];
+  if (!reservations.length) {
+    const tr = document.createElement('tr');
+    const td = cell('Nenhuma reserva encontrada.');
+    td.colSpan = 4;
+    tr.appendChild(td);
+    tbody.appendChild(tr);
+    setStatus('reservations-status', 'Nenhuma reserva registrada.');
+    return;
+  }
+
+  reservations.forEach(reservation => {
+    const tr = document.createElement('tr');
+    tr.appendChild(cell(reservation.gift_name || reservation.name || 'Presente'));
+    tr.appendChild(cell(reservation.guest_name || reservation.full_name || 'Convidado'));
+    tr.appendChild(cell(formatDate(
+      reservation.reserved_at || reservation.created_at || reservation.created
+    )));
+
+    const actionTd = document.createElement('td');
+    const reservationId = reservation.reservation_id || reservation.id;
+    actionTd.appendChild(button('Cancelar reserva', 'btn danger', () => cancelGiftReservation(reservationId)));
+    tr.appendChild(actionTd);
+    tbody.appendChild(tr);
+  });
+
+  setStatus('reservations-status', `${reservations.length} reserva(s) encontrada(s).`, 'success');
+}
+
+async function cancelGiftReservation(id) {
+  if (!id) {
+    alert('Não foi possível identificar esta reserva.');
+    return;
+  }
+  if (!confirm('Deseja cancelar esta reserva de presente?')) return;
+
+  try {
+    const { error } = await supabase.rpc(
+      'admin_cancel_gift_reservation',
+      { p_reservation_id: id }
+    );
+    if (error) throw error;
+    await loadGiftReservations();
+  } catch (error) {
+    alert(error.message || 'Não foi possível cancelar a reserva.');
+  }
+}
+
+// ATUALIZAÇÃO
+$('refresh-button').addEventListener('click', loadDashboard);
+
+$('refresh-reservations-button').addEventListener('click', async () => {
+  try {
+    await loadGiftReservations();
+  } catch (error) {
+    setStatus('reservations-status', error.message || 'Não foi possível carregar as reservas.', 'error');
+  }
+});
+
+// SESSÃO EXISTENTE
+const { data: { session } } = await supabase.auth.getSession();
+
+if (session) {
+  await checkAdmin();
+} else {
+  showDashboard(false);
+}
+</script>
 </body>
 </html>
