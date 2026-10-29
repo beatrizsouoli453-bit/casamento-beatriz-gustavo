@@ -561,11 +561,10 @@ if (form && statusEl && submitButton) {
     event.preventDefault();
 
     const fullName = document.getElementById("nome").value.trim();
-    const phone = document.getElementById("telefone").value.trim();
+   const phone = "";
     const attending =
       document.getElementById("presenca").value === "sim";
-    const companions =
-      Number(document.getElementById("acompanhantes").value);
+    const companions = 0;
     const message =
       document.getElementById("mensagem").value.trim();
 
