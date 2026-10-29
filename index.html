@@ -636,6 +636,7 @@ if (form && statusEl && submitButton) {
   });
 }
 
+
 /* LISTA DE PRESENTES */
 async function loadGifts() {
   const giftsList = document.getElementById("gifts-list");
@@ -643,23 +644,45 @@ async function loadGifts() {
 
   if (!giftsList || !giftsStatus) return;
 
-  try {
-    const response = await fetch(
-      SUPABASE_URL +
-      "/rest/v1/gifts?select=id,name,description,image_url,product_url&order=name.asc",
-      {
-        headers: {
-          "apikey": SUPABASE_PUBLISHABLE_KEY,
-          "Authorization": "Bearer " + SUPABASE_PUBLISHABLE_KEY
-        }
-      }
-    );
+  const headers = {
+    "apikey": SUPABASE_PUBLISHABLE_KEY,
+    "Authorization": "Bearer " + SUPABASE_PUBLISHABLE_KEY,
+    "Content-Type": "application/json"
+  };
 
-    if (!response.ok) {
+  try {
+    giftsStatus.textContent = "Carregando presentes...";
+
+    const [giftsResponse, reservationsResponse] = await Promise.all([
+      fetch(
+        SUPABASE_URL +
+        "/rest/v1/gifts?select=id,name,description,image_url,product_url&order=name.asc",
+        { headers }
+      ),
+      fetch(
+        SUPABASE_URL + "/rest/v1/rpc/reserved_gift_ids",
+        {
+          method: "POST",
+          headers,
+          body: JSON.stringify({})
+        }
+      )
+    ]);
+
+    if (!giftsResponse.ok) {
       throw new Error("Não foi possível carregar os presentes.");
     }
 
-    const gifts = await response.json();
+    if (!reservationsResponse.ok) {
+      throw new Error("Não foi possível verificar as reservas.");
+    }
+
+    const gifts = await giftsResponse.json();
+    const reservations = await reservationsResponse.json();
+    const reservedIds = new Set(
+      reservations.map(item => item.gift_id)
+    );
+
     giftsList.replaceChildren();
 
     if (!gifts.length) {
@@ -696,6 +719,64 @@ async function loadGifts() {
         description.textContent = gift.description;
         card.appendChild(description);
       }
+
+      const reserved = reservedIds.has(gift.id);
+      const reserveButton = document.createElement("button");
+
+      reserveButton.type = "button";
+      reserveButton.className = "btn";
+      reserveButton.textContent = reserved
+        ? "Presente reservado"
+        : "Reservar presente";
+      reserveButton.disabled = reserved;
+
+      reserveButton.addEventListener("click", async function () {
+        const guestName = prompt(
+          'Quem está reservando "' +
+          (gift.name || "este presente") +
+          '"? Informe seu nome:'
+        );
+
+        if (guestName === null) return;
+
+        if (guestName.trim().length < 2) {
+          alert("Por favor, informe seu nome.");
+          return;
+        }
+
+        reserveButton.disabled = true;
+        reserveButton.textContent = "Reservando...";
+
+        try {
+          const response = await fetch(
+            SUPABASE_URL + "/rest/v1/rpc/reserve_gift",
+            {
+              method: "POST",
+              headers,
+              body: JSON.stringify({
+                p_gift_id: gift.id,
+                p_guest_name: guestName.trim()
+              })
+            }
+          );
+
+          if (!response.ok) {
+            const error = await response.json().catch(() => ({}));
+            throw new Error(
+              error.message ||
+              "Não foi possível reservar. Atualize a lista e tente novamente."
+            );
+          }
+
+          alert("Presente reservado com sucesso! ❤️");
+          await loadGifts();
+        } catch (error) {
+          alert(error.message || "Erro ao reservar o presente.");
+          await loadGifts();
+        }
+      });
+
+      card.appendChild(reserveButton);
 
       if (gift.product_url && isValidHttpUrl(gift.product_url)) {
         const link = document.createElement("a");
