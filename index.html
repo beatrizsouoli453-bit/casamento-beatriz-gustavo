@@ -568,10 +568,10 @@ if (form && statusEl && submitButton) {
     const message =
       document.getElementById("mensagem").value.trim();
 
-    if (!fullName || !phone) {
-      statusEl.textContent = "Preencha seu nome e telefone.";
-      return;
-    }
+    if (!fullName) {
+  statusEl.textContent = "Preencha seu nome completo.";
+  return;
+}
 
     submitButton.disabled = true;
     submitButton.textContent = "Enviando...";
