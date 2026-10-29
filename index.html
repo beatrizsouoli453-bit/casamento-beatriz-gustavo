@@ -1,269 +1,577 @@
-
 <!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Gustavo & Beatriz — Nosso casamento</title>
+
+<title>Beatriz & Gustavo — Nosso casamento</title>
 <meta name="description" content="Celebre o casamento de Gustavo e Beatriz em 22 de julho de 2027, às 18h30.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --paper:#fff;
-  --ivory:#faf7f3;
-  --ink:#292622;
-  --muted:#77716a;
-  --line:#e8dfd7;
-  --rose:#b69b91;
-  --serif:'Cormorant Garamond',Georgia,serif;
-  --sans:'DM Sans',Arial,sans-serif
+:root {
+  --paper: #fff;
+  --ivory: #f5f1eb;
+  --ink: #292622;
+  --muted: #77716a;
+  --line: #ded8d0;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', Arial, sans-serif;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  background:var(--paper);
-  color:var(--ink);
-  font-family:var(--sans);
-  font-size:15px;
-  line-height:1.7
-}
-a{color:inherit}
-.nav{
-  position:absolute;top:0;left:0;width:100%;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:22px 6%;font-size:11px;letter-spacing:.15em;
-  text-transform:uppercase;z-index:2
-}
-.nav .mark{
-  font-family:var(--serif);font-size:23px;
-  letter-spacing:.04em;text-transform:none
-}
-.nav a{text-decoration:none}
-.nav .links{display:flex;gap:20px}
-.hero{
-  min-height:92vh;
-  background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.18)),url('imagens/capa-praia.jpg') center/cover;
-  display:flex;align-items:center;justify-content:center;
-  text-align:center;padding:120px 24px 100px;position:relative
-}
-.hero:before{
-  content:'';position:absolute;inset:0;background:rgba(255,255,255,.37)
-}
-.hero-inner{position:relative;max-width:720px;width:100%}
-.hero h1{display:flex;flex-direction:column;gap:2px}
-.hero .hero-photo-frame{
-  position:relative;width:min(680px,100%);
-  margin:30px auto 0;overflow:hidden;border-bottom:4px solid #fff
-}
-.date-marquee{
-  position:absolute;left:0;right:0;bottom:4px;z-index:1;
-  overflow:hidden;background:rgba(255,255,255,.96);
-  color:#292622;padding:9px 0;white-space:nowrap
-}
-.date-marquee-track{
-  display:flex;width:max-content;animation:date-scroll 22s linear infinite
-}
-.date-marquee-track span{
-  flex-shrink:0;padding-right:36px;font-size:10px;
-  letter-spacing:.16em;text-transform:uppercase
-}
-@keyframes date-scroll{
-  from{transform:translateX(0)}
-  to{transform:translateX(-50%)}
-}
-@media(prefers-reduced-motion:reduce){.date-marquee-track{animation:none}}
-.hero .hero-photo{
-  width:100%;height:clamp(170px,28vw,280px);
-  object-fit:cover;display:block;filter:grayscale(100%)
-}
-@keyframes bottom-line{
-  0%{transform:scaleX(0);transform-origin:left}
-  49%{transform:scaleX(1);transform-origin:left}
-  50%{transform:scaleX(1);transform-origin:right}
-  100%{transform:scaleX(0);transform-origin:right}
-}
-.countdown{display:flex;justify-content:center;gap:clamp(10px,3vw,28px);margin:24px auto 0}
-.countdown-section{background:#fff;padding:70px 20px;text-align:center}
-.countdown-section .countdown{margin-top:30px}
-.countdown-item{min-width:52px;display:flex;flex-direction:column;line-height:1.2}
-.countdown-item strong{font:400 28px var(--serif)}
-.countdown-item span{font-size:9px;letter-spacing:.12em;text-transform:uppercase;margin-top:6px}
-@media(prefers-reduced-motion:reduce){.hero .hero-photo-frame:after{animation:none;transform:scaleX(1)}}
-.eyebrow{font-size:10px;letter-spacing:.28em;text-transform:uppercase}
-.hero h1{
-  font:300 clamp(52px,9vw,105px)/.9 var(--serif);
-  letter-spacing:.015em;margin:28px 0 22px
-}
-.hero .amp{font-weight:300;font-style:italic;font-size:.7em}
-.hero p{letter-spacing:.16em;text-transform:uppercase;font-size:11px}
-.ornament{width:48px;height:1px;background:var(--ink);margin:26px auto}
-.section{padding:100px 24px;text-align:center}
-.section-inner{max-width:760px;margin:auto}
-.section h2{font:400 clamp(38px,6vw,60px)/1.05 var(--serif);margin:12px 0 24px}
-.section p{max-width:580px;margin:0 auto;color:var(--muted)}
-.intro{background:var(--ivory)}
-.details{
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:1px;background:var(--line);margin-top:45px;border:1px solid var(--line)
-}
-.detail{background:var(--paper);padding:32px 18px}
-.detail h3{font:500 27px var(--serif);margin:6px 0}
-.detail p{font-size:13px}
-.btn{
-  display:inline-block;margin-top:26px;padding:13px 22px;
-  border:1px solid var(--ink);text-decoration:none;
-  font-size:10px;letter-spacing:.15em;text-transform:uppercase;
-  background:transparent;color:var(--ink);cursor:pointer;font-family:var(--sans)
-}
-.btn:disabled{opacity:.55;cursor:wait}
-.story{display:grid;grid-template-columns:1fr 1fr;min-height:420px;text-align:left}
-.story-photo{background:url('imagens/nossa-historia.jpg') center/cover;min-height:350px}
-.story-copy{padding:70px 9%;display:flex;flex-direction:column;justify-content:center}
-.story-copy h2{font:400 48px/1 var(--serif);margin:12px 0 22px}
-.story-copy p{color:var(--muted)}
-.rsvp{background:var(--ivory)}
-form{max-width:500px;margin:35px auto 0;text-align:left}
-label{
-  display:block;font-size:11px;letter-spacing:.08em;
-  text-transform:uppercase;margin:18px 0 7px
-}
-input,select,textarea{
-  width:100%;padding:13px 12px;background:white;
-  border:1px solid var(--line);border-radius:0;
-  font:14px var(--sans);color:var(--ink)
-}
-.note{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
-.form-status{font-size:13px;text-align:center;margin-top:15px;color:var(--ink);min-height:1.5em}
-.gift-grid{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:16px;margin-top:38px;text-align:center
-}
-.gift{
-  border:1px solid var(--line);padding:22px 14px;
-  display:flex;flex-direction:column;align-items:center;min-width:0
-}
-.gift .symbol{font:34px var(--serif)}
-.gift h3{font:500 23px var(--serif);margin:8px 0}
-.gift p{font-size:12px;overflow-wrap:anywhere}
-.gift-image{width:100%;height:190px;object-fit:cover;margin-bottom:14px;background:var(--ivory)}
-.gift .btn{margin-top:18px}
-.gift-placeholder{
-  width:100%;min-height:100px;display:flex;align-items:center;
-  justify-content:center;background:var(--ivory);font:32px var(--serif);margin-bottom:14px
-}
-.gift-status{margin:24px auto 0;max-width:580px;font-size:13px;color:var(--muted)}
-.footer{padding:45px 24px;text-align:center;background:var(--ink);color:#fff}
-.footer .mark{font:32px var(--serif)}
-.footer p{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#d8d1c8}
-.countdown-section .eyebrow{color:var(--rose)}
-.detail{background:#fff}
-.details{grid-template-columns:1fr;background:var(--line)}
-.detail h3{margin-top:8px}
-.location-link{
-  display:inline-block;margin-top:18px;font-size:10px;letter-spacing:.14em;
-  text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--rose);padding-bottom:4px
-}
-.location-link:hover{color:#8f7065}
-.verse{max-width:520px;margin:24px auto 0!important;font-family:var(--serif);font-size:20px;font-style:italic;line-height:1.5;color:#6f625b!important}
-.verse cite{display:block;margin-top:8px;font:10px var(--sans);font-style:normal;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-.nav .mark{display:flex;align-items:center;gap:5px;text-decoration:none}
-.nav .monogram-image{display:block;width:42px;height:42px;object-fit:contain}
-.footer .monogram-image{width:76px;height:76px;object-fit:contain;display:block;margin:0 auto 10px;filter:brightness(0) invert(1)}
-.hero .date-marquee{position:absolute;left:0;right:0;bottom:0;z-index:3;overflow:hidden;background:rgba(255,255,255,.94);color:var(--ink);padding:9px 0;white-space:nowrap;border-top:1px solid rgba(255,255,255,.8)}
-.hero .date-marquee-track{display:flex;width:max-content;animation:date-scroll 22s linear infinite;will-change:transform}
-.hero .date-marquee-track span{flex-shrink:0;padding-right:36px;font-size:10px;letter-spacing:.16em;text-transform:uppercase}
-.hero .hero-inner{animation:soft-rise 1.1s ease both}
-.reveal{opacity:1;transform:none;transition:opacity .8s ease,transform .8s ease}
-.reveal.is-visible{opacity:1;transform:translateY(0)}
-.btn,.location-link,.nav a{transition:opacity .25s ease,color .25s ease,background .25s ease}
-.btn:hover{background:var(--ink);color:#fff}
-@keyframes soft-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero .date-marquee-track{animation:none}.hero .hero-inner{animation:none}.reveal{opacity:1;transform:none;transition:none}}
 
-/* SUGESTÃO DE CORES */
-.color-suggestion{
-  margin:42px auto 20px;
-  padding:30px 16px;
-  max-width:680px;
-  border:1px solid var(--line);
-  background:#fff;
+* {
+  box-sizing: border-box;
 }
-.color-suggestion h3{
-  font:400 clamp(28px,4vw,38px)/1.1 var(--serif);
-  margin:0 0 12px;
+
+html {
+  scroll-behavior: smooth;
 }
-.color-suggestion > p{
-  font-size:12px;
-  color:var(--muted);
-  margin:0 auto 28px;
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.7;
 }
-.color-palette{
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;
-  gap:clamp(18px,5vw,48px);
-  flex-wrap:wrap;
+
+a {
+  color: inherit;
 }
-.color-option{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:12px;
-  min-width:76px;
+
+.nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 6%;
+  font-size: 11px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  z-index: 2;
 }
-.color-circle{
-  width:clamp(76px,16vw,112px);
-  aspect-ratio:1;
-  border-radius:50%;
-  display:block;
+
+.nav .mark {
+  font-family: var(--serif);
+  font-size: 23px;
+  letter-spacing: .04em;
+  text-transform: none;
 }
-.color-circle.white{
-  background:#fff;
-  border:1px solid #dedbd7;
+
+.nav a {
+  text-decoration: none;
 }
-.color-circle.bamboo{
+
+.nav .links {
+  display: flex;
+  gap: 20px;
+}
+
+.hero {
+  min-height: 92vh;
   background:
-    repeating-linear-gradient(105deg,transparent 0 5px,rgba(119,83,43,.10) 6px,transparent 8px 13px),
-    linear-gradient(135deg,#e5d0aa,#c9a878,#e9d7b7);
-  border:1px solid #d3bd9a;
-}
-.color-circle.black{
-  background:#080808;
-  border:1px solid #080808;
-}
-.color-option span:last-child{
-  font-size:10px;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:var(--ink);
+    linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.18)),
+    url('imagens/capa-praia.jpg') center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  position: relative;
 }
 
-@media(max-width:650px){
-  .nav{padding:18px 5%}
-  .nav .links{gap:12px;font-size:9px}
-  .hero{min-height:82vh}
-  .section{padding:76px 20px}
-  .details{grid-template-columns:1fr}
-  .story{grid-template-columns:1fr}
-  .story-photo{min-height:330px}
-  .story-copy{padding:55px 25px}
-  .gift-grid{grid-template-columns:1fr}
-  .gift{padding:22px}
-  .gift-image{height:220px}
+.hero:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,.37);
+}
+
+.hero-inner {
+  position: relative;
+  max-width: 720px;
+  width: 100%;
+}
+
+.hero h1 {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero .hero-photo-frame {
+  display: none;
+}
+
+.date-marquee {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  overflow: hidden;
+  background: rgba(255,255,255,.96);
+  color: #292622;
+  padding: 9px 0;
+  white-space: nowrap;
+}
+
+.date-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: date-scroll 22s linear infinite;
+}
+
+.date-marquee-track span {
+  flex-shrink: 0;
+  padding-right: 36px;
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+@keyframes date-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .date-marquee-track {
+    animation: none;
+  }
+}
+
+.hero .hero-photo {
+  display: none;
+}
+
+@keyframes bottom-line {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  49% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  50% {
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+  100% {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: clamp(10px, 3vw, 28px);
+  margin: 24px auto 0;
+}
+
+.countdown-section {
+  background: #fff;
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.countdown-section .countdown {
+  margin-top: 30px;
+}
+
+.countdown-item {
+  min-width: 52px;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.countdown-item strong {
+  font: 400 28px var(--serif);
+}
+
+.countdown-item span {
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero .hero-photo-frame:after {
+    animation: none;
+    transform: scaleX(1);
+  }
+}
+
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font: 400 clamp(52px, 9vw, 105px)/.9 var(--serif);
+  margin: 28px 0 22px;
+}
+
+.hero .amp {
+  font-style: italic;
+  font-size: .7em;
+}
+
+.hero p {
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+.ornament {
+  width: 48px;
+  height: 1px;
+  background: var(--ink);
+  margin: 26px auto;
+}
+
+.section {
+  padding: 100px 24px;
+  text-align: center;
+}
+
+.section-inner {
+  max-width: 760px;
+  margin: auto;
+}
+
+.section h2 {
+  font: 400 clamp(38px, 6vw, 60px)/1.05 var(--serif);
+  margin: 12px 0 24px;
+}
+
+.section p {
+  max-width: 580px;
+  margin: 0 auto;
+  color: var(--muted);
+}
+
+.intro {
+  background: var(--ivory);
+}
+
+.details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  background: #fff;
+  margin-top: 45px;
+  border: 1px solid var(--line);
+}
+
+.detail {
+  background: var(--paper);
+  padding: 32px 18px;
+}
+
+.detail h3 {
+  font: 500 27px var(--serif);
+  margin: 6px 0;
+}
+
+.detail p {
+  font-size: 13px;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 26px;
+  padding: 13px 22px;
+  border: 1px solid var(--ink);
+  text-decoration: none;
+  font-size: 10px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  font-family: var(--sans);
+}
+
+.btn:disabled {
+  opacity: .55;
+  cursor: wait;
+}
+
+.story {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 420px;
+  text-align: left;
+}
+
+.story-photo {
+  background: url('imagens/nossa-historia.jpg') center/cover;
+  min-height: 350px;
+}
+
+.story-copy {
+  padding: 70px 9%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.story-copy h2 {
+  font: 400 48px/1 var(--serif);
+  margin: 12px 0 22px;
+}
+
+.story-copy p {
+  color: var(--muted);
+}
+
+.rsvp {
+  background: var(--ivory);
+}
+
+form {
+  max-width: 500px;
+  margin: 35px auto 0;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin: 18px 0 7px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 13px 12px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  font: 14px var(--sans);
+  color: var(--ink);
+}
+
+.note {
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 12px;
+}
+
+.form-status {
+  font-size: 13px;
+  text-align: center;
+  margin-top: 15px;
+  color: var(--ink);
+  min-height: 1.5em;
+}
+
+.gift-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 38px;
+  text-align: center;
+}
+
+.gift {
+  border: 1px solid var(--line);
+  padding: 22px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+}
+
+.gift .symbol {
+  font: 34px var(--serif);
+}
+
+.gift h3 {
+  font: 500 23px var(--serif);
+  margin: 8px 0;
+}
+
+.gift p {
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.gift-image {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  margin-bottom: 14px;
+  background: var(--ivory);
+}
+
+.gift .btn {
+  margin-top: 18px;
+}
+
+.gift-placeholder {
+  width: 100%;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ivory);
+  font: 32px var(--serif);
+  margin-bottom: 14px;
+}
+
+.gift-status {
+  margin: 24px auto 0;
+  max-width: 580px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Sugestão de cores: visual minimalista e sofisticado */
+.gift-colors {
+  max-width: 380px;
+  margin: 34px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.gift-color {
+  text-align: center;
+  color: var(--ink);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.gift-color-swatch {
+  display: block;
+  width: 100%;
+  height: 58px;
+  margin-bottom: 10px;
+  border-radius: 2px;
+}
+
+.gift-color-swatch.white {
+  background: #fff;
+  border: 1px solid #e5e0d9;
+}
+
+.gift-color-swatch.bamboo {
+  background: #c5a16b;
+}
+
+.gift-color-swatch.black {
+  background: #202020;
+}
+
+.gift-colors-note {
+  max-width: 340px;
+  margin: 18px auto 0 !important;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.footer {
+  padding: 45px 24px;
+  text-align: center;
+  background: var(--ink);
+  color: #fff;
+}
+
+.footer .mark {
+  font: 32px var(--serif);
+}
+
+.footer p {
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #d8d1c8;
+}
+
+@media (max-width: 650px) {
+  .nav {
+    padding: 18px 5%;
+  }
+
+  .nav .links {
+    gap: 12px;
+    font-size: 9px;
+  }
+
+  .hero {
+    min-height: 82vh;
+  }
+
+  .section {
+    padding: 76px 20px;
+  }
+
+  .details {
+    grid-template-columns: 1fr;
+  }
+
+  .story {
+    grid-template-columns: 1fr;
+  }
+
+  .story-photo {
+    min-height: 330px;
+  }
+
+  .story-copy {
+    padding: 55px 25px;
+  }
+
+  .gift-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gift {
+    padding: 22px;
+  }
+
+  .gift-image {
+    height: 220px;
+  }
+
+  .gift-colors {
+    max-width: 330px;
+    gap: 14px;
+  }
+
+  .gift-color-swatch {
+    height: 48px;
+  }
 }
 </style>
 </head>
 
 <body>
+
 <nav class="nav">
-  <a class="mark" href="#top" aria-label="Monograma Gustavo e Beatriz">
-    B <span style="font-style:italic">&</span> G
-  </a>
+  <a class="mark" href="#top">B <span style="font-style:italic">&</span> G</a>
+
   <div class="links">
     <a href="#nova-etapa">Nova etapa</a>
     <a href="#historia">Nossa história</a>
@@ -275,86 +583,165 @@ input,select,textarea{
   <div class="hero-inner">
     <div class="eyebrow">Com a bênção de Deus e o amor de nossas famílias</div>
     <div class="ornament"></div>
+
     <h1>
       <span>Gustavo</span>
       <span class="amp">&</span>
       <span>Beatriz</span>
     </h1>
   </div>
+
   <div class="date-marquee" aria-label="Data e horário do casamento">
     <div class="date-marquee-track">
-      <div class="date-marquee-group">
-        <span>GUSTAVO & BEATRIZ · 22.07.2027 · 18H30 ·</span>
-        <span aria-hidden="true">GUSTAVO & BEATRIZ · 22.07.2027 · 18H30 ·</span>
-        <span aria-hidden="true">GUSTAVO & BEATRIZ · 22.07.2027 · 18H30 ·</span>
-        <span aria-hidden="true">GUSTAVO & BEATRIZ · 22.07.2027 · 18H30 ·</span>
-      </div>
-      <div class="date-marquee-group" aria-hidden="true">
-        <span>GUSTAVO & BEATRIZ · 22.07.2027 · 18H30 ·</span>
-        <span>GUSTAVO & BEATRIZ · 22.07.2027 · 18H30 ·</span>
-        <span>GUSTAVO & BEATRIZ · 22.07.2027 · 18H30 ·</span>
-        <span>GUSTAVO & BEATRIZ · 22.07.2027 · 18H30 ·</span>
-      </div>
+      <span>BEATRIZ & GUSTAVO · 22.07.2027 · 18H30 ·</span>
+      <span aria-hidden="true">BEATRIZ & GUSTAVO · 22.07.2027 · 18H30 ·</span>
+      <span aria-hidden="true">BEATRIZ & GUSTAVO · 22.07.2027 · 18H30 ·</span>
+      <span aria-hidden="true">BEATRIZ & GUSTAVO · 22.07.2027 · 18H30 ·</span>
     </div>
   </div>
 </header>
 
-<section class="countdown-section reveal" id="contagem">
+<section class="countdown-section" id="contagem">
   <div class="section-inner">
     <div class="eyebrow">A contagem regressiva começou</div>
-    <h2 style="font:400 clamp(38px,6vw,60px)/1.05 var(--serif);margin:12px 0 0">Nosso grande dia</h2>
+
+    <h2 style="font:400 clamp(38px,6vw,60px)/1.05 var(--serif);margin:12px 0 0">
+      Nosso grande dia
+    </h2>
+
     <p>22 de julho de 2027, às 18h30</p>
+
     <div class="countdown" id="countdown" aria-label="Contagem regressiva para o casamento">
-      <div class="countdown-item"><strong id="days">000</strong><span>Dias</span></div>
-      <div class="countdown-item"><strong id="hours">00</strong><span>Horas</span></div>
-      <div class="countdown-item"><strong id="minutes">00</strong><span>Minutos</span></div>
-      <div class="countdown-item"><strong id="seconds">00</strong><span>Segundos</span></div>
-    </div>
-  </div>
-</section>
+      <div class="countdown-item">
+        <strong id="days">—</strong>
+        <span>Dias</span>
+      </div>
 
-<section class="section intro reveal" id="nova-etapa">
-  <div class="section-inner">
-    <div class="eyebrow">Uma nova etapa</div>
-    <h2>O Senhor nos trouxe até aqui.</h2>
-    <p>E guiados por Deus, seguiremos juntos para uma nova etapa, com a fé renovada e o coração cheio de amor, confiantes de que os planos d’Ele são sempre maiores e melhores que os nossos.</p>
-    <p class="verse">“Para que todos vejam, saibam, considerem e juntamente entendam que a mão do Senhor fez isso.”<cite>Isaías 41:20</cite></p>
-  </div>
-</section>
+      <div class="countdown-item">
+        <strong id="hours">—</strong>
+        <span>Horas</span>
+      </div>
 
-<section class="story reveal" id="historia">
-  <div class="story-photo" role="img" aria-label="Fotografia de Gustavo e Beatriz"></div>
-  <div class="story-copy">
-    <div class="eyebrow">Nossa história</div>
-    <h2>Deus, em Seu infinito amor, cruzou nossos caminhos</h2>
-    <p>Cremos que foi Deus quem escreveu cada detalhe da nossa história, unindo nossas vidas segundo a Sua perfeita vontade.</p>
-    <p>O que começou como um encontro de caminhos floresceu em amor, fé e no desejo de construir uma vida que glorifique o nome d’Ele. Diante de Deus, diremos o nosso sim, com o coração cheio de gratidão por tudo o que Ele fez e fé em tudo o que ainda fará.</p>
-  </div>
-</section>
+      <div class="countdown-item">
+        <strong id="minutes">—</strong>
+        <span>Minutos</span>
+      </div>
 
-<section class="section reveal" id="detalhes">
-  <div class="section-inner">
-    <div class="details">
-      <div class="detail">
-        <div class="eyebrow">Recepção</div>
-        <h3>Village Damha II</h3>
-        <p>Esperamos você para celebrar esse dia tão especial conosco.</p>
-        <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=Village+Damha+II" target="_blank" rel="noopener noreferrer">Ver localização no mapa ↗</a>
+      <div class="countdown-item">
+        <strong id="seconds">—</strong>
+        <span>Segundos</span>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section rsvp reveal" id="rsvp">
+<section class="section intro" id="nova-etapa">
+  <div class="section-inner">
+    <div class="eyebrow">Uma nova etapa</div>
+
+    <h2>O Senhor nos trouxe até aqui.</h2>
+
+    <p>
+      E guiados por Deus, seguiremos juntos para uma nova etapa,
+      com a fé renovada e o coração cheio de amor, confiantes de
+      que os planos d’Ele são sempre maiores e melhores que os nossos.
+    </p>
+  </div>
+</section>
+
+<section class="story" id="historia">
+  <div
+    class="story-photo"
+    role="img"
+    aria-label="Fotografia em preto e branco de Beatriz e Gustavo abraçados">
+  </div>
+
+  <div class="story-copy">
+    <div class="eyebrow">Nossa história</div>
+
+    <h2>Deus, em Seu infinito amor, cruzou nossos caminhos</h2>
+
+    <p>
+      Cremos que foi Deus quem escreveu cada detalhe da nossa
+      história, unindo nossas vidas segundo a Sua perfeita vontade.
+    </p>
+
+    <p>
+      O que começou como um encontro de caminhos floresceu em amor,
+      fé e no desejo de construir uma vida que glorifique o nome d’Ele.
+      Diante de Deus, diremos o nosso sim, com o coração cheio de
+      gratidão por tudo o que Ele fez e fé em tudo o que ainda fará.
+    </p>
+  </div>
+</section>
+
+<section class="section" id="detalhes">
+  <div class="section-inner">
+    <div class="eyebrow">Reserve a data</div>
+
+    <h2>Nosso grande dia</h2>
+
+    <p>22 de julho de 2027, às 18h30</p>
+
+    <div class="details">
+      <div class="detail">
+        <div class="eyebrow">Recepção</div>
+
+        <h3>Residencial Mangata</h3>
+
+        <p>
+          Esperamos você para celebrar esse dia tão especial conosco.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section rsvp" id="rsvp">
   <div class="section-inner">
     <div class="eyebrow">Sua presença é especial</div>
+
     <h2>Você vem celebrar?</h2>
-    <p>Informe seu nome completo para confirmar sua presença.</p>
+
+    <p>
+      Informe seu nome completo e telefone com DDD para confirmar
+      sua presença.
+    </p>
+
     <form id="rsvp-form">
+
       <label for="nome">Nome completo</label>
-      <input id="nome" name="nome" type="text" required autocomplete="name" placeholder="Digite seu nome completo">
+
+      <input
+        id="nome"
+        name="nome"
+        type="text"
+        required
+        autocomplete="name"
+        placeholder="Digite seu nome completo"
+      >
+
+      <label for="telefone">Telefone com DDD</label>
+
+      <input
+        id="telefone"
+        name="telefone"
+        type="tel"
+        required
+        autocomplete="tel"
+        placeholder="(75) 99999-9999"
+      >
+
+      <label for="acompanhantes">Acompanhantes</label>
+
+      <select id="acompanhantes" name="acompanhantes">
+        <option value="0">Somente eu</option>
+        <option value="1">Eu + 1 acompanhante</option>
+        <option value="2">Eu + 2 acompanhantes</option>
+      </select>
 
       <label for="presenca">Confirmação</label>
+
       <select id="presenca" name="presenca" required>
         <option value="">Selecione uma opção</option>
         <option value="sim">Sim, estarei presente!</option>
@@ -362,340 +749,426 @@ input,select,textarea{
       </select>
 
       <label for="mensagem">Observação (opcional)</label>
-      <textarea id="mensagem" name="mensagem" rows="3" maxlength="500" placeholder="Se precisar, deixe uma mensagem"></textarea>
 
-      <button class="btn" id="rsvp-submit" type="submit">Enviar confirmação</button>
-      <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-      <p class="note">Sua resposta será registrada para que possamos organizar a recepção com carinho.</p>
+      <textarea
+        id="mensagem"
+        name="mensagem"
+        rows="3"
+        maxlength="500"
+        placeholder="Se precisar, deixe uma mensagem"
+      ></textarea>
+
+      <button class="btn" id="rsvp-submit" type="submit">
+        Enviar confirmação
+      </button>
+
+      <p
+        class="form-status"
+        id="form-status"
+        role="status"
+        aria-live="polite">
+      </p>
+
+      <p class="note">
+        Sua resposta será registrada para que possamos organizar
+        a recepção com carinho.
+      </p>
+
     </form>
   </div>
 </section>
 
-<section class="section reveal" id="presentes">
+<section class="section" id="presentes">
   <div class="section-inner">
+
+    <div class="eyebrow">Com carinho</div>
+
     <h2>Lista de presentes</h2>
-    <p>Preparamos uma lista com sugestões para nosso novo lar. Cada presente será recebido com muito carinho e gratidão.</p>
 
-    <!-- SUGESTÃO DE CORES -->
-    <div class="color-suggestion">
-      <h3>Sugestão de cores</h3>
-      <p>Para manter a harmonia do nosso novo lar, sugerimos estas cores:</p>
+    <p>
+      Preparamos uma lista com sugestões para nosso novo lar.
+      Cada presente será recebido com muito carinho e gratidão.
+    </p>
 
-      <div class="color-palette">
-        <div class="color-option">
-          <span class="color-circle white" aria-label="Branco"></span>
-          <span>Branco</span>
-        </div>
-        <div class="color-option">
-          <span class="color-circle bamboo" aria-label="Bambu"></span>
-          <span>Bambu</span>
-        </div>
-        <div class="color-option">
-          <span class="color-circle black" aria-label="Preto"></span>
-          <span>Preto</span>
-        </div>
+    <!-- Sugestão de cores para os presentes -->
+    <div
+      class="gift-colors"
+      aria-label="Sugestões de cores para os presentes">
+
+      <div class="gift-color">
+        <span class="gift-color-swatch white" aria-hidden="true"></span>
+        <span>Branco</span>
       </div>
+
+      <div class="gift-color">
+        <span class="gift-color-swatch bamboo" aria-hidden="true"></span>
+        <span>Bambu</span>
+      </div>
+
+      <div class="gift-color">
+        <span class="gift-color-swatch black" aria-hidden="true"></span>
+        <span>Preto</span>
+      </div>
+
     </div>
 
-    <p id="gifts-status" class="gift-status" aria-live="polite">Carregando nossa lista de presentes...</p>
+    <p class="gift-colors-note">
+      Para compor nosso lar, estas são as cores que escolhemos.
+    </p>
+
+    <p
+      id="gifts-status"
+      class="gift-status"
+      aria-live="polite">
+      Carregando nossa lista de presentes...
+    </p>
+
     <div id="gifts-list" class="gift-grid"></div>
+
   </div>
 </section>
 
 <footer class="footer">
   <div class="mark">B <span style="font-style:italic">&</span> G</div>
-  <p>Com amor, Gustavo e Beatriz · 22.07.2027</p>
+
+  <p>Com amor, Beatriz e Gustavo · 22.07.2027</p>
 </footer>
 
 <script>
-"use strict";
+const SUPABASE_URL = 'https://otzxfppshwsqlxlmkbat.supabase.co';
 
-const SUPABASE_URL = "https://otzxfppshwsqlxlmkbat.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_dEppruYDF1VaD73bXZcNmg_MszVkpYG";
-const SUPABASE_FUNCTION_URL = SUPABASE_URL + "/functions/v1/confirm-rsvp";
+// Chave publicável do projeto.
+// Nunca substitua por service_role ou sb_secret.
+const SUPABASE_PUBLISHABLE_KEY =
+  'sb_publishable_dEppruYDF1VaD73bXZcNmg_MszVkpYG';
+
+const SUPABASE_FUNCTION_URL =
+  `${SUPABASE_URL}/functions/v1/confirm-rsvp`;
+
+const form = document.getElementById('rsvp-form');
+const statusEl = document.getElementById('form-status');
+const submitButton = document.getElementById('rsvp-submit');
 
 function isValidHttpUrl(value) {
   try {
     const url = new URL(value);
-    return url.protocol === "https:" || url.protocol === "http:";
+
+    return url.protocol === 'https:' ||
+           url.protocol === 'http:';
   } catch {
     return false;
   }
 }
 
-/* CONFIRMAÇÃO DE PRESENÇA */
-const form = document.getElementById("rsvp-form");
-const statusEl = document.getElementById("form-status");
-const submitButton = document.getElementById("rsvp-submit");
+// Confirmação de presença
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
 
-if (form && statusEl && submitButton) {
-  form.addEventListener("submit", async function (event) {
-    event.preventDefault();
+  statusEl.textContent = '';
 
-    const fullName = document.getElementById("nome").value.trim();
-    const phone = "";
-    const attending = document.getElementById("presenca").value === "sim";
-    const companions = 0;
-    const message = document.getElementById("mensagem").value.trim();
+  const fullName =
+    document.getElementById('nome').value.trim();
 
-    if (!fullName) {
-      statusEl.textContent = "Preencha seu nome completo.";
-      return;
-    }
+  const phone =
+    document.getElementById('telefone').value.trim();
 
-    submitButton.disabled = true;
-    submitButton.textContent = "Enviando...";
-    statusEl.textContent = "";
+  const attending =
+    document.getElementById('presenca').value === 'sim';
 
-    try {
-      const response = await fetch(SUPABASE_FUNCTION_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "apikey": SUPABASE_PUBLISHABLE_KEY
-        },
-        body: JSON.stringify({
-          full_name: fullName,
-          phone: phone,
-          attending: attending,
-          party_count: attending ? companions + 1 : 1,
-          message: message || null
-        })
-      });
+  const companions =
+    Number(document.getElementById('acompanhantes').value);
 
-      const result = await response.json().catch(() => ({}));
+  const partyCount = attending ? companions + 1 : 1;
 
-      if (!response.ok) {
-        throw new Error(result.error || result.message || "Não foi possível registrar sua resposta.");
-      }
+  const message =
+    document.getElementById('mensagem').value.trim();
 
-      statusEl.textContent = attending
-        ? "Presença confirmada! Será uma alegria celebrar com você. ❤️"
-        : "Resposta registrada. Obrigado por nos avisar.";
-
-      form.reset();
-    } catch (error) {
-      statusEl.textContent = error.message || "Erro ao enviar. Tente novamente.";
-    } finally {
-      submitButton.disabled = false;
-      submitButton.textContent = "Enviar confirmação";
-    }
-  });
-}
-
-/* LISTA DE PRESENTES E RESERVAS */
-async function loadGifts() {
-  const giftsList = document.getElementById("gifts-list");
-  const giftsStatus = document.getElementById("gifts-status");
-
-  if (!giftsList || !giftsStatus) return;
-
-  const headers = {
-    "apikey": SUPABASE_PUBLISHABLE_KEY,
-    "Authorization": "Bearer " + SUPABASE_PUBLISHABLE_KEY,
-    "Content-Type": "application/json"
-  };
+  submitButton.disabled = true;
+  submitButton.textContent = 'Enviando…';
 
   try {
-    giftsStatus.textContent = "Carregando presentes...";
+    const response = await fetch(SUPABASE_FUNCTION_URL, {
+      method: 'POST',
 
-    const [giftsResponse, reservationsResponse] = await Promise.all([
-      fetch(SUPABASE_URL + "/rest/v1/gifts?select=id,name,description,image_url,product_url&order=name.asc", { headers }),
-      fetch(SUPABASE_URL + "/rest/v1/rpc/reserved_gift_ids", {
-        method: "POST",
-        headers,
-        body: JSON.stringify({})
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_PUBLISHABLE_KEY
+      },
+
+      body: JSON.stringify({
+        full_name: fullName,
+        phone: phone,
+        attending,
+        party_count: partyCount,
+        message: message || null
       })
-    ]);
+    });
 
-    if (!giftsResponse.ok) throw new Error("Não foi possível carregar os presentes.");
-    if (!reservationsResponse.ok) throw new Error("Não foi possível verificar as reservas.");
+    const result = await response.json().catch(() => ({}));
 
-    const gifts = await giftsResponse.json();
-    const reservations = await reservationsResponse.json();
-    const reservedIds = new Set(reservations.map(item => item.gift_id));
+    if (!response.ok) {
+      throw new Error(
+        result.error ||
+        result.message ||
+        'Não foi possível registrar sua resposta. Tente novamente.'
+      );
+    }
+
+    statusEl.textContent = attending
+      ? 'Presença confirmada! Será uma alegria celebrar com você. ❤️'
+      : 'Resposta registrada. Agradecemos por nos avisar com carinho.';
+
+    form.reset();
+
+  } catch (error) {
+    statusEl.textContent =
+      error.message ||
+      'Ocorreu um erro. Tente novamente em instantes.';
+
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = 'Enviar confirmação';
+  }
+});
+
+// Lista de presentes: busca os registros cadastrados no Supabase
+async function loadGifts() {
+  const giftsList = document.getElementById('gifts-list');
+  const giftsStatus = document.getElementById('gifts-status');
+
+  try {
+    const response = await fetch(
+      `${SUPABASE_URL}/rest/v1/gifts?select=id,name,description,image_url,product_url&order=name.asc`,
+      {
+        method: 'GET',
+
+        headers: {
+          'apikey': SUPABASE_PUBLISHABLE_KEY,
+          'Authorization': `Bearer ${SUPABASE_PUBLISHABLE_KEY}`
+        }
+      }
+    );
+
+    if (!response.ok) {
+      if (response.status === 401 || response.status === 403) {
+        throw new Error(
+          'Não foi possível acessar a lista. Verifique as permissões de leitura da tabela gifts no Supabase.'
+        );
+      }
+
+      throw new Error(
+        'Não foi possível carregar a lista de presentes.'
+      );
+    }
+
+    const gifts = await response.json();
 
     giftsList.replaceChildren();
 
-    if (!gifts.length) {
-      giftsStatus.textContent = "Nossa lista de presentes está sendo preparada.";
+    if (!Array.isArray(gifts) || gifts.length === 0) {
+      giftsStatus.textContent =
+        'Nossa lista está sendo preparada. Em breve, teremos novidades por aqui.';
+
       return;
     }
 
-    gifts.forEach(function (gift, index) {
-      const card = document.createElement("article");
-      card.className = "gift";
+    gifts.forEach((gift, index) => {
+      const card = document.createElement('article');
+      card.className = 'gift';
 
-      if (gift.image_url && isValidHttpUrl(gift.image_url)) {
-        const image = document.createElement("img");
-        image.className = "gift-image";
-        image.src = gift.image_url;
-        image.alt = gift.name || "Presente";
-        image.loading = "lazy";
+      const imageUrl =
+        typeof gift.image_url === 'string'
+          ? gift.image_url.trim()
+          : '';
+
+      if (imageUrl && isValidHttpUrl(imageUrl)) {
+        const image = document.createElement('img');
+
+        image.className = 'gift-image';
+        image.src = imageUrl;
+        image.alt = gift.name || `Presente ${index + 1}`;
+        image.loading = 'lazy';
+        image.referrerPolicy = 'no-referrer';
+
+        image.addEventListener('error', () => {
+          const placeholder = document.createElement('div');
+
+          placeholder.className = 'gift-placeholder';
+          placeholder.textContent =
+            String(index + 1).padStart(2, '0');
+
+          image.replaceWith(placeholder);
+        }, { once: true });
+
         card.appendChild(image);
+
       } else {
-        const placeholder = document.createElement("div");
-        placeholder.className = "gift-placeholder";
-        placeholder.textContent = String(index + 1).padStart(2, "0");
+        const placeholder = document.createElement('div');
+
+        placeholder.className = 'gift-placeholder';
+        placeholder.textContent =
+          String(index + 1).padStart(2, '0');
+
         card.appendChild(placeholder);
       }
 
-      const title = document.createElement("h3");
-      title.textContent = gift.name || "Presente";
+      const title = document.createElement('h3');
+      title.textContent = gift.name || 'Presente';
+
       card.appendChild(title);
 
       if (gift.description) {
-        const description = document.createElement("p");
+        const description = document.createElement('p');
+
         description.textContent = gift.description;
+
         card.appendChild(description);
       }
 
-      const reserved = reservedIds.has(gift.id);
-      const reserveButton = document.createElement("button");
+      const productUrl =
+        typeof gift.product_url === 'string'
+          ? gift.product_url.trim()
+          : '';
 
-      reserveButton.type = "button";
-      reserveButton.className = "btn";
-      reserveButton.textContent = reserved ? "Presente reservado" : "Reservar presente";
-      reserveButton.disabled = reserved;
+      if (productUrl && isValidHttpUrl(productUrl)) {
+        const link = document.createElement('a');
 
-      reserveButton.addEventListener("click", async function () {
-        const guestName = prompt('Quem está reservando "' + (gift.name || "este presente") + '"? Informe seu nome:');
+        link.className = 'btn';
+        link.href = productUrl;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = 'Ver presente';
 
-        if (guestName === null) return;
-
-        if (guestName.trim().length < 2) {
-          alert("Por favor, informe seu nome.");
-          return;
-        }
-
-        reserveButton.disabled = true;
-        reserveButton.textContent = "Reservando...";
-
-        try {
-          const response = await fetch(SUPABASE_URL + "/rest/v1/rpc/reserve_gift", {
-            method: "POST",
-            headers,
-            body: JSON.stringify({
-              p_gift_id: gift.id,
-              p_guest_name: guestName.trim()
-            })
-          });
-
-          if (!response.ok) {
-            const error = await response.json().catch(() => ({}));
-            throw new Error(error.message || "Não foi possível reservar. Atualize a lista e tente novamente.");
-          }
-
-          alert("Presente reservado com sucesso! ❤️");
-          await loadGifts();
-        } catch (error) {
-          alert(error.message || "Erro ao reservar o presente.");
-          await loadGifts();
-        }
-      });
-
-      card.appendChild(reserveButton);
-
-      if (gift.product_url && isValidHttpUrl(gift.product_url)) {
-        const link = document.createElement("a");
-        link.className = "btn";
-        link.href = gift.product_url;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        link.textContent = "Ver presente";
         card.appendChild(link);
       }
 
       giftsList.appendChild(card);
     });
 
-    giftsStatus.textContent = "";
+    giftsStatus.textContent = '';
+
   } catch (error) {
-    giftsStatus.textContent = error.message || "Erro ao carregar a lista de presentes.";
+    giftsStatus.textContent =
+      error.message ||
+      'Não foi possível carregar os presentes. Tente novamente mais tarde.';
   }
 }
 
 loadGifts();
 
-/* CONTAGEM REGRESSIVA */
+// Contagem regressiva para 22 de julho de 2027,
+// às 18h30, horário de Brasília.
 function updateCountdown() {
-  const target = new Date("2027-07-22T18:30:00-03:00").getTime();
+  const target =
+    new Date('2027-07-22T18:30:00-03:00').getTime();
+
   const remaining = Math.max(0, target - Date.now());
 
-  const values = {
-    days: Math.floor(remaining / 86400000),
-    hours: Math.floor((remaining % 86400000) / 3600000),
-    minutes: Math.floor((remaining % 3600000) / 60000),
-    seconds: Math.floor((remaining % 60000) / 1000)
-  };
+  const days = Math.floor(remaining / 86400000);
 
-  Object.entries(values).forEach(function ([id, value]) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.textContent = String(value).padStart(id === "days" ? 3 : 2, "0");
-    }
-  });
+  const hours = Math.floor(
+    (remaining % 86400000) / 3600000
+  );
+
+  const minutes = Math.floor(
+    (remaining % 3600000) / 60000
+  );
+
+  const seconds = Math.floor(
+    (remaining % 60000) / 1000
+  );
+
+  document.getElementById('days').textContent =
+    String(days).padStart(3, '0');
+
+  document.getElementById('hours').textContent =
+    String(hours).padStart(2, '0');
+
+  document.getElementById('minutes').textContent =
+    String(minutes).padStart(2, '0');
+
+  document.getElementById('seconds').textContent =
+    String(seconds).padStart(2, '0');
 }
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
 </script>
 
-<!-- PLAYER DE MÚSICA DO CASAMENTO -->
-<div id="music-player" style="
-  position:fixed;right:16px;bottom:20px;z-index:99999;
-  display:flex;align-items:center;gap:10px;padding:12px 18px;
-  background:#fff;color:#292622;border:1px solid #ded8d0;
-  border-radius:30px;box-shadow:0 3px 15px #0002;font:13px Arial,sans-serif;
-">
-  <button id="music-button" type="button" style="
-    border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;
-  ">♫ Ouvir nossa música ♡</button>
+<!-- Música de fundo: Beatriz & Gustavo -->
+<div
+  id="music-player"
+  style="position:fixed;right:16px;bottom:16px;z-index:9999;display:flex;align-items:center;gap:10px;padding:10px 14px;background:#fff;color:#292622;border:1px solid #ded8d0;border-radius:30px;box-shadow:0 3px 15px #00000015;font:12px Arial,sans-serif">
 
-  <div id="youtube-player" style="
-    position:absolute;width:1px;height:1px;overflow:hidden;
-    opacity:0;pointer-events:none;
-  "></div>
+  <button
+    id="music-toggle"
+    type="button"
+    aria-label="Tocar ou pausar a música"
+    style="border:0;background:transparent;color:inherit;cursor:pointer;font-size:18px">
+    ♫
+  </button>
+
+  <span id="music-label">Ouvir nossa música</span>
+</div>
+
+<div
+  id="youtube-player"
+  style="position:fixed;width:1px;height:1px;left:-10px;bottom:-10px;overflow:hidden">
 </div>
 
 <script>
 (function () {
-  const button = document.getElementById('music-button');
+  const videoId = 'a7FW1sFl-e8';
+
+  const button = document.getElementById('music-toggle');
+  const label = document.getElementById('music-label');
+
   let player;
-  let ready = false;
-  let pendingPlay = false;
+  let playing = false;
 
   window.onYouTubeIframeAPIReady = function () {
     player = new YT.Player('youtube-player', {
-      width: 1,
-      height: 1,
-      videoId: 'a7FW1sFl-e8',
-      playerVars: { playsinline: 1, controls: 0 },
+      width: '1',
+      height: '1',
+      videoId: videoId,
+
+      playerVars: {
+        autoplay: 0,
+        controls: 0,
+        loop: 1,
+        playlist: videoId,
+        playsinline: 1
+      },
+
       events: {
-        onReady: function () {
-          ready = true;
-          if (pendingPlay) {
-            player.playVideo();
-            pendingPlay = false;
-          }
-        },
         onStateChange: function (event) {
-          button.textContent = event.data === YT.PlayerState.PLAYING
-            ? 'Ⅱ Pausar música'
-            : '♫ Ouvir nossa música ♡';
+          if (event.data === YT.PlayerState.ENDED) {
+            player.playVideo();
+          }
+
+          if (event.data === YT.PlayerState.PLAYING) {
+            playing = true;
+            button.textContent = 'Ⅱ';
+            label.textContent = 'Pausar música';
+          }
+
+          if (event.data === YT.PlayerState.PAUSED) {
+            playing = false;
+            button.textContent = '♫';
+            label.textContent = 'Ouvir nossa música';
+          }
         }
       }
     });
   };
 
   button.addEventListener('click', function () {
-    if (!ready || !player) {
-      pendingPlay = true;
-      button.textContent = 'Carregando música…';
+    if (!player || typeof player.playVideo !== 'function') {
+      label.textContent = 'Carregando música…';
       return;
     }
 
-    if (player.getPlayerState() === YT.PlayerState.PLAYING) {
+    if (playing) {
       player.pauseVideo();
     } else {
       player.playVideo();
@@ -703,9 +1176,12 @@ setInterval(updateCountdown, 1000);
   });
 
   const api = document.createElement('script');
+
   api.src = 'https://www.youtube.com/iframe_api';
+
   document.head.appendChild(api);
 })();
 </script>
+
 </body>
 </html>
