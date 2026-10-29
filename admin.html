@@ -1,106 +1,245 @@
+
 <!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Painel | Beatriz &amp; Gustavo</title>
-  
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --ivory: #f5f1eb;
-  --ink: #292622;
-  --muted: #77716a;
-  --line: #ded8d0;
-  --serif: 'Cormorant Garamond', Georgia, serif;
-  --sans: 'DM Sans', Arial, sans-serif;
+  --ivory:#f5f1eb;
+  --ink:#292622;
+  --muted:#77716a;
+  --line:#ded8d0;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',Arial,sans-serif;
 }
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  background: var(--ivory);
-  color: var(--ink);
-  font: 14px/1.6 var(--sans);
-}
-header {
-  background: var(--ink);
-  color: white;
-  padding: 25px 6%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-}
-header h1 { font: 32px var(--serif); margin: 0; }
-header p { margin: 0; color: #ddd4ca; font-size: 11px; letter-spacing: .1em; }
-main { max-width: 1200px; margin: 35px auto; padding: 0 18px; }
-h2 { font: 32px var(--serif); margin: 0 0 16px; }
-h3 { font: 25px var(--serif); margin: 0 0 12px; }
-.panel { background: white; border: 1px solid var(--line); padding: 24px; margin-bottom: 22px; }
-input, button, select, textarea { font: inherit; }
-input, select, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid var(--line);
-  background: white;
-  color: var(--ink);
-  margin: 5px 0 13px;
-}
-label {
-  display: block;
-  font-size: 11px;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-button {
-  display: inline-block;
-  background: var(--ink);
-  color: white;
-  border: 1px solid var(--ink);
-  padding: 10px 14px;
-  cursor: pointer;
-  font-size: 11px;
-  letter-spacing: .04em;
-  margin: 2px;
-  border-radius: 2px;
-}
-button.secondary { background: white; color: var(--ink); }
-button.danger { background: #8c3939; border-color: #8c3939; }
-button:disabled { opacity: .5; cursor: not-allowed; }
-.hidden { display: none !important; }
-.status { font-size: 13px; color: var(--muted); overflow-wrap: anywhere; }
-.cards {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-  margin-bottom: 22px;
-}
-.metric { background: white; border: 1px solid var(--line); padding: 18px; }
-.metric span { display: block; font-size: 11px; color: var(--muted); }
-.metric strong { font: 34px var(--serif); }
-.table-wrap { overflow-x: auto; }
-table { border-collapse: collapse; width: 100%; font-size: 12px; }
-th, td { text-align: left; padding: 11px; border-bottom: 1px solid var(--line); vertical-align: top; }
-th { font-weight: 600; background: var(--ivory); }
-.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-.row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-.login { max-width: 430px; margin: 60px auto; }
-.action-buttons { display: flex; gap: 4px; flex-wrap: wrap; min-width: 135px; }
 
-@media (max-width: 650px) {
-  header { padding: 20px; align-items: flex-start; }
-  header h1 { font-size: 26px; }
-  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .grid2 { grid-template-columns: 1fr; }
-  .panel { padding: 17px; }
-  main { margin-top: 22px; }
+* { box-sizing:border-box; }
+
+body {
+  margin:0;
+  background:var(--ivory);
+  color:var(--ink);
+  font:14px/1.6 var(--sans);
+}
+
+header {
+  background:var(--ink);
+  color:white;
+  padding:25px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+}
+
+header h1 {
+  font:32px var(--serif);
+  margin:0;
+}
+
+header p {
+  margin:0;
+  color:#ddd4ca;
+  font-size:11px;
+  letter-spacing:.1em;
+}
+
+main {
+  max-width:1200px;
+  margin:35px auto;
+  padding:0 18px;
+}
+
+h2 {
+  font:32px var(--serif);
+  margin:0 0 16px;
+}
+
+h3 {
+  font:25px var(--serif);
+  margin:0 0 12px;
+}
+
+.panel {
+  background:white;
+  border:1px solid var(--line);
+  padding:24px;
+  margin-bottom:22px;
+}
+
+input,button,select,textarea {
+  font:inherit;
+}
+
+input,select,textarea {
+  width:100%;
+  padding:12px;
+  border:1px solid var(--line);
+  background:white;
+  color:var(--ink);
+  margin:5px 0 13px;
+}
+
+label {
+  display:block;
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+button {
+  display:inline-block;
+  background:var(--ink);
+  color:white;
+  border:1px solid var(--ink);
+  padding:10px 14px;
+  cursor:pointer;
+  font-size:11px;
+  letter-spacing:.04em;
+  margin:2px;
+  border-radius:2px;
+}
+
+button.secondary {
+  background:white;
+  color:var(--ink);
+}
+
+button.danger {
+  background:#8c3939;
+  border-color:#8c3939;
+}
+
+button:disabled {
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.hidden {
+  display:none!important;
+}
+
+.status {
+  font-size:13px;
+  color:var(--muted);
+  overflow-wrap:anywhere;
+}
+
+.cards {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+  margin-bottom:22px;
+}
+
+.metric {
+  background:white;
+  border:1px solid var(--line);
+  padding:18px;
+}
+
+.metric span {
+  display:block;
+  font-size:11px;
+  color:var(--muted);
+}
+
+.metric strong {
+  font:34px var(--serif);
+}
+
+.table-wrap {
+  overflow-x:auto;
+}
+
+table {
+  border-collapse:collapse;
+  width:100%;
+  font-size:12px;
+}
+
+th,td {
+  text-align:left;
+  padding:11px;
+  border-bottom:1px solid var(--line);
+  vertical-align:top;
+  overflow-wrap:anywhere;
+}
+
+th {
+  font-weight:600;
+  background:var(--ivory);
+}
+
+.grid2 {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.row {
+  display:flex;
+  gap:8px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.login {
+  max-width:430px;
+  margin:60px auto;
+}
+
+.action-buttons {
+  display:flex;
+  gap:4px;
+  flex-wrap:wrap;
+  min-width:135px;
+}
+
+.preview {
+  width:140px;
+  max-height:140px;
+  object-fit:cover;
+  margin:5px 0 13px;
+}
+
+@media(max-width:650px) {
+  header {
+    padding:20px;
+    align-items:flex-start;
+  }
+
+  header h1 {
+    font-size:26px;
+  }
+
+  .cards {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .grid2 {
+    grid-template-columns:1fr;
+  }
+
+  .panel {
+    padding:17px;
+  }
+
+  main {
+    margin-top:22px;
+  }
 }
 </style>
 </head>
 
 <body>
+
 <header>
   <div>
     <h1>Beatriz &amp; Gustavo</h1>
@@ -110,6 +249,8 @@ th { font-weight: 600; background: var(--ivory); }
 </header>
 
 <main>
+
+  <!-- LOGIN -->
   <section id="login-panel" class="panel login">
     <h2>Bem-vinda</h2>
     <p>Entre com o e-mail e a senha da sua conta administradora.</p>
@@ -121,34 +262,59 @@ th { font-weight: 600; background: var(--ivory); }
       <label for="password">Senha</label>
       <input id="password" type="password" autocomplete="current-password" required>
 
-      <button type="submit">Entrar no painel</button>
+      <button id="login-submit" type="submit">Entrar no painel</button>
     </form>
-    <p id="login-status" class="status" role="status"></p>
+
+    <p id="login-status" class="status" role="status" aria-live="polite"></p>
   </section>
 
+  <!-- PAINEL -->
   <section id="dashboard" class="hidden">
+
     <div class="row" style="justify-content:space-between;margin-bottom:18px">
       <h2>Visão geral</h2>
       <button id="refresh" class="secondary" type="button">Atualizar dados</button>
     </div>
 
+    <!-- ESTATÍSTICAS -->
     <div class="cards">
-      <div class="metric"><span>Convidados cadastrados</span><strong id="total-guests">—</strong></div>
-      <div class="metric"><span>Confirmações positivas</span><strong id="yes-count">—</strong></div>
-      <div class="metric"><span>Respostas negativas</span><strong id="no-count">—</strong></div>
-      <div class="metric"><span>Pessoas confirmadas</span><strong id="party-count">—</strong></div>
+      <div class="metric">
+        <span>Convidados cadastrados</span>
+        <strong id="total-guests">—</strong>
+      </div>
+
+      <div class="metric">
+        <span>Confirmações positivas</span>
+        <strong id="yes-count">—</strong>
+      </div>
+
+      <div class="metric">
+        <span>Respostas negativas</span>
+        <strong id="no-count">—</strong>
+      </div>
+
+      <div class="metric">
+        <span>Pessoas confirmadas</span>
+        <strong id="party-count">—</strong>
+      </div>
     </div>
 
+    <!-- LISTA DE CONVIDADOS -->
     <section class="panel">
       <h3>Convidados e confirmações</h3>
-      <p class="status">Edite os dados dos convidados ou exclua cadastros. O código do convite não aparece nesta tabela.</p>
+      <p class="status">Edite os dados dos convidados ou exclua cadastros.</p>
 
       <div class="table-wrap">
         <table>
           <thead>
             <tr>
-              <th>Convidado</th><th>E-mail</th><th>Telefone</th>
-              <th>Presença</th><th>Pessoas</th><th>Resposta em</th><th>Ações</th>
+              <th>Convidado</th>
+              <th>E-mail</th>
+              <th>Telefone</th>
+              <th>Presença</th>
+              <th>Pessoas</th>
+              <th>Resposta em</th>
+              <th>Ações</th>
             </tr>
           </thead>
           <tbody id="guest-rows">
@@ -156,34 +322,42 @@ th { font-weight: 600; background: var(--ivory); }
           </tbody>
         </table>
       </div>
-      <p id="guest-status" class="status" role="status"></p>
+
+      <p id="guest-status" class="status" role="status" aria-live="polite"></p>
     </section>
 
+    <!-- CADASTRO E EDIÇÃO DE CONVIDADOS -->
     <section class="panel">
       <h3 id="guest-form-title">Cadastrar convidado</h3>
-      <p class="status">Cada convidado recebe um código único. Guarde esse código e envie apenas para a pessoa correspondente.</p>
 
       <form id="guest-form" class="grid2">
         <div>
           <label for="guest-name">Nome completo</label>
           <input id="guest-name" required maxlength="150">
         </div>
+
         <div>
           <label for="guest-email">E-mail (opcional)</label>
           <input id="guest-email" type="email" maxlength="254">
         </div>
+
         <div>
           <label for="guest-phone">Telefone (opcional)</label>
           <input id="guest-phone" maxlength="40">
         </div>
+
         <div class="row" style="align-self:end">
           <button id="guest-submit" type="submit">Cadastrar convidado</button>
-          <button id="guest-cancel" class="secondary hidden" type="button">Cancelar edição</button>
+          <button id="guest-cancel" class="secondary hidden" type="button">
+            Cancelar edição
+          </button>
         </div>
       </form>
-      <p id="new-guest-status" class="status" role="status"></p>
+
+      <p id="new-guest-status" class="status" role="status" aria-live="polite"></p>
     </section>
 
+    <!-- PRESENTES -->
     <section class="panel">
       <h3>Lista de presentes</h3>
       <p class="status">Edite os nomes, descrições, imagens e links de compra dos presentes.</p>
@@ -191,7 +365,12 @@ th { font-weight: 600; background: var(--ivory); }
       <div class="table-wrap">
         <table>
           <thead>
-            <tr><th>Presente</th><th>Descrição</th><th>Link de compra</th><th>Ações</th></tr>
+            <tr>
+              <th>Presente</th>
+              <th>Descrição</th>
+              <th>Link de compra</th>
+              <th>Ações</th>
+            </tr>
           </thead>
           <tbody id="gift-rows">
             <tr><td colspan="4">Carregando...</td></tr>
@@ -215,9 +394,8 @@ th { font-weight: 600; background: var(--ivory); }
         <div>
           <label for="gift-image-file">Foto do presente</label>
           <input id="gift-image-file" type="file" accept="image/png,image/jpeg,image/webp">
-          <img id="gift-image-preview" class="hidden" alt="Prévia do presente"
-               style="width:140px;max-height:140px;object-fit:cover;margin:5px 0 13px">
-          <p class="status">Escolha uma foto PNG, JPG ou WebP na galeria. Tamanho máximo: 5 MB.</p>
+          <img id="gift-image-preview" class="hidden preview" alt="Prévia do presente">
+          <p class="status">PNG, JPG ou WebP. Tamanho máximo: 5 MB.</p>
         </div>
 
         <div>
@@ -227,21 +405,30 @@ th { font-weight: 600; background: var(--ivory); }
 
         <div class="row">
           <button id="gift-submit" type="submit">Adicionar presente</button>
-          <button id="gift-cancel" class="secondary hidden" type="button">Cancelar edição</button>
+          <button id="gift-cancel" class="secondary hidden" type="button">
+            Cancelar edição
+          </button>
         </div>
       </form>
-      <p id="gift-status" class="status" role="status"></p>
+
+      <p id="gift-status" class="status" role="status" aria-live="polite"></p>
     </section>
+
   </section>
 </main>
 
 <script type="module">
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
+/* CONFIGURAÇÃO SUPABASE */
 const SUPABASE_URL = 'https://otzxfppshwsqlxlmkbat.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_dEppruYDF1VaD73bXZcNmg_MszVkpYG';
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+const supabase = createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
+
 const $ = id => document.getElementById(id);
 
 let editingGuestId = null;
@@ -250,59 +437,78 @@ let currentGiftImageUrl = null;
 let giftPreviewObjectUrl = null;
 let loadingDashboard = false;
 
-function showStatus(id, message) {
-  $(id).textContent = message || '';
+function status(id, message = '') {
+  $(id).textContent = message;
 }
 
 function safeUrl(value) {
   if (!value) return null;
+
   try {
     const url = new URL(value);
-    return ['https:', 'http:'].includes(url.protocol) ? url.href : null;
+
+    if (url.protocol === 'https:' || url.protocol === 'http:') {
+      return url.href;
+    }
+
+    return null;
   } catch {
     return null;
   }
 }
 
-function addCell(row, value) {
-  const cell = document.createElement('td');
-  cell.textContent = value ?? '—';
-  row.appendChild(cell);
-  return cell;
+function cell(row, value) {
+  const td = document.createElement('td');
+  td.textContent = value ?? '—';
+  row.appendChild(td);
+  return td;
 }
 
-function makeButton(label, className, onClick) {
-  const button = document.createElement('button');
-  button.type = 'button';
-  button.textContent = label;
-  if (className) button.className = className;
-  button.addEventListener('click', onClick);
-  return button;
+function makeButton(label, className, handler) {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.textContent = label;
+
+  if (className) b.className = className;
+
+  b.addEventListener('click', handler);
+  return b;
 }
 
-function setLoggedOutView(message = '') {
+/* LOGIN E SESSÃO */
+function showLoggedOut(message = '') {
   $('login-panel').classList.remove('hidden');
   $('dashboard').classList.add('hidden');
   $('logout').classList.add('hidden');
-  showStatus('login-status', message);
+  status('login-status', message);
+}
+
+function showLoginError(message) {
+  status('login-status', message);
 }
 
 async function checkAdmin() {
-  const { data: { user }, error: userError } = await supabase.auth.getUser();
+  const { data: { user }, error: userError } =
+    await supabase.auth.getUser();
 
   if (userError || !user) {
-    setLoggedOutView();
+    showLoggedOut();
     return false;
   }
 
-  const { data: isAdmin, error } = await supabase.rpc('is_wedding_admin');
+  const { data: isAdmin, error } =
+    await supabase.rpc('is_wedding_admin');
 
   if (error || isAdmin !== true) {
     $('login-panel').classList.remove('hidden');
     $('dashboard').classList.add('hidden');
     $('logout').classList.remove('hidden');
-    showStatus('login-status',
-      'Esta conta não tem acesso administrativo. Confira se o UID dela está cadastrado na tabela admin_users.');
+
+    showLoginError(
+      'Login realizado, mas esta conta não tem permissão administrativa. ' +
+      'Confira o UID cadastrado em admin_users e a função is_wedding_admin no Supabase.'
+    );
+
     return false;
   }
 
@@ -316,69 +522,101 @@ async function checkAdmin() {
 
 $('login-form').addEventListener('submit', async event => {
   event.preventDefault();
-  showStatus('login-status', 'Entrando...');
 
-  const { error } = await supabase.auth.signInWithPassword({
-    email: $('email').value.trim(),
-    password: $('password').value
-  });
+  const btn = $('login-submit');
+  btn.disabled = true;
+  btn.textContent = 'Entrando...';
 
-  if (error) {
-    showStatus('login-status', 'Não foi possível entrar. Confira o e-mail e a senha.');
-    return;
+  status('login-status', 'Verificando acesso...');
+
+  try {
+    const { error } = await supabase.auth.signInWithPassword({
+      email: $('email').value.trim(),
+      password: $('password').value
+    });
+
+    if (error) {
+      showLoginError(
+        'Não foi possível entrar. Confira o e-mail e a senha da conta administradora.'
+      );
+      return;
+    }
+
+    await checkAdmin();
+
+  } catch (error) {
+    console.error(error);
+    showLoginError(
+      'Erro de conexão ao tentar entrar. Atualize a página e tente novamente.'
+    );
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Entrar no painel';
   }
-
-  await checkAdmin();
 });
 
 $('logout').addEventListener('click', async () => {
   await supabase.auth.signOut();
   resetGuestForm();
   resetGiftForm();
-  setLoggedOutView('Você saiu do painel.');
+  showLoggedOut('Você saiu do painel.');
 });
 
 $('refresh').addEventListener('click', loadDashboard);
 
-/* Carregar convidados, confirmações e estatísticas */
+/* CARREGAR ESTATÍSTICAS E CONVIDADOS */
 async function loadDashboard() {
   if (loadingDashboard) return;
+
   loadingDashboard = true;
-  showStatus('guest-status', 'Carregando convidados...');
+  status('guest-status', 'Carregando convidados...');
 
   try {
     const [
       { data: guests, error: guestsError },
       { data: rsvps, error: rsvpsError }
     ] = await Promise.all([
-      supabase.from('guests')
+      supabase
+        .from('guests')
         .select('id,full_name,email,phone')
         .order('full_name'),
-      supabase.from('rsvps')
+
+      supabase
+        .from('rsvps')
         .select('guest_id,attending,party_count,responded_at')
     ]);
 
     if (guestsError || rsvpsError) {
       console.error(guestsError || rsvpsError);
-      showStatus('guest-status',
-        'Não foi possível carregar os dados. Confira as permissões RLS das tabelas guests e rsvps.');
-      $('guest-rows').replaceChildren();
 
-      const row = document.createElement('tr');
-      const cell = addCell(row, 'Dados indisponíveis.');
-      cell.colSpan = 7;
-      $('guest-rows').appendChild(row);
+      status(
+        'guest-status',
+        'Não foi possível carregar os dados. Confira as permissões RLS de guests e rsvps.'
+      );
+
+      const tbody = $('guest-rows');
+      tbody.replaceChildren();
+
+      const tr = document.createElement('tr');
+      const td = cell(tr, 'Dados indisponíveis.');
+      td.colSpan = 7;
+      tbody.appendChild(tr);
+
       return;
     }
 
+    /* Mantém a resposta mais recente de cada convidado */
     const latest = new Map();
 
-    (rsvps || []).forEach(response => {
-      const previous = latest.get(response.guest_id);
-      if (!previous ||
-          new Date(response.responded_at || 0) >
-          new Date(previous.responded_at || 0)) {
-        latest.set(response.guest_id, response);
+    (rsvps || []).forEach(rsvp => {
+      const old = latest.get(rsvp.guest_id);
+
+      if (
+        !old ||
+        new Date(rsvp.responded_at || 0) >
+        new Date(old.responded_at || 0)
+      ) {
+        latest.set(rsvp.guest_id, rsvp);
       }
     });
 
@@ -390,42 +628,60 @@ async function loadDashboard() {
     tbody.replaceChildren();
 
     (guests || []).forEach(guest => {
-      const response = latest.get(guest.id);
+      const rsvp = latest.get(guest.id);
 
-      if (response?.attending === true) {
+      if (rsvp?.attending === true) {
         yes++;
-        people += Number(response.party_count || 1);
-      } else if (response?.attending === false) {
+        people += Number(rsvp.party_count || 1);
+      } else if (rsvp?.attending === false) {
         no++;
       }
 
-      const row = document.createElement('tr');
-      addCell(row, guest.full_name || '—');
-      addCell(row, guest.email || '—');
-      addCell(row, guest.phone || '—');
-      addCell(row, !response ? 'Sem resposta' :
-        response.attending ? 'Confirmado' : 'Não comparecerá');
-      addCell(row, response ? String(response.party_count ?? '—') : '—');
-      addCell(row, response?.responded_at ?
-        new Date(response.responded_at).toLocaleString('pt-BR') : '—');
+      const tr = document.createElement('tr');
 
-      const actions = document.createElement('td');
-      const buttons = document.createElement('div');
-      buttons.className = 'action-buttons';
+      cell(tr, guest.full_name);
+      cell(tr, guest.email || '—');
+      cell(tr, guest.phone || '—');
 
-      buttons.appendChild(makeButton('Editar', 'secondary', () => startEditGuest(guest)));
-      buttons.appendChild(makeButton('Excluir', 'danger', () => deleteGuest(guest, Boolean(response))));
+      cell(
+        tr,
+        !rsvp
+          ? 'Sem resposta'
+          : rsvp.attending
+            ? 'Confirmado'
+            : 'Não comparecerá'
+      );
 
-      actions.appendChild(buttons);
-      row.appendChild(actions);
-      tbody.appendChild(row);
+      cell(tr, rsvp ? String(rsvp.party_count ?? '—') : '—');
+
+      cell(
+        tr,
+        rsvp?.responded_at
+          ? new Date(rsvp.responded_at).toLocaleString('pt-BR')
+          : '—'
+      );
+
+      const td = document.createElement('td');
+      const wrap = document.createElement('div');
+      wrap.className = 'action-buttons';
+
+      wrap.append(
+        makeButton('Editar', 'secondary', () => editGuest(guest)),
+        makeButton('Excluir', 'danger', () =>
+          deleteGuest(guest, Boolean(rsvp))
+        )
+      );
+
+      td.appendChild(wrap);
+      tr.appendChild(td);
+      tbody.appendChild(tr);
     });
 
-    if (!guests?.length) {
-      const row = document.createElement('tr');
-      const cell = addCell(row, 'Nenhum convidado cadastrado.');
-      cell.colSpan = 7;
-      tbody.appendChild(row);
+    if (!(guests || []).length) {
+      const tr = document.createElement('tr');
+      const td = cell(tr, 'Nenhum convidado cadastrado.');
+      td.colSpan = 7;
+      tbody.appendChild(tr);
     }
 
     $('total-guests').textContent = String((guests || []).length);
@@ -433,32 +689,42 @@ async function loadDashboard() {
     $('no-count').textContent = String(no);
     $('party-count').textContent = String(people);
 
-    showStatus('guest-status', 'Dados atualizados.');
+    status('guest-status', 'Dados atualizados.');
+
     await loadGifts();
+
   } catch (error) {
     console.error(error);
-    showStatus('guest-status', 'Ocorreu um erro ao carregar os dados.');
+    status('guest-status', 'Ocorreu um erro ao carregar os dados.');
   } finally {
     loadingDashboard = false;
   }
 }
 
-/* Cadastrar ou editar convidado */
-function startEditGuest(guest) {
+/* CADASTRO E EDIÇÃO DE CONVIDADOS */
+function editGuest(guest) {
   editingGuestId = guest.id;
+
   $('guest-name').value = guest.full_name || '';
   $('guest-email').value = guest.email || '';
   $('guest-phone').value = guest.phone || '';
+
   $('guest-form-title').textContent = 'Editar convidado';
   $('guest-submit').textContent = 'Salvar alterações';
   $('guest-cancel').classList.remove('hidden');
-  showStatus('new-guest-status', 'Editando: ' + guest.full_name);
-  $('guest-form').scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+  status('new-guest-status', 'Editando: ' + guest.full_name);
+
+  $('guest-form').scrollIntoView({
+    behavior: 'smooth',
+    block: 'center'
+  });
 }
 
 function resetGuestForm() {
   editingGuestId = null;
   $('guest-form').reset();
+
   $('guest-form-title').textContent = 'Cadastrar convidado';
   $('guest-submit').textContent = 'Cadastrar convidado';
   $('guest-cancel').classList.add('hidden');
@@ -466,14 +732,21 @@ function resetGuestForm() {
 
 $('guest-cancel').addEventListener('click', () => {
   resetGuestForm();
-  showStatus('new-guest-status', 'Edição cancelada.');
+  status('new-guest-status', 'Edição cancelada.');
 });
 
 $('guest-form').addEventListener('submit', async event => {
   event.preventDefault();
 
-  const isEditing = Boolean(editingGuestId);
-  showStatus('new-guest-status', isEditing ? 'Salvando alterações...' : 'Cadastrando...');
+  const editing = Boolean(editingGuestId);
+  const btn = $('guest-submit');
+
+  btn.disabled = true;
+
+  status(
+    'new-guest-status',
+    editing ? 'Salvando alterações...' : 'Cadastrando...'
+  );
 
   const payload = {
     full_name: $('guest-name').value.trim(),
@@ -481,269 +754,118 @@ $('guest-form').addEventListener('submit', async event => {
     phone: $('guest-phone').value.trim() || null
   };
 
-  if (!payload.full_name) {
-    showStatus('new-guest-status', 'Informe o nome completo.');
-    return;
-  }
-
-  let error;
-
-  if (isEditing) {
-    ({ error } = await supabase.from('guests')
-      .update(payload).eq('id', editingGuestId));
-  } else {
-    const invitationCode = crypto.randomUUID();
-
-    ({ error } = await supabase.from('guests')
-      .insert({ ...payload, invitation_code: invitationCode }));
-
-    if (!error) {
-      showStatus('new-guest-status',
-        'Convidado cadastrado! Código do convite: ' + invitationCode + '. Copie e guarde agora.');
-      resetGuestForm();
-      await loadDashboard();
+  try {
+    if (!payload.full_name) {
+      status('new-guest-status', 'Informe o nome completo.');
       return;
     }
-  }
 
-  if (error) {
+    let result;
+
+    if (editing) {
+      result = await supabase
+        .from('guests')
+        .update(payload)
+        .eq('id', editingGuestId);
+    } else {
+      result = await supabase
+        .from('guests')
+        .insert({
+          ...payload,
+          invitation_code: crypto.randomUUID()
+        });
+    }
+
+    if (result.error) throw result.error;
+
+    resetGuestForm();
+
+    status(
+      'new-guest-status',
+      editing
+        ? 'Convidado atualizado com sucesso.'
+        : 'Convidado cadastrado com sucesso.'
+    );
+
+    await loadDashboard();
+
+  } catch (error) {
     console.error(error);
-    showStatus('new-guest-status',
-      'Não foi possível salvar. Confira as permissões de INSERT/UPDATE da tabela guests.');
-    return;
-  }
 
-  resetGuestForm();
-  showStatus('new-guest-status', 'Convidado atualizado com sucesso.');
-  await loadDashboard();
+    status(
+      'new-guest-status',
+      'Não foi possível salvar. Confira as permissões e as colunas da tabela guests no Supabase.'
+    );
+  } finally {
+    btn.disabled = false;
+  }
 });
 
-/* Excluir convidado */
 async function deleteGuest(guest, hasResponse) {
   const warning = hasResponse
-    ? '\n\nEste convidado possui uma resposta de presença. O banco pode impedir a exclusão enquanto existir essa resposta. Não apagaremos a resposta automaticamente.'
+    ? '\n\nHá uma resposta de presença vinculada. O banco pode impedir a exclusão.'
     : '';
 
-  if (!confirm(`Deseja realmente excluir ${guest.full_name}?${warning}`)) return;
-
-  const { error } = await supabase.from('guests')
-    .delete().eq('id', guest.id);
-
-  if (error) {
-    console.error(error);
-    alert('Não foi possível excluir o convidado. Se ele já respondeu ao RSVP, pode existir uma resposta vinculada. Verifique os registros e as políticas do Supabase antes de tentar novamente.');
+  if (!confirm(`Deseja realmente excluir ${guest.full_name}?${warning}`)) {
     return;
   }
 
-  if (editingGuestId === guest.id) resetGuestForm();
-  showStatus('guest-status', 'Convidado excluído.');
+  const { error } = await supabase
+    .from('guests')
+    .delete()
+    .eq('id', guest.id);
+
+  if (error) {
+    console.error(error);
+
+    alert(
+      'Não foi possível excluir. Confira se há uma resposta vinculada e as permissões DELETE no Supabase.'
+    );
+
+    return;
+  }
+
+  if (editingGuestId === guest.id) {
+    resetGuestForm();
+  }
+
+  status('guest-status', 'Convidado excluído.');
   await loadDashboard();
 }
 
-
+/* GERENCIAMENTO DE PRESENTES */
 async function loadGifts() {
-  const giftsList = document.getElementById('gifts-list');
-  const giftsStatus = document.getElementById('gifts-status');
-
-  try {
-    giftsStatus.textContent = 'Carregando presentes...';
-
-    const headers = {
-      'apikey': SUPABASE_PUBLISHABLE_KEY,
-      'Authorization': `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
-      'Content-Type': 'application/json'
-    };
-
-    // Busca os presentes cadastrados
-    const giftsResponse = await fetch(
-      `${SUPABASE_URL}/rest/v1/gifts?select=id,name,description,image_url,product_url&order=name.asc`,
-      { headers }
-    );
-
-    if (!giftsResponse.ok) {
-      throw new Error('Não foi possível carregar os presentes.');
-    }
-
-    const gifts = await giftsResponse.json();
-
-    // Busca somente os IDs já reservados, sem expor os nomes
-    const reservationsResponse = await fetch(
-      `${SUPABASE_URL}/rest/v1/rpc/reserved_gift_ids`,
-      {
-        method: 'POST',
-        headers,
-        body: JSON.stringify({})
-      }
-    );
-
-    if (!reservationsResponse.ok) {
-      throw new Error('Não foi possível verificar as reservas.');
-    }
-
-    const reservations = await reservationsResponse.json();
-    const reservedIds = new Set(
-      reservations.map(item => item.gift_id)
-    );
-
-    giftsList.replaceChildren();
-
-    if (!gifts.length) {
-      giftsStatus.textContent =
-        'Nossa lista está sendo preparada. Em breve, teremos novidades por aqui.';
-      return;
-    }
-
-    gifts.forEach((gift, index) => {
-      const card = document.createElement('article');
-      card.className = 'gift';
-
-      const imageUrl = typeof gift.image_url === 'string'
-        ? gift.image_url.trim()
-        : '';
-
-      if (imageUrl && isValidHttpUrl(imageUrl)) {
-        const image = document.createElement('img');
-        image.className = 'gift-image';
-        image.src = imageUrl;
-        image.alt = gift.name || `Presente ${index + 1}`;
-        image.loading = 'lazy';
-        image.referrerPolicy = 'no-referrer';
-
-        image.addEventListener('error', () => {
-          const placeholder = document.createElement('div');
-          placeholder.className = 'gift-placeholder';
-          placeholder.textContent = String(index + 1).padStart(2, '0');
-          image.replaceWith(placeholder);
-        }, { once: true });
-
-        card.appendChild(image);
-      } else {
-        const placeholder = document.createElement('div');
-        placeholder.className = 'gift-placeholder';
-        placeholder.textContent = String(index + 1).padStart(2, '0');
-        card.appendChild(placeholder);
-      }
-
-      const title = document.createElement('h3');
-      title.textContent = gift.name || 'Presente';
-      card.appendChild(title);
-
-      if (gift.description) {
-        const description = document.createElement('p');
-        description.textContent = gift.description;
-        card.appendChild(description);
-      }
-
-      const isReserved = reservedIds.has(gift.id);
-      const reserveButton = document.createElement('button');
-
-      reserveButton.type = 'button';
-      reserveButton.className = 'btn';
-      reserveButton.textContent = isReserved
-        ? 'Presente reservado'
-        : 'Reservar presente';
-      reserveButton.disabled = isReserved;
-
-      if (isReserved) {
-        reserveButton.setAttribute('aria-label', `${gift.name}: já reservado`);
-      }
-
-      reserveButton.addEventListener('click', async () => {
-        const guestName = prompt(
-          `Quem está reservando "${gift.name}"? Informe seu nome:`
-        );
-
-        if (guestName === null) return;
-
-        if (guestName.trim().length < 2) {
-          alert('Por favor, informe seu nome.');
-          return;
-        }
-
-        reserveButton.disabled = true;
-        reserveButton.textContent = 'Reservando...';
-
-        try {
-          const response = await fetch(
-            `${SUPABASE_URL}/rest/v1/rpc/reserve_gift`,
-            {
-              method: 'POST',
-              headers,
-              body: JSON.stringify({
-                p_gift_id: gift.id,
-                p_guest_name: guestName.trim()
-              })
-            }
-          );
-
-          const result = await response.json().catch(() => ({}));
-
-          if (!response.ok) {
-            throw new Error(
-              result.message ||
-              result.details ||
-              'Este presente pode já ter sido reservado. Atualize a lista.'
-            );
-          }
-
-          alert('Presente reservado com sucesso! ❤️');
-          await loadGifts();
-        } catch (error) {
-          alert(error.message || 'Não foi possível reservar o presente.');
-          await loadGifts();
-        }
-      });
-
-      card.appendChild(reserveButton);
-
-      const productUrl = typeof gift.product_url === 'string'
-        ? gift.product_url.trim()
-        : '';
-
-      if (productUrl && isValidHttpUrl(productUrl)) {
-        const link = document.createElement('a');
-        link.className = 'btn';
-        link.href = productUrl;
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-        link.textContent = 'Ver presente';
-        card.appendChild(link);
-      }
-
-      giftsList.appendChild(card);
-    });
-
-    giftsStatus.textContent = '';
-  } catch (error) {
-    giftsStatus.textContent =
-      error.message ||
-      'Não foi possível carregar os presentes. Tente novamente mais tarde.';
-  }
-}
-
-loadGifts();
-
   const tbody = $('gift-rows');
-  tbody.replaceChildren();
 
-  const { data, error } = await supabase.from('gifts')
+  tbody.replaceChildren();
+  status('gift-status', 'Carregando presentes...');
+
+  const { data, error } = await supabase
+    .from('gifts')
     .select('id,name,description,image_url,product_url')
     .order('name');
 
   if (error) {
     console.error(error);
-    const row = document.createElement('tr');
-    const cell = addCell(row, 'Não foi possível carregar os presentes.');
-    cell.colSpan = 4;
-    tbody.appendChild(row);
-    showStatus('gift-status', 'Confira a permissão de leitura da tabela gifts.');
+
+    const tr = document.createElement('tr');
+    const td = cell(tr, 'Não foi possível carregar os presentes.');
+    td.colSpan = 4;
+    tbody.appendChild(tr);
+
+    status(
+      'gift-status',
+      'Confira as permissões de leitura da tabela gifts.'
+    );
+
     return;
   }
 
   (data || []).forEach(gift => {
-    const row = document.createElement('tr');
-    addCell(row, gift.name || '—');
-    addCell(row, gift.description || '—');
+    const tr = document.createElement('tr');
+
+    cell(tr, gift.name || '—');
+    cell(tr, gift.description || '—');
 
     const linkCell = document.createElement('td');
     const url = safeUrl(gift.product_url);
@@ -759,65 +881,33 @@ loadGifts();
       linkCell.textContent = 'Sem link';
     }
 
-    row.appendChild(linkCell);
+    tr.appendChild(linkCell);
 
-    const actionsCell = document.createElement('td');
-    const buttons = document.createElement('div');
-    buttons.className = 'action-buttons';
+    const td = document.createElement('td');
+    const wrap = document.createElement('div');
+    wrap.className = 'action-buttons';
 
-    buttons.appendChild(makeButton('Editar', 'secondary', () => startEditGift(gift)));
-    buttons.appendChild(makeButton('Excluir', 'danger', () => deleteGift(gift)));
+    wrap.append(
+      makeButton('Editar', 'secondary', () => editGift(gift)),
+      makeButton('Excluir', 'danger', () => deleteGift(gift))
+    );
 
-    actionsCell.appendChild(buttons);
-    row.appendChild(actionsCell);
-    tbody.appendChild(row);
+    td.appendChild(wrap);
+    tr.appendChild(td);
+    tbody.appendChild(tr);
   });
 
-  if (!data?.length) {
-    const row = document.createElement('tr');
-    const cell = addCell(row, 'Nenhum presente cadastrado.');
-    cell.colSpan = 4;
-    tbody.appendChild(row);
+  if (!(data || []).length) {
+    const tr = document.createElement('tr');
+    const td = cell(tr, 'Nenhum presente cadastrado.');
+    td.colSpan = 4;
+    tbody.appendChild(tr);
   }
 
-  showStatus('gift-status', 'Lista de presentes atualizada.');
+  status('gift-status', 'Lista de presentes atualizada.');
 }
 
-/* Enviar imagem para o Supabase Storage */
-async function uploadGiftImage(file) {
-  if (!file) return currentGiftImageUrl;
-
-  if (!['image/png', 'image/jpeg', 'image/webp'].includes(file.type)) {
-    throw new Error('Formato de imagem não permitido. Escolha PNG, JPG ou WebP.');
-  }
-
-  if (file.size > 5 * 1024 * 1024) {
-    throw new Error('A foto deve ter no máximo 5 MB.');
-  }
-
-  const extension = {
-    'image/png': 'png',
-    'image/jpeg': 'jpg',
-    'image/webp': 'webp'
-  }[file.type];
-
-  const path = `${crypto.randomUUID()}.${extension}`;
-
-  const { error } = await supabase.storage
-    .from('presentes')
-    .upload(path, file, {
-      contentType: file.type,
-      upsert: false
-    });
-
-  if (error) throw error;
-
-  const { data } = supabase.storage.from('presentes').getPublicUrl(path);
-  return data.publicUrl;
-}
-
-/* Cadastrar ou editar presente */
-function startEditGift(gift) {
+function editGift(gift) {
   editingGiftId = gift.id;
   currentGiftImageUrl = gift.image_url || null;
 
@@ -827,6 +917,7 @@ function startEditGift(gift) {
   $('gift-url').value = gift.product_url || '';
 
   const preview = $('gift-image-preview');
+
   preview.src = currentGiftImageUrl || '';
   preview.classList.toggle('hidden', !currentGiftImageUrl);
 
@@ -838,8 +929,13 @@ function startEditGift(gift) {
   $('gift-form-title').textContent = 'Editar presente';
   $('gift-submit').textContent = 'Salvar alterações';
   $('gift-cancel').classList.remove('hidden');
-  showStatus('gift-status', 'Editando: ' + gift.name);
-  $('gift-form').scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+  status('gift-status', 'Editando: ' + gift.name);
+
+  $('gift-form').scrollIntoView({
+    behavior: 'smooth',
+    block: 'center'
+  });
 }
 
 function resetGiftForm() {
@@ -847,7 +943,7 @@ function resetGiftForm() {
   currentGiftImageUrl = null;
 
   $('gift-form').reset();
-  $('gift-image-file').value = '';
+
   $('gift-image-preview').src = '';
   $('gift-image-preview').classList.add('hidden');
 
@@ -863,10 +959,9 @@ function resetGiftForm() {
 
 $('gift-cancel').addEventListener('click', () => {
   resetGiftForm();
-  showStatus('gift-status', 'Edição cancelada.');
+  status('gift-status', 'Edição cancelada.');
 });
 
-/* Pré-visualizar a foto selecionada */
 $('gift-image-file').addEventListener('change', () => {
   const file = $('gift-image-file').files[0];
   const preview = $('gift-image-preview');
@@ -884,13 +979,13 @@ $('gift-image-file').addEventListener('change', () => {
 
   if (!['image/png', 'image/jpeg', 'image/webp'].includes(file.type)) {
     $('gift-image-file').value = '';
-    showStatus('gift-status', 'Escolha uma imagem PNG, JPG ou WebP.');
+    status('gift-status', 'Escolha uma imagem PNG, JPG ou WebP.');
     return;
   }
 
   if (file.size > 5 * 1024 * 1024) {
     $('gift-image-file').value = '';
-    showStatus('gift-status', 'A foto deve ter no máximo 5 MB.');
+    status('gift-status', 'A foto deve ter no máximo 5 MB.');
     return;
   }
 
@@ -899,96 +994,158 @@ $('gift-image-file').addEventListener('change', () => {
   preview.classList.remove('hidden');
 });
 
-/* Salvar presente: existe apenas um manipulador */
+async function uploadGiftImage(file) {
+  if (!file) return currentGiftImageUrl;
+
+  if (!['image/png', 'image/jpeg', 'image/webp'].includes(file.type)) {
+    throw new Error('Formato não permitido. Escolha PNG, JPG ou WebP.');
+  }
+
+  if (file.size > 5 * 1024 * 1024) {
+    throw new Error('A foto deve ter no máximo 5 MB.');
+  }
+
+  const extensions = {
+    'image/png': 'png',
+    'image/jpeg': 'jpg',
+    'image/webp': 'webp'
+  };
+
+  const path = `${crypto.randomUUID()}.${extensions[file.type]}`;
+
+  const { error } = await supabase
+    .storage
+    .from('presentes')
+    .upload(path, file, {
+      contentType: file.type,
+      upsert: false
+    });
+
+  if (error) throw error;
+
+  return supabase
+    .storage
+    .from('presentes')
+    .getPublicUrl(path)
+    .data
+    .publicUrl;
+}
+
 $('gift-form').addEventListener('submit', async event => {
   event.preventDefault();
 
-  const isEditing = Boolean(editingGiftId);
-  const submitButton = $('gift-submit');
-  submitButton.disabled = true;
+  const btn = $('gift-submit');
+  const editing = Boolean(editingGiftId);
+
+  btn.disabled = true;
 
   try {
-    showStatus('gift-status',
-      isEditing ? 'Salvando alterações...' : 'Adicionando presente...');
+    status(
+      'gift-status',
+      editing ? 'Salvando alterações...' : 'Adicionando presente...'
+    );
 
     const name = $('gift-name').value.trim();
-    const productUrl = $('gift-url').value.trim();
+    const url = $('gift-url').value.trim();
     const file = $('gift-image-file').files[0] || null;
 
     if (!name) {
-      showStatus('gift-status', 'Informe o nome do presente.');
+      status('gift-status', 'Informe o nome do presente.');
       return;
     }
 
-    if (productUrl && !safeUrl(productUrl)) {
-      showStatus('gift-status', 'Informe um link de compra válido.');
+    if (url && !safeUrl(url)) {
+      status('gift-status', 'Informe um link de compra válido.');
       return;
     }
 
-    const imageUrl = await uploadGiftImage(file);
+    const image_url = await uploadGiftImage(file);
 
     const payload = {
       name,
       description: $('gift-description').value.trim() || null,
-      image_url: imageUrl || null,
-      product_url: productUrl || null
+      image_url: image_url || null,
+      product_url: url || null
     };
 
-    let error;
+    const result = editing
+      ? await supabase
+          .from('gifts')
+          .update(payload)
+          .eq('id', editingGiftId)
+      : await supabase
+          .from('gifts')
+          .insert(payload);
 
-    if (isEditing) {
-      ({ error } = await supabase.from('gifts')
-        .update(payload).eq('id', editingGiftId));
-    } else {
-      ({ error } = await supabase.from('gifts').insert(payload));
-    }
-
-    if (error) throw error;
+    if (result.error) throw result.error;
 
     resetGiftForm();
 
-    showStatus('gift-status',
-      isEditing ? 'Presente atualizado com sucesso.' : 'Presente adicionado com sucesso.');
+    status(
+      'gift-status',
+      editing
+        ? 'Presente atualizado com sucesso.'
+        : 'Presente adicionado com sucesso.'
+    );
 
     await loadGifts();
+
   } catch (error) {
     console.error(error);
-    showStatus('gift-status',
-      error.message || 'Não foi possível salvar. Verifique as permissões do Storage e da tabela gifts.');
+
+    status(
+      'gift-status',
+      error.message ||
+      'Não foi possível salvar o presente. Confira as permissões do Storage e da tabela gifts.'
+    );
   } finally {
-    submitButton.disabled = false;
+    btn.disabled = false;
   }
 });
 
-/* Excluir presente */
 async function deleteGift(gift) {
-  if (!confirm(`Deseja excluir o presente "${gift.name}"?`)) return;
-
-  const { error } = await supabase.from('gifts')
-    .delete().eq('id', gift.id);
-
-  if (error) {
-    console.error(error);
-    alert('Não foi possível excluir o presente. Confira as permissões DELETE da tabela gifts.');
+  if (!confirm(`Deseja excluir o presente "${gift.name}"?`)) {
     return;
   }
 
-  if (editingGiftId === gift.id) resetGiftForm();
+  const { error } = await supabase
+    .from('gifts')
+    .delete()
+    .eq('id', gift.id);
 
-  showStatus('gift-status', 'Presente excluído.');
+  if (error) {
+    console.error(error);
+
+    alert(
+      'Não foi possível excluir o presente. Confira as permissões DELETE da tabela gifts.'
+    );
+
+    return;
+  }
+
+  if (editingGiftId === gift.id) {
+    resetGiftForm();
+  }
+
+  status('gift-status', 'Presente excluído.');
   await loadGifts();
 }
 
-/* Revalidar a sessão quando ela mudar */
+/* ATUALIZA A TELA QUANDO A SESSÃO TERMINA */
 supabase.auth.onAuthStateChange(event => {
   if (event === 'SIGNED_OUT') {
-    setLoggedOutView('Você saiu do painel.');
-  } else if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
-    setTimeout(() => checkAdmin(), 0);
+    showLoggedOut('Você saiu do painel.');
   }
 });
 
-checkAdmin();
+/* VERIFICA A SESSÃO AO ABRIR A PÁGINA */
+checkAdmin().catch(error => {
+  console.error(error);
+
+  showLoggedOut(
+    'Não foi possível verificar a sessão. Atualize a página e tente novamente.'
+  );
+});
 </script>
 </body>
 </html>
