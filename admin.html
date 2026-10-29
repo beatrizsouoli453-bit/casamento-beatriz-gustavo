@@ -18,16 +18,13 @@
   --serif:'Cormorant Garamond',Georgia,serif;
   --sans:'DM Sans',Arial,sans-serif;
 }
-
 * { box-sizing:border-box; }
-
 body {
   margin:0;
   background:var(--ivory);
   color:var(--ink);
   font:14px/1.6 var(--sans);
 }
-
 header {
   background:var(--ink);
   color:white;
@@ -37,46 +34,23 @@ header {
   align-items:center;
   gap:15px;
 }
-
-header h1 {
-  font:32px var(--serif);
-  margin:0;
-}
-
+header h1 { font:32px var(--serif); margin:0; }
 header p {
   margin:0;
   color:#ddd4ca;
   font-size:11px;
   letter-spacing:.1em;
 }
-
-main {
-  max-width:1200px;
-  margin:35px auto;
-  padding:0 18px;
-}
-
-h2 {
-  font:32px var(--serif);
-  margin:0 0 16px;
-}
-
-h3 {
-  font:25px var(--serif);
-  margin:0 0 12px;
-}
-
+main { max-width:1200px; margin:35px auto; padding:0 18px; }
+h2 { font:32px var(--serif); margin:0 0 16px; }
+h3 { font:25px var(--serif); margin:0 0 12px; }
 .panel {
   background:white;
   border:1px solid var(--line);
   padding:24px;
   margin-bottom:22px;
 }
-
-input,button,select,textarea {
-  font:inherit;
-}
-
+input,button,select,textarea { font:inherit; }
 input,select,textarea {
   width:100%;
   padding:12px;
@@ -85,14 +59,12 @@ input,select,textarea {
   color:var(--ink);
   margin:5px 0 13px;
 }
-
 label {
   display:block;
   font-size:11px;
   letter-spacing:.08em;
   text-transform:uppercase;
 }
-
 button {
   display:inline-block;
   background:var(--ink);
@@ -105,65 +77,26 @@ button {
   margin:2px;
   border-radius:2px;
 }
-
-button.secondary {
-  background:white;
-  color:var(--ink);
-}
-
-button.danger {
-  background:#8c3939;
-  border-color:#8c3939;
-}
-
-button:disabled {
-  opacity:.5;
-  cursor:not-allowed;
-}
-
-.hidden {
-  display:none!important;
-}
-
+button.secondary { background:white; color:var(--ink); }
+button.danger { background:#8c3939; border-color:#8c3939; }
+button:disabled { opacity:.5; cursor:not-allowed; }
+.hidden { display:none!important; }
 .status {
   font-size:13px;
   color:var(--muted);
   overflow-wrap:anywhere;
 }
-
 .cards {
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
   gap:12px;
   margin-bottom:22px;
 }
-
-.metric {
-  background:white;
-  border:1px solid var(--line);
-  padding:18px;
-}
-
-.metric span {
-  display:block;
-  font-size:11px;
-  color:var(--muted);
-}
-
-.metric strong {
-  font:34px var(--serif);
-}
-
-.table-wrap {
-  overflow-x:auto;
-}
-
-table {
-  border-collapse:collapse;
-  width:100%;
-  font-size:12px;
-}
-
+.metric { background:white; border:1px solid var(--line); padding:18px; }
+.metric span { display:block; font-size:11px; color:var(--muted); }
+.metric strong { font:34px var(--serif); }
+.table-wrap { overflow-x:auto; }
+table { border-collapse:collapse; width:100%; font-size:12px; }
 th,td {
   text-align:left;
   padding:11px;
@@ -171,75 +104,25 @@ th,td {
   vertical-align:top;
   overflow-wrap:anywhere;
 }
-
-th {
-  font-weight:600;
-  background:var(--ivory);
-}
-
-.grid2 {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
-}
-
-.row {
-  display:flex;
-  gap:8px;
-  align-items:center;
-  flex-wrap:wrap;
-}
-
-.login {
-  max-width:430px;
-  margin:60px auto;
-}
-
-.action-buttons {
-  display:flex;
-  gap:4px;
-  flex-wrap:wrap;
-  min-width:135px;
-}
-
-.preview {
-  width:140px;
-  max-height:140px;
-  object-fit:cover;
-  margin:5px 0 13px;
-}
+th { font-weight:600; background:var(--ivory); }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.row { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+.login { max-width:430px; margin:60px auto; }
+.action-buttons { display:flex; gap:4px; flex-wrap:wrap; min-width:135px; }
+.preview { width:140px; max-height:140px; object-fit:cover; margin:5px 0 13px; }
 
 @media(max-width:650px) {
-  header {
-    padding:20px;
-    align-items:flex-start;
-  }
-
-  header h1 {
-    font-size:26px;
-  }
-
-  .cards {
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-
-  .grid2 {
-    grid-template-columns:1fr;
-  }
-
-  .panel {
-    padding:17px;
-  }
-
-  main {
-    margin-top:22px;
-  }
+  header { padding:20px; align-items:flex-start; }
+  header h1 { font-size:26px; }
+  .cards { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .grid2 { grid-template-columns:1fr; }
+  .panel { padding:17px; }
+  main { margin-top:22px; }
 }
 </style>
 </head>
 
 <body>
-
 <header>
   <div>
     <h1>Beatriz &amp; Gustavo</h1>
@@ -249,186 +132,117 @@ th {
 </header>
 
 <main>
-
-  <!-- LOGIN -->
   <section id="login-panel" class="panel login">
     <h2>Bem-vinda</h2>
     <p>Entre com o e-mail e a senha da sua conta administradora.</p>
-
     <form id="login-form">
       <label for="email">E-mail</label>
       <input id="email" type="email" autocomplete="username" required>
-
       <label for="password">Senha</label>
       <input id="password" type="password" autocomplete="current-password" required>
-
       <button id="login-submit" type="submit">Entrar no painel</button>
     </form>
-
     <p id="login-status" class="status" role="status" aria-live="polite"></p>
   </section>
 
-  <!-- PAINEL -->
   <section id="dashboard" class="hidden">
-
     <div class="row" style="justify-content:space-between;margin-bottom:18px">
       <h2>Visão geral</h2>
       <button id="refresh" class="secondary" type="button">Atualizar dados</button>
     </div>
 
-    <!-- ESTATÍSTICAS -->
     <div class="cards">
-      <div class="metric">
-        <span>Convidados cadastrados</span>
-        <strong id="total-guests">—</strong>
-      </div>
-
-      <div class="metric">
-        <span>Confirmações positivas</span>
-        <strong id="yes-count">—</strong>
-      </div>
-
-      <div class="metric">
-        <span>Respostas negativas</span>
-        <strong id="no-count">—</strong>
-      </div>
-
-      <div class="metric">
-        <span>Pessoas confirmadas</span>
-        <strong id="party-count">—</strong>
-      </div>
+      <div class="metric"><span>Convidados cadastrados</span><strong id="total-guests">—</strong></div>
+      <div class="metric"><span>Confirmações positivas</span><strong id="yes-count">—</strong></div>
+      <div class="metric"><span>Respostas negativas</span><strong id="no-count">—</strong></div>
+      <div class="metric"><span>Pessoas confirmadas</span><strong id="party-count">—</strong></div>
     </div>
 
-    <!-- LISTA DE CONVIDADOS -->
     <section class="panel">
       <h3>Convidados e confirmações</h3>
       <p class="status">Edite os dados dos convidados ou exclua cadastros.</p>
-
       <div class="table-wrap">
         <table>
-          <thead>
-            <tr>
-              <th>Convidado</th>
-              <th>E-mail</th>
-              <th>Telefone</th>
-              <th>Presença</th>
-              <th>Pessoas</th>
-              <th>Resposta em</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody id="guest-rows">
-            <tr><td colspan="7">Carregando...</td></tr>
-          </tbody>
+          <thead><tr>
+            <th>Convidado</th><th>E-mail</th><th>Telefone</th>
+            <th>Presença</th><th>Pessoas</th><th>Resposta em</th><th>Ações</th>
+          </tr></thead>
+          <tbody id="guest-rows"><tr><td colspan="7">Carregando...</td></tr></tbody>
         </table>
       </div>
-
       <p id="guest-status" class="status" role="status" aria-live="polite"></p>
     </section>
 
-    <!-- CADASTRO E EDIÇÃO DE CONVIDADOS -->
     <section class="panel">
       <h3 id="guest-form-title">Cadastrar convidado</h3>
-
       <form id="guest-form" class="grid2">
-        <div>
-          <label for="guest-name">Nome completo</label>
-          <input id="guest-name" required maxlength="150">
-        </div>
-
-        <div>
-          <label for="guest-email">E-mail (opcional)</label>
-          <input id="guest-email" type="email" maxlength="254">
-        </div>
-
-        <div>
-          <label for="guest-phone">Telefone (opcional)</label>
-          <input id="guest-phone" maxlength="40">
-        </div>
-
+        <div><label for="guest-name">Nome completo</label><input id="guest-name" required maxlength="150"></div>
+        <div><label for="guest-email">E-mail (opcional)</label><input id="guest-email" type="email" maxlength="254"></div>
+        <div><label for="guest-phone">Telefone (opcional)</label><input id="guest-phone" maxlength="40"></div>
         <div class="row" style="align-self:end">
           <button id="guest-submit" type="submit">Cadastrar convidado</button>
-          <button id="guest-cancel" class="secondary hidden" type="button">
-            Cancelar edição
-          </button>
+          <button id="guest-cancel" class="secondary hidden" type="button">Cancelar edição</button>
         </div>
       </form>
-
       <p id="new-guest-status" class="status" role="status" aria-live="polite"></p>
     </section>
 
-    <!-- PRESENTES -->
     <section class="panel">
       <h3>Lista de presentes</h3>
       <p class="status">Edite os nomes, descrições, imagens e links de compra dos presentes.</p>
-
       <div class="table-wrap">
         <table>
-          <thead>
-            <tr>
-              <th>Presente</th>
-              <th>Descrição</th>
-              <th>Link de compra</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody id="gift-rows">
-            <tr><td colspan="4">Carregando...</td></tr>
-          </tbody>
+          <thead><tr><th>Presente</th><th>Descrição</th><th>Link de compra</th><th>Ações</th></tr></thead>
+          <tbody id="gift-rows"><tr><td colspan="4">Carregando...</td></tr></tbody>
         </table>
       </div>
 
       <h3 id="gift-form-title" style="margin-top:25px">Adicionar presente</h3>
-
       <form id="gift-form" class="grid2">
-        <div>
-          <label for="gift-name">Nome</label>
-          <input id="gift-name" required maxlength="150">
-        </div>
-
-        <div>
-          <label for="gift-description">Descrição</label>
-          <input id="gift-description" maxlength="500">
-        </div>
-
+        <div><label for="gift-name">Nome</label><input id="gift-name" required maxlength="150"></div>
+        <div><label for="gift-description">Descrição</label><input id="gift-description" maxlength="500"></div>
         <div>
           <label for="gift-image-file">Foto do presente</label>
           <input id="gift-image-file" type="file" accept="image/png,image/jpeg,image/webp">
           <img id="gift-image-preview" class="hidden preview" alt="Prévia do presente">
           <p class="status">PNG, JPG ou WebP. Tamanho máximo: 5 MB.</p>
         </div>
-
-        <div>
-          <label for="gift-url">Link de compra (opcional)</label>
-          <input id="gift-url" type="url" placeholder="https://...">
-        </div>
-
+        <div><label for="gift-url">Link de compra (opcional)</label><input id="gift-url" type="url" placeholder="https://..."></div>
         <div class="row">
           <button id="gift-submit" type="submit">Adicionar presente</button>
-          <button id="gift-cancel" class="secondary hidden" type="button">
-            Cancelar edição
-          </button>
+          <button id="gift-cancel" class="secondary hidden" type="button">Cancelar edição</button>
         </div>
       </form>
-
       <p id="gift-status" class="status" role="status" aria-live="polite"></p>
     </section>
 
+    <!-- NOVA ÁREA: RESERVAS DE PRESENTES -->
+    <section class="panel">
+      <div class="row" style="justify-content:space-between">
+        <h3>Reservas de presentes</h3>
+        <button id="refresh-reservations" class="secondary" type="button">Atualizar reservas</button>
+      </div>
+      <p class="status">Veja quem reservou cada presente. Se necessário, cancele uma reserva para disponibilizar o presente novamente.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Presente</th><th>Reservado por</th><th>Ação</th></tr></thead>
+          <tbody id="gift-reservation-rows">
+            <tr><td colspan="3">Carregando reservas...</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p id="reservation-status" class="status" role="status" aria-live="polite"></p>
+    </section>
   </section>
 </main>
 
 <script type="module">
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
-/* CONFIGURAÇÃO SUPABASE */
 const SUPABASE_URL = 'https://otzxfppshwsqlxlmkbat.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_dEppruYDF1VaD73bXZcNmg_MszVkpYG';
 
-const supabase = createClient(
-  SUPABASE_URL,
-  SUPABASE_PUBLISHABLE_KEY
-);
-
+const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = id => document.getElementById(id);
 
 let editingGuestId = null;
@@ -443,15 +257,9 @@ function status(id, message = '') {
 
 function safeUrl(value) {
   if (!value) return null;
-
   try {
     const url = new URL(value);
-
-    if (url.protocol === 'https:' || url.protocol === 'http:') {
-      return url.href;
-    }
-
-    return null;
+    return ['https:', 'http:'].includes(url.protocol) ? url.href : null;
   } catch {
     return null;
   }
@@ -468,14 +276,12 @@ function makeButton(label, className, handler) {
   const b = document.createElement('button');
   b.type = 'button';
   b.textContent = label;
-
   if (className) b.className = className;
-
   b.addEventListener('click', handler);
   return b;
 }
 
-/* LOGIN E SESSÃO */
+/* LOGIN */
 function showLoggedOut(message = '') {
   $('login-panel').classList.remove('hidden');
   $('dashboard').classList.add('hidden');
@@ -488,27 +294,20 @@ function showLoginError(message) {
 }
 
 async function checkAdmin() {
-  const { data: { user }, error: userError } =
-    await supabase.auth.getUser();
+  const { data: { user }, error: userError } = await supabase.auth.getUser();
 
   if (userError || !user) {
     showLoggedOut();
     return false;
   }
 
-  const { data: isAdmin, error } =
-    await supabase.rpc('is_wedding_admin');
+  const { data: isAdmin, error } = await supabase.rpc('is_wedding_admin');
 
   if (error || isAdmin !== true) {
     $('login-panel').classList.remove('hidden');
     $('dashboard').classList.add('hidden');
     $('logout').classList.remove('hidden');
-
-    showLoginError(
-      'Login realizado, mas esta conta não tem permissão administrativa. ' +
-      'Confira o UID cadastrado em admin_users e a função is_wedding_admin no Supabase.'
-    );
-
+    showLoginError('Login realizado, mas esta conta não tem permissão administrativa. Confira o UID em admin_users e a função is_wedding_admin no Supabase.');
     return false;
   }
 
@@ -522,11 +321,9 @@ async function checkAdmin() {
 
 $('login-form').addEventListener('submit', async event => {
   event.preventDefault();
-
   const btn = $('login-submit');
   btn.disabled = true;
   btn.textContent = 'Entrando...';
-
   status('login-status', 'Verificando acesso...');
 
   try {
@@ -536,19 +333,14 @@ $('login-form').addEventListener('submit', async event => {
     });
 
     if (error) {
-      showLoginError(
-        'Não foi possível entrar. Confira o e-mail e a senha da conta administradora.'
-      );
+      showLoginError('Não foi possível entrar. Confira o e-mail e a senha da conta administradora.');
       return;
     }
 
     await checkAdmin();
-
   } catch (error) {
     console.error(error);
-    showLoginError(
-      'Erro de conexão ao tentar entrar. Atualize a página e tente novamente.'
-    );
+    showLoginError('Erro de conexão ao tentar entrar. Atualize a página e tente novamente.');
   } finally {
     btn.disabled = false;
     btn.textContent = 'Entrar no painel';
@@ -564,10 +356,9 @@ $('logout').addEventListener('click', async () => {
 
 $('refresh').addEventListener('click', loadDashboard);
 
-/* CARREGAR ESTATÍSTICAS E CONVIDADOS */
+/* DASHBOARD E CONVIDADOS */
 async function loadDashboard() {
   if (loadingDashboard) return;
-
   loadingDashboard = true;
   status('guest-status', 'Carregando convidados...');
 
@@ -576,60 +367,36 @@ async function loadDashboard() {
       { data: guests, error: guestsError },
       { data: rsvps, error: rsvpsError }
     ] = await Promise.all([
-      supabase
-        .from('guests')
-        .select('id,full_name,email,phone')
-        .order('full_name'),
-
-      supabase
-        .from('rsvps')
-        .select('guest_id,attending,party_count,responded_at')
+      supabase.from('guests').select('id,full_name,email,phone').order('full_name'),
+      supabase.from('rsvps').select('guest_id,attending,party_count,responded_at')
     ]);
 
     if (guestsError || rsvpsError) {
       console.error(guestsError || rsvpsError);
-
-      status(
-        'guest-status',
-        'Não foi possível carregar os dados. Confira as permissões RLS de guests e rsvps.'
-      );
-
+      status('guest-status', 'Não foi possível carregar os dados. Confira as permissões RLS de guests e rsvps.');
       const tbody = $('guest-rows');
       tbody.replaceChildren();
-
       const tr = document.createElement('tr');
       const td = cell(tr, 'Dados indisponíveis.');
       td.colSpan = 7;
       tbody.appendChild(tr);
-
       return;
     }
 
-    /* Mantém a resposta mais recente de cada convidado */
     const latest = new Map();
-
     (rsvps || []).forEach(rsvp => {
       const old = latest.get(rsvp.guest_id);
-
-      if (
-        !old ||
-        new Date(rsvp.responded_at || 0) >
-        new Date(old.responded_at || 0)
-      ) {
+      if (!old || new Date(rsvp.responded_at || 0) > new Date(old.responded_at || 0)) {
         latest.set(rsvp.guest_id, rsvp);
       }
     });
 
-    let yes = 0;
-    let no = 0;
-    let people = 0;
-
+    let yes = 0, no = 0, people = 0;
     const tbody = $('guest-rows');
     tbody.replaceChildren();
 
     (guests || []).forEach(guest => {
       const rsvp = latest.get(guest.id);
-
       if (rsvp?.attending === true) {
         yes++;
         people += Number(rsvp.party_count || 1);
@@ -638,40 +405,20 @@ async function loadDashboard() {
       }
 
       const tr = document.createElement('tr');
-
       cell(tr, guest.full_name);
       cell(tr, guest.email || '—');
       cell(tr, guest.phone || '—');
-
-      cell(
-        tr,
-        !rsvp
-          ? 'Sem resposta'
-          : rsvp.attending
-            ? 'Confirmado'
-            : 'Não comparecerá'
-      );
-
+      cell(tr, !rsvp ? 'Sem resposta' : rsvp.attending ? 'Confirmado' : 'Não comparecerá');
       cell(tr, rsvp ? String(rsvp.party_count ?? '—') : '—');
-
-      cell(
-        tr,
-        rsvp?.responded_at
-          ? new Date(rsvp.responded_at).toLocaleString('pt-BR')
-          : '—'
-      );
+      cell(tr, rsvp?.responded_at ? new Date(rsvp.responded_at).toLocaleString('pt-BR') : '—');
 
       const td = document.createElement('td');
       const wrap = document.createElement('div');
       wrap.className = 'action-buttons';
-
       wrap.append(
         makeButton('Editar', 'secondary', () => editGuest(guest)),
-        makeButton('Excluir', 'danger', () =>
-          deleteGuest(guest, Boolean(rsvp))
-        )
+        makeButton('Excluir', 'danger', () => deleteGuest(guest, Boolean(rsvp)))
       );
-
       td.appendChild(wrap);
       tr.appendChild(td);
       tbody.appendChild(tr);
@@ -688,11 +435,10 @@ async function loadDashboard() {
     $('yes-count').textContent = String(yes);
     $('no-count').textContent = String(no);
     $('party-count').textContent = String(people);
-
     status('guest-status', 'Dados atualizados.');
 
     await loadGifts();
-
+    await loadGiftReservations();
   } catch (error) {
     console.error(error);
     status('guest-status', 'Ocorreu um erro ao carregar os dados.');
@@ -701,30 +447,21 @@ async function loadDashboard() {
   }
 }
 
-/* CADASTRO E EDIÇÃO DE CONVIDADOS */
 function editGuest(guest) {
   editingGuestId = guest.id;
-
   $('guest-name').value = guest.full_name || '';
   $('guest-email').value = guest.email || '';
   $('guest-phone').value = guest.phone || '';
-
   $('guest-form-title').textContent = 'Editar convidado';
   $('guest-submit').textContent = 'Salvar alterações';
   $('guest-cancel').classList.remove('hidden');
-
   status('new-guest-status', 'Editando: ' + guest.full_name);
-
-  $('guest-form').scrollIntoView({
-    behavior: 'smooth',
-    block: 'center'
-  });
+  $('guest-form').scrollIntoView({ behavior:'smooth', block:'center' });
 }
 
 function resetGuestForm() {
   editingGuestId = null;
   $('guest-form').reset();
-
   $('guest-form-title').textContent = 'Cadastrar convidado';
   $('guest-submit').textContent = 'Cadastrar convidado';
   $('guest-cancel').classList.add('hidden');
@@ -737,16 +474,10 @@ $('guest-cancel').addEventListener('click', () => {
 
 $('guest-form').addEventListener('submit', async event => {
   event.preventDefault();
-
   const editing = Boolean(editingGuestId);
   const btn = $('guest-submit');
-
   btn.disabled = true;
-
-  status(
-    'new-guest-status',
-    editing ? 'Salvando alterações...' : 'Cadastrando...'
-  );
+  status('new-guest-status', editing ? 'Salvando alterações...' : 'Cadastrando...');
 
   const payload = {
     full_name: $('guest-name').value.trim(),
@@ -761,82 +492,46 @@ $('guest-form').addEventListener('submit', async event => {
     }
 
     let result;
-
     if (editing) {
-      result = await supabase
-        .from('guests')
-        .update(payload)
-        .eq('id', editingGuestId);
+      result = await supabase.from('guests').update(payload).eq('id', editingGuestId);
     } else {
-      result = await supabase
-        .from('guests')
-        .insert({
-          ...payload,
-          invitation_code: crypto.randomUUID()
-        });
+      result = await supabase.from('guests').insert({
+        ...payload,
+        invitation_code: crypto.randomUUID()
+      });
     }
 
     if (result.error) throw result.error;
-
     resetGuestForm();
-
-    status(
-      'new-guest-status',
-      editing
-        ? 'Convidado atualizado com sucesso.'
-        : 'Convidado cadastrado com sucesso.'
-    );
-
+    status('new-guest-status', editing ? 'Convidado atualizado com sucesso.' : 'Convidado cadastrado com sucesso.');
     await loadDashboard();
-
   } catch (error) {
     console.error(error);
-
-    status(
-      'new-guest-status',
-      'Não foi possível salvar. Confira as permissões e as colunas da tabela guests no Supabase.'
-    );
+    status('new-guest-status', 'Não foi possível salvar. Confira as permissões e as colunas da tabela guests no Supabase.');
   } finally {
     btn.disabled = false;
   }
 });
 
 async function deleteGuest(guest, hasResponse) {
-  const warning = hasResponse
-    ? '\n\nHá uma resposta de presença vinculada. O banco pode impedir a exclusão.'
-    : '';
+  const warning = hasResponse ? '\n\nHá uma resposta de presença vinculada. O banco pode impedir a exclusão.' : '';
+  if (!confirm(`Deseja realmente excluir ${guest.full_name}?${warning}`)) return;
 
-  if (!confirm(`Deseja realmente excluir ${guest.full_name}?${warning}`)) {
-    return;
-  }
-
-  const { error } = await supabase
-    .from('guests')
-    .delete()
-    .eq('id', guest.id);
-
+  const { error } = await supabase.from('guests').delete().eq('id', guest.id);
   if (error) {
     console.error(error);
-
-    alert(
-      'Não foi possível excluir. Confira se há uma resposta vinculada e as permissões DELETE no Supabase.'
-    );
-
+    alert('Não foi possível excluir. Confira se há uma resposta vinculada e as permissões DELETE no Supabase.');
     return;
   }
 
-  if (editingGuestId === guest.id) {
-    resetGuestForm();
-  }
-
+  if (editingGuestId === guest.id) resetGuestForm();
   status('guest-status', 'Convidado excluído.');
   await loadDashboard();
 }
 
-/* GERENCIAMENTO DE PRESENTES */
+/* PRESENTES */
 async function loadGifts() {
   const tbody = $('gift-rows');
-
   tbody.replaceChildren();
   status('gift-status', 'Carregando presentes...');
 
@@ -847,29 +542,21 @@ async function loadGifts() {
 
   if (error) {
     console.error(error);
-
     const tr = document.createElement('tr');
     const td = cell(tr, 'Não foi possível carregar os presentes.');
     td.colSpan = 4;
     tbody.appendChild(tr);
-
-    status(
-      'gift-status',
-      'Confira as permissões de leitura da tabela gifts.'
-    );
-
+    status('gift-status', 'Confira as permissões de leitura da tabela gifts.');
     return;
   }
 
   (data || []).forEach(gift => {
     const tr = document.createElement('tr');
-
     cell(tr, gift.name || '—');
     cell(tr, gift.description || '—');
 
     const linkCell = document.createElement('td');
     const url = safeUrl(gift.product_url);
-
     if (url) {
       const link = document.createElement('a');
       link.href = url;
@@ -880,18 +567,15 @@ async function loadGifts() {
     } else {
       linkCell.textContent = 'Sem link';
     }
-
     tr.appendChild(linkCell);
 
     const td = document.createElement('td');
     const wrap = document.createElement('div');
     wrap.className = 'action-buttons';
-
     wrap.append(
       makeButton('Editar', 'secondary', () => editGift(gift)),
       makeButton('Excluir', 'danger', () => deleteGift(gift))
     );
-
     td.appendChild(wrap);
     tr.appendChild(td);
     tbody.appendChild(tr);
@@ -903,21 +587,18 @@ async function loadGifts() {
     td.colSpan = 4;
     tbody.appendChild(tr);
   }
-
   status('gift-status', 'Lista de presentes atualizada.');
 }
 
 function editGift(gift) {
   editingGiftId = gift.id;
   currentGiftImageUrl = gift.image_url || null;
-
   $('gift-name').value = gift.name || '';
   $('gift-description').value = gift.description || '';
   $('gift-image-file').value = '';
   $('gift-url').value = gift.product_url || '';
 
   const preview = $('gift-image-preview');
-
   preview.src = currentGiftImageUrl || '';
   preview.classList.toggle('hidden', !currentGiftImageUrl);
 
@@ -929,21 +610,14 @@ function editGift(gift) {
   $('gift-form-title').textContent = 'Editar presente';
   $('gift-submit').textContent = 'Salvar alterações';
   $('gift-cancel').classList.remove('hidden');
-
   status('gift-status', 'Editando: ' + gift.name);
-
-  $('gift-form').scrollIntoView({
-    behavior: 'smooth',
-    block: 'center'
-  });
+  $('gift-form').scrollIntoView({ behavior:'smooth', block:'center' });
 }
 
 function resetGiftForm() {
   editingGiftId = null;
   currentGiftImageUrl = null;
-
   $('gift-form').reset();
-
   $('gift-image-preview').src = '';
   $('gift-image-preview').classList.add('hidden');
 
@@ -977,7 +651,7 @@ $('gift-image-file').addEventListener('change', () => {
     return;
   }
 
-  if (!['image/png', 'image/jpeg', 'image/webp'].includes(file.type)) {
+  if (!['image/png','image/jpeg','image/webp'].includes(file.type)) {
     $('gift-image-file').value = '';
     status('gift-status', 'Escolha uma imagem PNG, JPG ou WebP.');
     return;
@@ -997,54 +671,33 @@ $('gift-image-file').addEventListener('change', () => {
 async function uploadGiftImage(file) {
   if (!file) return currentGiftImageUrl;
 
-  if (!['image/png', 'image/jpeg', 'image/webp'].includes(file.type)) {
+  if (!['image/png','image/jpeg','image/webp'].includes(file.type)) {
     throw new Error('Formato não permitido. Escolha PNG, JPG ou WebP.');
   }
-
   if (file.size > 5 * 1024 * 1024) {
     throw new Error('A foto deve ter no máximo 5 MB.');
   }
 
-  const extensions = {
-    'image/png': 'png',
-    'image/jpeg': 'jpg',
-    'image/webp': 'webp'
-  };
-
+  const extensions = { 'image/png':'png', 'image/jpeg':'jpg', 'image/webp':'webp' };
   const path = `${crypto.randomUUID()}.${extensions[file.type]}`;
 
-  const { error } = await supabase
-    .storage
-    .from('presentes')
-    .upload(path, file, {
-      contentType: file.type,
-      upsert: false
-    });
-
+  const { error } = await supabase.storage.from('presentes').upload(path, file, {
+    contentType:file.type,
+    upsert:false
+  });
   if (error) throw error;
 
-  return supabase
-    .storage
-    .from('presentes')
-    .getPublicUrl(path)
-    .data
-    .publicUrl;
+  return supabase.storage.from('presentes').getPublicUrl(path).data.publicUrl;
 }
 
 $('gift-form').addEventListener('submit', async event => {
   event.preventDefault();
-
   const btn = $('gift-submit');
   const editing = Boolean(editingGiftId);
-
   btn.disabled = true;
 
   try {
-    status(
-      'gift-status',
-      editing ? 'Salvando alterações...' : 'Adicionando presente...'
-    );
-
+    status('gift-status', editing ? 'Salvando alterações...' : 'Adicionando presente...');
     const name = $('gift-name').value.trim();
     const url = $('gift-url').value.trim();
     const file = $('gift-image-file').files[0] || null;
@@ -1053,98 +706,131 @@ $('gift-form').addEventListener('submit', async event => {
       status('gift-status', 'Informe o nome do presente.');
       return;
     }
-
     if (url && !safeUrl(url)) {
       status('gift-status', 'Informe um link de compra válido.');
       return;
     }
 
     const image_url = await uploadGiftImage(file);
-
     const payload = {
       name,
-      description: $('gift-description').value.trim() || null,
-      image_url: image_url || null,
-      product_url: url || null
+      description:$('gift-description').value.trim() || null,
+      image_url:image_url || null,
+      product_url:url || null
     };
 
     const result = editing
-      ? await supabase
-          .from('gifts')
-          .update(payload)
-          .eq('id', editingGiftId)
-      : await supabase
-          .from('gifts')
-          .insert(payload);
+      ? await supabase.from('gifts').update(payload).eq('id', editingGiftId)
+      : await supabase.from('gifts').insert(payload);
 
     if (result.error) throw result.error;
-
     resetGiftForm();
-
-    status(
-      'gift-status',
-      editing
-        ? 'Presente atualizado com sucesso.'
-        : 'Presente adicionado com sucesso.'
-    );
-
+    status('gift-status', editing ? 'Presente atualizado com sucesso.' : 'Presente adicionado com sucesso.');
     await loadGifts();
-
   } catch (error) {
     console.error(error);
-
-    status(
-      'gift-status',
-      error.message ||
-      'Não foi possível salvar o presente. Confira as permissões do Storage e da tabela gifts.'
-    );
+    status('gift-status', error.message || 'Não foi possível salvar o presente. Confira as permissões do Storage e da tabela gifts.');
   } finally {
     btn.disabled = false;
   }
 });
 
 async function deleteGift(gift) {
-  if (!confirm(`Deseja excluir o presente "${gift.name}"?`)) {
-    return;
-  }
+  if (!confirm(`Deseja excluir o presente "${gift.name}"?`)) return;
 
-  const { error } = await supabase
-    .from('gifts')
-    .delete()
-    .eq('id', gift.id);
-
+  const { error } = await supabase.from('gifts').delete().eq('id', gift.id);
   if (error) {
     console.error(error);
-
-    alert(
-      'Não foi possível excluir o presente. Confira as permissões DELETE da tabela gifts.'
-    );
-
+    alert('Não foi possível excluir o presente. Confira as permissões DELETE da tabela gifts.');
     return;
   }
 
-  if (editingGiftId === gift.id) {
-    resetGiftForm();
-  }
-
+  if (editingGiftId === gift.id) resetGiftForm();
   status('gift-status', 'Presente excluído.');
   await loadGifts();
 }
 
-/* ATUALIZA A TELA QUANDO A SESSÃO TERMINA */
+/* NOVA FUNÇÃO: LISTAR E CANCELAR RESERVAS */
+async function loadGiftReservations() {
+  const tbody = $('gift-reservation-rows');
+  tbody.replaceChildren();
+  status('reservation-status', 'Carregando reservas...');
+
+  const { data, error } = await supabase.rpc('admin_list_gift_reservations');
+
+  if (error) {
+    console.error('Erro ao carregar reservas:', error);
+    const tr = document.createElement('tr');
+    const td = cell(tr, 'Não foi possível carregar as reservas.');
+    td.colSpan = 3;
+    tbody.appendChild(tr);
+    status('reservation-status', 'Confira se as funções administrativas foram criadas no Supabase e se sua conta tem permissão.');
+    return;
+  }
+
+  if (!data || data.length === 0) {
+    const tr = document.createElement('tr');
+    const td = cell(tr, 'Nenhum presente reservado até o momento.');
+    td.colSpan = 3;
+    tbody.appendChild(tr);
+    status('reservation-status', 'Nenhuma reserva ativa.');
+    return;
+  }
+
+  data.forEach(reservation => {
+    const tr = document.createElement('tr');
+    cell(tr, reservation.gift_name);
+    cell(tr, reservation.guest_name);
+
+    const td = document.createElement('td');
+    td.appendChild(makeButton('Cancelar reserva', 'danger', async () => {
+      const confirmed = confirm(
+        `Deseja liberar "${reservation.gift_name}", reservado por ${reservation.guest_name}? O presente ficará disponível novamente.`
+      );
+      if (!confirmed) return;
+
+      status('reservation-status', 'Cancelando reserva...');
+
+      const { data: result, error: cancelError } = await supabase.rpc(
+        'admin_cancel_gift_reservation',
+        { p_gift_id: reservation.gift_id }
+      );
+
+      if (cancelError) {
+        console.error('Erro ao cancelar reserva:', cancelError);
+        status('reservation-status', 'Não foi possível cancelar a reserva. Confira as permissões e tente novamente.');
+        return;
+      }
+
+      if (!result?.success) {
+        status('reservation-status', result?.message || 'Não foi possível localizar a reserva.');
+        await loadGiftReservations();
+        return;
+      }
+
+      status('reservation-status', 'Reserva cancelada. O presente foi liberado.');
+      await loadGiftReservations();
+    }));
+
+    tr.appendChild(td);
+    tbody.appendChild(tr);
+  });
+
+  status('reservation-status', `${data.length} reserva(s) ativa(s).`);
+}
+
+$('refresh-reservations').addEventListener('click', loadGiftReservations);
+
+/* SESSÃO */
 supabase.auth.onAuthStateChange(event => {
   if (event === 'SIGNED_OUT') {
     showLoggedOut('Você saiu do painel.');
   }
 });
 
-/* VERIFICA A SESSÃO AO ABRIR A PÁGINA */
 checkAdmin().catch(error => {
   console.error(error);
-
-  showLoggedOut(
-    'Não foi possível verificar a sessão. Atualize a página e tente novamente.'
-  );
+  showLoggedOut('Não foi possível verificar a sessão. Atualize a página e tente novamente.');
 });
 </script>
 </body>
