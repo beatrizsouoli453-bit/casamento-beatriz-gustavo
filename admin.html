@@ -200,33 +200,79 @@ td{overflow-wrap:anywhere}
     </div>
   </section>
 
-  <!-- PRESENTES -->
+ <!-- PRESENTES: ENVIO DE IMAGEM DO TABLET -->
+
   <section class="panel">
-    <div class="section-heading">
-      <div><h2>Lista de presentes</h2><p class="muted">Cadastre presentes e seus links de compra.</p></div>
-    </div>
+    <h2>Lista de presentes</h2>
+    <p class="muted">Cadastre presentes, envie imagens e adicione links de compra.</p>
+
     <form id="gift-form">
       <input id="gift-id" type="hidden">
+
       <div class="form-grid">
-        <div class="field"><label for="gift-name">Nome do presente</label><input id="gift-name" required></div>
-        <div class="field"><label for="gift-url">Link de compra</label><input id="gift-url" type="url" placeholder="https://..."></div>
-        <div class="field full"><label for="gift-description">Descrição</label><textarea id="gift-description" rows="3"></textarea></div>
-        <div class="field"><label for="gift-image-url">URL da imagem (opcional)</label><input id="gift-image-url" type="url" placeholder="https://..."></div>
+        <div class="field">
+          <label for="gift-name">Nome do presente</label>
+          <input id="gift-name" maxlength="180" required>
+        </div>
+
+        <div class="field">
+          <label for="gift-url">Link de compra (opcional)</label>
+          <input id="gift-url" type="url" placeholder="https://...">
+        </div>
+
+        <div class="field full">
+          <label for="gift-description">Descrição</label>
+          <textarea id="gift-description" rows="3"></textarea>
+        </div>
+
+        <div class="field full">
+          <label for="gift-image-file">Imagem do presente</label>
+          <input id="gift-image-file" type="file"
+                 accept="image/jpeg,image/png,image/webp,image/gif,image/avif">
+
+          <small>
+            Escolha uma imagem salva no tablet. Tamanho máximo: 5 MB.
+            Ao editar, deixe vazio para manter a imagem atual.
+          </small>
+
+          <img id="gift-image-preview"
+               class="hidden gift-preview"
+               alt="Prévia da imagem do presente">
+        </div>
       </div>
+
       <div class="actions">
-        <button class="btn" id="gift-save-button" type="submit">Salvar presente</button>
-        <button class="btn secondary" id="gift-cancel-edit" type="button">Limpar formulário</button>
+        <button class="btn" id="gift-save-button" type="submit">
+          Salvar presente
+        </button>
+        <button class="btn secondary" id="gift-cancel-edit" type="button">
+          Limpar formulário
+        </button>
       </div>
+
       <p id="gift-form-status" class="status" aria-live="polite"></p>
     </form>
+
     <hr style="border:0;border-top:1px solid var(--border);margin:24px 0">
+
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Presente</th><th>Descrição</th><th>Link</th><th>Ações</th></tr></thead>
-        <tbody id="gift-rows"><tr><td colspan="4">Carregando presentes...</td></tr></tbody>
+        <thead>
+          <tr>
+            <th>Imagem</th>
+            <th>Presente</th>
+            <th>Descrição</th>
+            <th>Link de compra</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="gift-rows">
+          <tr><td colspan="5">Carregando presentes...</td></tr>
+        </tbody>
       </table>
     </div>
   </section>
+
 
   <!-- RESERVAS -->
   <section class="panel">
